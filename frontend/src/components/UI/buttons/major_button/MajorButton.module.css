@@ -1,0 +1,37 @@
+.majorButton {
+    background: #96bfbf;
+    border: none;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    min-width: min-content;
+    width: 100%;
+    min-height: min-content;
+}
+
+@keyframes setActive {
+    from {
+        background-color: #96bfbf;
+    }
+    to {
+        background-color: #68a3a3;
+    }
+}
+
+@keyframes click {
+    from {
+        background: #96bfbf;
+        color: white;
+    }
+    to {
+        background: #639898;
+        color: #c5c5c5;
+    }
+}
+
+.majorButton:hover {
+    animation: set-active 300ms forwards;
+}
+
+.majorButton:active {
+    animation: click 100ms forwards;
+}
