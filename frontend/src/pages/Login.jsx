@@ -1,9 +1,12 @@
 import React from 'react';
+import LoginComponent from "../components/LoginComponent";
+import "../styles/Login.css"
+
 
 const Login = () => {
     return (
-        <div>
-            <button>Test</button>
+        <div className={"login-page"}>
+            <LoginComponent></LoginComponent>
         </div>
     );
 };
