@@ -1,7 +1,7 @@
 import React from 'react';
 import SwitchBar from "../components/SwitchBar";
 
-const Faq = () => {
+const BulletinBoard = () => {
     return (
         <div>
             <SwitchBar></SwitchBar>
@@ -9,4 +9,4 @@ const Faq = () => {
     );
 };
 
-export default Faq;
+export default BulletinBoard;
