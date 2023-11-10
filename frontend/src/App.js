@@ -3,6 +3,7 @@ import Login from "./pages/Login"
 import SignUp from "./pages/SignUp";
 import Account from "./pages/Account";
 import News from "./pages/News";
+import BulletinBoard from "./pages/BulletinBoard";
 import Queue from "./pages/Queue";
 import FAQ from "./pages/FAQ";
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/signup" element={<SignUp/>}></Route>
             <Route path="/account" element={<Account/>}></Route>
             <Route path="/news" element={<News/>}></Route>
+            <Route path="/bulletin_board" element={<BulletinBoard/>}></Route>
             <Route path="/queue" element={<Queue/>}></Route>
             <Route path="/faq" element={<FAQ/>}></Route>
             <Route path="/" element={<Navigate replace to="/login"/>} />
