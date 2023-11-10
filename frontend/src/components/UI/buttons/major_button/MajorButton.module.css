@@ -29,7 +29,7 @@
 }
 
 .majorButton:hover {
-    animation: set-active 300ms forwards;
+    animation: setActive 300ms forwards;
 }
 
 .majorButton:active {

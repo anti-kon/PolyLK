@@ -2,17 +2,19 @@
     width: 100%;
     height: max-content;
     text-align: center;
-    padding: 5px 15px;
+    box-sizing: border-box;
+    padding: 10px 15px;
     border: 3px solid #96bfbf;
     font-family: 'Russo One', sans-serif;
     color: #96bfbf;
     border-radius: 10px;
+    background: white;
 }
 .textInput::placeholder {
     color: #96bfbf;
 }
 .textInput:focus {
-    border: 3px solid #68A3A3;
+    border: 3px solid #68a3a3;
     outline: none;
-    color: #68A3A3;
+    color: #68a3a3;
 }
