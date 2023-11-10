@@ -1,0 +1,18 @@
+.shadowButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 5px 0;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    color: #68a3a3;
+}
+
+.shadowButton:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
