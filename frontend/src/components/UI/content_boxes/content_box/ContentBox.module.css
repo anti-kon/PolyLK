@@ -1,0 +1,8 @@
+.contentBox {
+    margin: 7px;
+    width: calc(100% - 14px);
+    height: max-content;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0, 106, 105, 0.7);
+}
