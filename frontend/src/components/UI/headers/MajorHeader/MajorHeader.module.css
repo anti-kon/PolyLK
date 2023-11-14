@@ -1,0 +1,28 @@
+.majorHeader {
+    background: #006a69;
+    height: 60px;
+    display: flex;
+    align-self: center;
+}
+
+.accountLabel {
+    margin: auto 10px auto auto;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+}
+
+.iconStyle {
+    margin-left: 20px;
+    width: 50px;
+    height: auto;
+    background: none;
+}
+
+.arrowStyle {
+    color: white;
+    margin: auto 30px auto 10px;
+    width: 18px;
+    height: auto;
+    background: none;
+}
