@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from "./TextInput.module.css";
 
-const TextInput = (props) => {
+const TextInput = ({valid, ...props}) => {
     return (
-        <input {...props} className={classes.textInput}/>
+        <input
+            {...props}
+            className={valid ? classes.textInput : classes.textInputError}/>
     );
 };
 
