@@ -1,0 +1,5 @@
+.queue-page {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+}
