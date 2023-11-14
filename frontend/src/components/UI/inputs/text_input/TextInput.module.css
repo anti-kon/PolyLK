@@ -18,3 +18,23 @@
     outline: none;
     color: #68a3a3;
 }
+.textInputError {
+    width: 100%;
+    height: max-content;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 3px solid #cc7e7e;
+    font-family: 'Russo One', sans-serif;
+    color: #cc7e7e;
+    border-radius: 10px;
+    background: white;
+}
+.textInputError::placeholder {
+    color: #cc7e7e;
+}
+.textInputError:focus {
+    border: 3px solid #da7676;
+    outline: none;
+    color: #da7676;
+}
