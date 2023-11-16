@@ -23,7 +23,7 @@ const SwitchBar = (props) => {
                 <TbTag style={iconsStyle}/>
                 Объявления
             </ShadowButton>
-            <ShadowButton onClick={() => {navigate('../queue');}}>
+            <ShadowButton onClick={() => {navigate('../appointments');}}>
                 <HiPlus style={iconsStyle}/>
                 Запись
             </ShadowButton>
