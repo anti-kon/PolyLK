@@ -3,3 +3,50 @@
     max-width: 1200px;
     margin: auto;
 }
+
+.tips-list {
+    margin: 0 10px 0 20px;
+    width: 100%;
+}
+
+.tip-box {
+    display: block;
+    margin: 15px;
+    width: 100%;
+}
+
+.tip-box-header {
+    min-width: max-content;
+    display: flex;
+}
+
+.tip-box-label {
+    margin-right: 15px;
+    margin-left: 0;
+    font-family: "Russo One", sans-serif;
+    color: #68a3a3;
+    font-size: 18px;
+}
+
+.tip-box-toggle-visibility-button {
+    margin-left: auto;
+    margin-top: -4px;
+    color: #68a3a3;
+    width: 20px;
+    height: auto;
+}
+
+.tip-box-body{
+    color: #4c4c4c;
+    margin: 5px 20px;
+    font-family: 'Russo One', sans-serif;
+    word-break: break-all;
+}
+
+.tip-box-header:hover label {
+    color: #3e8d8d;
+}
+
+.tip-box-header:hover svg {
+    color: #3e8d8d;
+}
