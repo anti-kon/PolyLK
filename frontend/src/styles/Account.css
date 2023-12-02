@@ -15,10 +15,6 @@
     align-items: center;
 }
 
-.label-button {
-    margin-left: auto;
-}
-
 .account {
     width: 100%;
 }
@@ -41,4 +37,35 @@
     font-size: 14px;
     text-align: center;
     min-height: 90px;
+}
+
+.settings-block {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+
+.button-panel {
+    display: flex;
+}
+
+.account-setting {
+    width: 100%;
+    margin: 7px 21px;
+    max-width: 450px;
+}
+
+.account-frameless-button {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding: 0;
+    border: none;
+    background: none;
+    height: auto;
+    color: #68a3a3;
+}
+
+.account-frameless-button:hover {
+    color: #3e8d8d;
 }

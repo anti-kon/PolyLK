@@ -17,7 +17,9 @@ const AccountComponent = ({username, gearOnClick, ...props}) => {
     const filePost = (filesArray, limit) => {
         let content = []
         for (let index = 0; index < limit; index++)
-            content.push(<FileComponent key={index}>{filesArray[index]}</FileComponent>);
+            content.push(
+                <FileComponent key={index}>{filesArray[index]}</FileComponent>
+            );
         return content;
     };
 
@@ -26,20 +28,24 @@ const AccountComponent = ({username, gearOnClick, ...props}) => {
         <div {...props} className={"account"}>
             <div className={"label-block"}>
                 <label>{username}</label>
-                <BiCog
-                    onClick={gearOnClick}
-                    style={{
-                        width: "28px",
-                        height: "auto",
-                        strokeWidth: "0.7px"}}
-                    className={"label-button"} />
+                <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
+                    <BiCog
+                        onClick={gearOnClick}
+                        style={{
+                            width: "28px",
+                            height: "auto",
+                            strokeWidth: "0.7px"
+                        }}/>
+                </button>
             </div>
             <ContentBox style={{padding: "15px"}}>
                 <div style={{fontSize: "18px", marginLeft: "0", marginRight: "0"}} className={"label-block"}>
                     <label>Мои файлы</label>
-                    {isContentVisible ?
-                        <BiSolidUpArrow className={"label-button"}/> :
-                        <BiSolidDownArrow className={"label-button"}/>}
+                    <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
+                        {isContentVisible ?
+                            <BiSolidUpArrow style={{width: "18px", height: "auto",}}/> :
+                            <BiSolidDownArrow style={{width: "18px", height: "auto",}}/>}
+                    </button>
                 </div>
                 <div className={"file-list"}>
                     {isContentVisible ? filePost(files, files.length) : filePost(files, 4)}

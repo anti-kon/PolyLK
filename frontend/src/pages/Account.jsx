@@ -20,7 +20,7 @@ const Account = () => {
                             username={"UserName"}
                             style={{margin: "7px 10px 0 20px"}}>
                         </AccountComponent> :
-                        <div style={{justifyContent: "center", width: "100%", display: "flex"}}>
+                        <div className={"settings-block"}>
                             <AccountSettingsComponent
                                 returnFunc={() => {setIsEdited(false);}}
                                 username={"UserName"}>

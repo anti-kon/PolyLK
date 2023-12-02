@@ -6,7 +6,7 @@ import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
 
 const AccountSettingsComponent = ({returnFunc, ...props}) => {
     return (
-        <div style={{width: "100%", margin: "7px 21px", maxWidth: "450px"}}>
+        <div className={"account-setting"}>
             <TextInput
                 style={{
                     height: "48px",
@@ -18,15 +18,23 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
             </TextInput>
             <PasswordInput
                 placeholder={"Введите новый пароль"}
-                style={{height: "48px", margin: "20px 0", fontSize: "20px"}}
+                style={{
+                    height: "48px",
+                    margin: "20px 0",
+                    fontSize: "20px"
+                }}
                 valid={true}>
             </PasswordInput>
             <PasswordInput
                 placeholder={"Подтвердите пароль"}
-                style={{height: "48px", margin: "20px 0", fontSize: "20px"}}
+                style={{
+                    height: "48px",
+                    margin: "20px 0",
+                    fontSize: "20px"
+                }}
                 valid={true}>
             </PasswordInput>
-            <div style={{display: "flex"}}>
+            <div className={"button-panel"}>
                 <MajorButton
                     style={{
                         width: "170px",

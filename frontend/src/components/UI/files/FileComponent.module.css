@@ -4,6 +4,10 @@
     margin-bottom: 10px;
 }
 
+.fileComponent:hover .fileIcon {
+    color: #3e8d8d;
+}
+
 .iconBox {
     width: 100%;
     height: max-content;
