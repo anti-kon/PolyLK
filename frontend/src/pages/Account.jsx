@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
 import "../styles/Account.css";
 import AccountComponent from "../components/AccountComponent";
+import AccountSettingsComponent from "../components/AccountSettingsComponent";
 
 const Account = () => {
+    const [isEdited, setIsEdited] = useState(false);
+
     return (
         <div>
             <MajorHeader></MajorHeader>
             <div className={"account-page"}>
                 <SwitchBar></SwitchBar>
-                <AccountComponent userName={"UserName"} style={{margin: "0 10px 0 20px"}}></AccountComponent>
+                {
+                    !isEdited ?
+                        <AccountComponent
+                            gearOnClick={() => {setIsEdited(true);}}
+                            username={"UserName"}
+                            style={{margin: "7px 10px 0 20px"}}>
+                        </AccountComponent> :
+                        <div style={{justifyContent: "center", width: "100%", display: "flex"}}>
+                            <AccountSettingsComponent
+                                returnFunc={() => {setIsEdited(false);}}
+                                username={"UserName"}>
+                            </AccountSettingsComponent>
+                        </div>
+                }
             </div>
         </div>
     );

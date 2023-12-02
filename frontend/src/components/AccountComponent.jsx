@@ -4,7 +4,7 @@ import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import FileComponent from "./UI/files/FileComponent";
 import "../styles/Account.css"
 
-const AccountComponent = ({userName, ...props}) => {
+const AccountComponent = ({username, gearOnClick, ...props}) => {
     const [isContentVisible, setIsContentVisible] = useState(false);
 
     const files = ["квитация за оплату ноябрь 2021.pdf",
@@ -25,8 +25,9 @@ const AccountComponent = ({userName, ...props}) => {
     return (
         <div {...props} className={"account"}>
             <div className={"label-block"}>
-                <label>{userName}</label>
+                <label>{username}</label>
                 <BiCog
+                    onClick={gearOnClick}
                     style={{
                         width: "28px",
                         height: "auto",
