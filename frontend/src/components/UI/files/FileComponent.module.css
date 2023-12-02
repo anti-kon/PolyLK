@@ -1,0 +1,27 @@
+.fileComponent {
+    display: inline-block;
+    width: 25%;
+    margin-bottom: 10px;
+}
+
+.iconBox {
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+.fileIcon {
+    margin: 0 auto;
+    width: 40%;
+    height: auto;
+    color: #639898;
+}
+
+.fileName {
+    margin: 5px 10px;
+    font-family: "Russo One", sans-serif;
+    display: flex;
+    color: #4c4c4c;
+    font-size: 12px;
+    text-align: center
+}
