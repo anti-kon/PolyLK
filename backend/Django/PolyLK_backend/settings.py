@@ -94,11 +94,14 @@ WSGI_APPLICATION = 'PolyLK_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'PolyLK',
+        'NAME':  'PolyLK',
         'USER': 'postgres',
         'PASSWORD': 'PMIdatabase',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c statement_timeout=20000',
+        }
     }
 }
 
