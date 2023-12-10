@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e32789b-d2eb-41b5-b5a5-7735556848b0" name="Changes" comment="update" />
+    <list default="true" id="2e32789b-d2eb-41b5-b5a5-7735556848b0" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Django/posts/serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/PolyLK_backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/PolyLK_backend/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +63,7 @@
       <workItem from="1698505572155" duration="285000" />
       <workItem from="1698509443735" duration="1078000" />
       <workItem from="1700394997658" duration="1889000" />
+      <workItem from="1702213768395" duration="3340000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -90,7 +98,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/create_gitignore" />
+                        <option value="feature/create_authorization_backend" />
                       </list>
                     </value>
                   </entry>
