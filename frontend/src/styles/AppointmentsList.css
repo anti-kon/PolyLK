@@ -1,6 +1,10 @@
 .appointments-page {
     display: flex;
+<<<<<<< Updated upstream
     max-width: 1200px;
+=======
+    max-width: 960px;
+>>>>>>> Stashed changes
     margin: auto;
 }
 
