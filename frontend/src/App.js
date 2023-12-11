@@ -7,7 +7,6 @@ import News from "./pages/News";
 import BulletinBoard from "./pages/BulletinBoard";
 import AppointmentsList from "./pages/AppointmentsList";
 import MakeAppointment from "./pages/MakeAppointment";
-import AppointmentsList from "./pages/AppointmentsList";
 import FAQ from "./pages/FAQ";
 import UserAppointments from "./pages/UserAppointments";
 
