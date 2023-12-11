@@ -6,7 +6,7 @@ import "../styles/Login.css"
 import img from "../img/icon.svg";
 import {useNavigate} from "react-router-dom";
 
-const LoginComponent = () => {
+const LoginComponent = (props) => {
     const navigate = useNavigate();
 
     const [login, setLogin] = useState("");
@@ -17,6 +17,7 @@ const LoginComponent = () => {
 
     const checkLogin = () => {
         if (login === account.login && password === account.password) {
+            props.loginFunc({id: 1, login: login, password: password, dorNum: 0});
             navigate('../news');
             setIsValid(true)
         } else

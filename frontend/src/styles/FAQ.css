@@ -7,17 +7,22 @@
 .tips-list {
     margin: 0 10px 0 20px;
     width: 100%;
+    overflow-x: clip;
 }
 
 .tip-box {
     display: block;
     margin: 15px;
     width: 100%;
+    overflow: clip;
 }
 
 .tip-box-header {
     min-width: max-content;
     display: flex;
+    overflow: clip;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .tip-box-label {
@@ -26,6 +31,8 @@
     font-family: "Russo One", sans-serif;
     color: #68a3a3;
     font-size: 18px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .tip-box-toggle-visibility-button {
