@@ -28,6 +28,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
         <div {...props} className={"account"}>
             <div className={"label-block"}>
                 <label>{person.login}</label>
+
                 <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
                     <BiCog
                         onClick={gearOnClick}
