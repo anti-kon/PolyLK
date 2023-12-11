@@ -24,11 +24,12 @@ const SignUp = () => {
 
     useEffect(() => {
         const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-        setIsValidPassword(String(password).match(regExp) !== null);
+        setIsValidPassword(String(password).match(regExp) !== null || String(password).length === 0);
     }, [password]);
 
     const checkSignUp = () => {
-        if (isValidLogin === true && isValidPassword === true && isValidPasswordRepeat === true) {
+        if (isValidLogin === true && isValidPassword === true && isValidPasswordRepeat === true ||
+            String(passwordRepeat).length === 0) {
             navigate('../login');
             //Запрос на бэкенд
         }
@@ -38,7 +39,7 @@ const SignUp = () => {
     return (
         <div className={"signup-page"}>
             <div style={{display: "flex", justifyContent: "center", position: "absolute", top: 20, left: 31}}>
-                <img style={{width: "146px", height: "auto", margin: "auto"}} src={img}/>
+                <img style={{width: "80px", height: "auto", margin: "auto"}} src={img}/>
             </div>
             <div className={"signup-panel"}>
             <TextInput
