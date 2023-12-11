@@ -1,0 +1,40 @@
+.appointment-label {
+    width: max-content;
+    height: 100%;
+    font-family: "Russo One", sans-serif;
+    color: #68a3a3;
+    font-size: 14px;
+    margin: 10px auto 5px 10px;
+}
+
+.appointment-date {
+    width: max-content;
+    height: 100%;
+    font-family: "Russo One", sans-serif;
+    color: #68a3a3;
+    font-size: 14px;
+    margin: 10px  10px auto 10px;
+}
+
+.appointment-title {
+    display: flex;
+    width: 100%;
+}
+
+.appointment-body {
+    margin: 0 0 10px 20px;
+    font-family: "Russo One", sans-serif;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+
+.appointment-button {
+    width: max-content;
+}
+
+.page-label {
+    font-family: "Russo One", sans-serif;
+    color: #68a3a3;
+    font-size: 24px;
+    margin: 20px;
+}

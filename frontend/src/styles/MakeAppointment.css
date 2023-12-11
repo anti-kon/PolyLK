@@ -1,0 +1,19 @@
+.new-appointment-label {
+    width: max-content;
+    height: 100%;
+    font-family: "Russo One", sans-serif;
+    color: #68a3a3;
+    font-size: 14px;
+    margin: 10px auto 5px 10px;
+}
+
+.new-appointment-body {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.new-appointment-title {
+    display: flex;
+    width: 100%;
+}

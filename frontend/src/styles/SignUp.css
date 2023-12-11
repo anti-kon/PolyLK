@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.signup-page {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-text-link {
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    color: #96bfbf;
+    margin-top: 10px;
+}
+
+.signup-panel {
+    width: 370px;
+    height: max-content;
+    display: block;
+}

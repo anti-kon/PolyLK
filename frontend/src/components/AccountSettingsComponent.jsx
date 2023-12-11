@@ -4,7 +4,9 @@ import PasswordInput from "./UI/inputs/password_input/PasswordInput";
 import MajorButton from "./UI/buttons/major_button/MajorButton";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
 
-const AccountSettingsComponent = ({returnFunc, ...props}) => {
+
+const AccountSettingsComponent = ({returnFunc, person, ...props}) => {
+
     return (
         <div className={"account-setting"}>
             <TextInput
@@ -14,7 +16,9 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     color: "#68a3a3"
                 }}
                 valid={true}
-                value={props.username}>
+
+                value={person.login}>
+
             </TextInput>
             <PasswordInput
                 placeholder={"Введите новый пароль"}

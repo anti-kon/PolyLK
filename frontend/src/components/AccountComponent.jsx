@@ -4,30 +4,31 @@ import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import FileComponent from "./UI/files/FileComponent";
 import "../styles/Account.css"
 
-const AccountComponent = ({username, gearOnClick, ...props}) => {
+const AccountComponent = ({person, gearOnClick, ...props}) => {
     const [isContentVisible, setIsContentVisible] = useState(false);
 
-    const files = ["квитация за оплату ноябрь 2021.pdf",
-                   "квитация за оплату октябрь 2021.pdf",
-                   "квитация за оплату сентябрь 2021.pdf",
-                   "квитация за оплату август 2021.pdf",
-                   "квитация за оплату июль 2021.pdf",
-                   "квитация за оплату июнь 2021.pdf"];
+    const files = [{title: "квитация за оплату ноябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
+                   {title: "квитация за оплату октябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
+                   {title: "квитация за оплату сентябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
+                   {title: "квитация за оплату август 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
+                   {title: "квитация за оплату июль 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
+                   {title: "квитация за оплату июнь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"}];
 
     const filePost = (filesArray, limit) => {
         let content = []
-        for (let index = 0; index < limit; index++)
+        for (let index = 0; index < limit; index++){
             content.push(
-                <FileComponent key={index}>{filesArray[index]}</FileComponent>
+                <FileComponent key={index} url={filesArray[index].url}>{filesArray[index].title}</FileComponent>
             );
+        }
         return content;
     };
-
 
     return (
         <div {...props} className={"account"}>
             <div className={"label-block"}>
-                <label>{username}</label>
+                <label>{person.login}</label>
+
                 <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
                     <BiCog
                         onClick={gearOnClick}
@@ -41,10 +42,17 @@ const AccountComponent = ({username, gearOnClick, ...props}) => {
             <ContentBox style={{padding: "15px"}}>
                 <div style={{fontSize: "18px", marginLeft: "0", marginRight: "0"}} className={"label-block"}>
                     <label>Мои файлы</label>
-                    <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
+                    <button
+                        style={{marginLeft: "auto"}}
+                        className={"account-frameless-button"}
+                        onClick={() => {setIsContentVisible(!isContentVisible)}}>
                         {isContentVisible ?
-                            <BiSolidUpArrow style={{width: "18px", height: "auto",}}/> :
-                            <BiSolidDownArrow style={{width: "18px", height: "auto",}}/>}
+                            <BiSolidUpArrow
+                                style={{width: "18px", height: "auto",}}
+                                onClick={() => {setIsContentVisible(true)}}/> :
+                            <BiSolidDownArrow
+                                style={{width: "18px", height: "auto",}}
+                                onClick={() => {setIsContentVisible(false)}}/>}
                     </button>
                 </div>
                 <div className={"file-list"}>

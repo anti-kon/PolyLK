@@ -5,7 +5,8 @@ import "../styles/Account.css";
 import AccountComponent from "../components/AccountComponent";
 import AccountSettingsComponent from "../components/AccountSettingsComponent";
 
-const Account = () => {
+
+const Account = (props) => {
     const [isEdited, setIsEdited] = useState(false);
 
     return (
@@ -16,14 +17,16 @@ const Account = () => {
                 {
                     !isEdited ?
                         <AccountComponent
+                            person={props.person}
                             gearOnClick={() => {setIsEdited(true);}}
-                            username={"UserName"}
                             style={{margin: "7px 10px 0 20px"}}>
                         </AccountComponent> :
                         <div className={"settings-block"}>
                             <AccountSettingsComponent
-                                returnFunc={() => {setIsEdited(false);}}
-                                username={"UserName"}>
+
+                                person={props.person}
+                                changePerson={props.changePerson}
+                                returnFunc={() => {setIsEdited(false);}}>
                             </AccountSettingsComponent>
                         </div>
                 }
