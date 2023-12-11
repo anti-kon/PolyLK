@@ -44,6 +44,25 @@ def get(self, request, *args, **kwargs):
     except DatabaseError:
         return Response(status=503)
 
+def put(self, request, *args, **kwargs):
+    try:
+        instance_id = self.request.query_params.get('id_ads')
+
+        if not instance_id:
+            return Response({'error': 'Missing id_ads parameter'}, status=400)
+
+        ad_instance = Ads.objects.get(id_ads=instance_id)
+
+        serializer = PostsSerializer(ad_instance, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(status=200)
+
+    except Ads.DoesNotExist:
+        return Response({'error': 'Ads not found'}, status=404)
+    except DatabaseError:
+        return Response({'error': 'Database not responding'}, status=503)
+
 def delete(self, request):
     try:
         serializer = PostsSerializer(data=request.data)
