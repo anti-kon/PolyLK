@@ -2,7 +2,7 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {BiHide, BiShow} from "react-icons/bi";
 import classes from "./PasswordInput.module.css";
 
-const PasswordInput = ({children, style = null, placeholder, ...props}) => {
+const PasswordInput = ({children = "", style = null, placeholder, onChange, valid, ...props}) => {
     const ref = useRef(null);
 
     const [height, setHeight] = useState(0);
@@ -11,12 +11,12 @@ const PasswordInput = ({children, style = null, placeholder, ...props}) => {
 
     useLayoutEffect(() => {
         setHeight(ref.current.clientHeight);
+        setValue(children);
     }, []);
 
     useEffect(() => {
         function handleWindowResize() {
             setHeight(ref.current.clientHeight);
-            console.log(height);
         }
 
         window.addEventListener('resize', handleWindowResize);
@@ -30,12 +30,12 @@ const PasswordInput = ({children, style = null, placeholder, ...props}) => {
 
     return (
         <div ref={ref} style={style}
-             className={classes.passwordInput}>
+             className={valid ? classes.passwordInput : classes.passwordInputError}>
             {
                 (value === "") &&
                 <label
                     style={{fontSize: style.fontSize}}
-                    className={classes.passwordInputPlaceholder}>
+                    className={valid ? classes.passwordInputPlaceholder : classes.passwordInputPlaceholderError}>
                     {placeholder}
                 </label>
         }

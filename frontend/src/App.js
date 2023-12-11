@@ -5,12 +5,9 @@ import SignUp from "./pages/SignUp";
 import Account from "./pages/Account";
 import News from "./pages/News";
 import BulletinBoard from "./pages/BulletinBoard";
-<<<<<<< Updated upstream
-import Queue from "./pages/Queue";
-=======
 import AppointmentsList from "./pages/AppointmentsList";
 import MakeAppointment from "./pages/MakeAppointment";
->>>>>>> Stashed changes
+import AppointmentsList from "./pages/AppointmentsList";
 import FAQ from "./pages/FAQ";
 import UserAppointments from "./pages/UserAppointments";
 
@@ -29,14 +26,10 @@ function App() {
             </Route>
             <Route path="/news" element={<News/>}></Route>
             <Route path="/bulletin_board" element={<BulletinBoard/>}></Route>
-<<<<<<< Updated upstream
-            <Route path="/queue" element={<Queue/>}></Route>
-=======
             <Route path="/appointments" element={<AppointmentsList/>}></Route>
             <Route path="/appointments/laundry-appointment"></Route>
-            <Route path="/appointments/:appointmentName" element={<MakeAppointment/>}></Route>
-            <Route path="/appointments/my-appointments" element={<UserAppointments/>}></Route>
->>>>>>> Stashed changes
+            <Route path="/appointments/:appointmentName"></Route>
+            <Route path="/appointments/my-appointments"></Route>
             <Route path="/faq" element={<FAQ/>}></Route>
             <Route path="/" element={<Navigate replace to="/login"/>} />
         </Routes>

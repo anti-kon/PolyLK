@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.login-page {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-panel {
+    width: 370px;
+    height: max-content;
+    display: block;
+}
+
+.login-text-link {
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    color: #96bfbf;
+    margin-top: 10px;
+}
+
+.login-text-link:hover {
+    color: #68a3a3;
+}
+
+.error-login-text {
+    margin-top: 10px;
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    color: #da7676;
+}
