@@ -11,25 +11,25 @@ from django.db import *
 
 
 class PostsView(APIView):
-     def post(self, request):
-        try:
-            serializer = PostsSerializer(data=request.data)
-            if serializer.is_valid(raise_exception=True):
-                dorm_num_ads = serializer.validated_data['dorm_num_ads']
-                info_ads = serializer.validated_data['info_ads']
-                price_ads = serializer.validated_data['price_ads']
+ def post(self, request):
+    try:
+        serializer = PostsSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            dorm_num_ads = serializer.validated_data['dorm_num_ads']
+            info_ads = serializer.validated_data['info_ads']
+            price_ads = serializer.validated_data['price_ads']
 
-                if price_ads < 0:
-                    return Response({'error': 'Invalid price'}, status=400)
+            if price_ads < 0:
+                return Response({'error': 'Invalid price'}, status=400)
 
-                alternative_payment_ads = serializer.validated_data['alternative_payment_ads']
-                id_person_ads = serializer.validated_data['id_person_ads']
+            alternative_payment_ads = serializer.validated_data['alternative_payment_ads']
+            id_person_ads = serializer.validated_data['id_person_ads']
 
-                serializer.save()
+            serializer.save()
 
-                return Response(status=200)
-        except DatabaseError:
-            return Response({'error': 'Database not responding'}, status=503)
+            return Response(status=200)
+    except DatabaseError:
+        return Response({'error': 'Database not responding'}, status=503)
 
 def get(self, request, *args, **kwargs):
     dorm_num_ads = self.request.query_params.get('dorm_num_ads')

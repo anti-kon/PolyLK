@@ -10,7 +10,7 @@ class PostsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        list_photo_ads_data = validated_data.pop('list_photo_ads', [])
+        list_photo_ads_data = validated_data.pop('list_photo_ads', [])#Для фотографий
         ad_instance = Ads.objects.create(**validated_data)
 
         for address_file in list_photo_ads_data:
