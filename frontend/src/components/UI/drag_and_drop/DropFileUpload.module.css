@@ -1,0 +1,21 @@
+.dropFileBody {
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 21px;
+    border: #68a3a3 dashed 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #68a3a3;
+    font-family: "Russo One", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    min-height: 90px;
+    cursor: pointer;
+}
+
+.dropFileBody:hover {
+    border: #3e8d8d dashed 4px;
+    color: #3e8d8d;
+}
