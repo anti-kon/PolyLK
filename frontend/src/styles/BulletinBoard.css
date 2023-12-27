@@ -3,3 +3,52 @@
     max-width: 960px;
     margin: auto;
 }
+
+.advertisement-body {
+    margin: 15px;
+    display: block;
+}
+
+.advertisement-text {
+    margin: 0;
+    color: #4c4c4c;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+}
+
+.advertisement-show-more {
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 0;
+    width: max-content;
+    color: #68a3a3;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    background: none;
+    border: none;
+}
+
+.advertisement-show-more:hover {
+    color: #3e8d8d;
+}
+
+.advertisements-list {
+    margin: 0 10px 0 20px;
+    width: 100%;
+    overflow-x: clip;
+}
+
+.advertisement-price-block {
+    margin: 0;
+    justify-content: right;
+    width: 100%;
+    display: flex;
+    color: #4c4c4c;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    text-align: right;
+}
+
+.advertisement-spacer-price {
+    margin: 0 5px;
+}
