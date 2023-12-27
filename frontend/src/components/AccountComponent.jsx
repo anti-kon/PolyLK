@@ -3,6 +3,7 @@ import {BiCog, BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import FileComponent from "./UI/files/FileComponent";
 import "../styles/Account.css"
+import DropFileUpload from "./UI/drag_and_drop/DropFileUpload";
 
 const AccountComponent = ({person, gearOnClick, ...props}) => {
     const [isContentVisible, setIsContentVisible] = useState(false);
@@ -59,9 +60,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
                     {isContentVisible ? filePost(files, files.length) : filePost(files, 4)}
                 </div>
             </ContentBox>
-            <div className={"drag-and-drop-block"}>
-                Перетащите ваши файлы в эту область или кликните для добавления
-            </div>
+            <DropFileUpload>Перетащите ваши файлы в эту область или кликните для добавления</DropFileUpload>
         </div>
     );
 };
