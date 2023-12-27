@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextInput from "./UI/inputs/text_input/TextInput";
 import PasswordInput from "./UI/inputs/password_input/PasswordInput";
 import MajorButton from "./UI/buttons/major_button/MajorButton";
@@ -6,6 +6,9 @@ import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
 
 
 const AccountSettingsComponent = ({returnFunc, person, ...props}) => {
+    const [login, setLogin] = useState(person.login);
+    const [password, setPassword] = useState(person.password);
+    const [dorNum, setDorNum] = useState(person.dorNum);
 
     return (
         <div className={"account-setting"}>
@@ -16,9 +19,8 @@ const AccountSettingsComponent = ({returnFunc, person, ...props}) => {
                     color: "#68a3a3"
                 }}
                 valid={true}
-
-                value={person.login}>
-
+                value={person.login}
+                onChange={e => console.log(e)}>
             </TextInput>
             <PasswordInput
                 placeholder={"Введите новый пароль"}
@@ -27,7 +29,8 @@ const AccountSettingsComponent = ({returnFunc, person, ...props}) => {
                     margin: "20px 0",
                     fontSize: "20px"
                 }}
-                valid={true}>
+                valid={true}
+                onChange={e => console.log(e)}>
             </PasswordInput>
             <PasswordInput
                 placeholder={"Подтвердите пароль"}
@@ -36,7 +39,8 @@ const AccountSettingsComponent = ({returnFunc, person, ...props}) => {
                     margin: "20px 0",
                     fontSize: "20px"
                 }}
-                valid={true}>
+                valid={true}
+                onChange={e => console.log(e)}>
             </PasswordInput>
             <div className={"button-panel"}>
                 <MajorButton
