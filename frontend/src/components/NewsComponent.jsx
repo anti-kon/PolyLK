@@ -1,11 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const NewsComponent = () => {
+const NewsComponent = (props) => {
+
+    const maxTextLength = 256;
+
+    const isNeedAdapt = (inputText) => {
+        return inputText.length > maxTextLength;
+    }
+
+    const adaptText = (inputText) => {
+        let lastWordIndex = inputText.slice(0, (maxTextLength + 1)).lastIndexOf(' ');
+        lastWordIndex = lastWordIndex > maxTextLength ? maxTextLength : lastWordIndex;
+        return isNeedAdapt(inputText) ? inputText.slice(0, lastWordIndex) + '...' : inputText;
+    }
+
+    const [text, setText] = useState(adaptText(props.children));
+    const [isFullTextVisible, setIsFullTextVisible] = useState(false);
+
+    const showButton = isNeedAdapt(props.children);
+
     return (
-        <div>
-            <p>Test</p>
-            <button>Показать ещё</button>
-            <img src="https://www.spbstu.ru/upload/medialibrary/e88/248.jpg"></img>
+        <div className={'news-body'}>
+            <p className={'news-text'}>{text}</p>
+            {showButton && (
+                !isFullTextVisible ?
+                    <button
+                        className={'news-show-more'}
+                        onClick={() => {setText(props.children);
+                                        setIsFullTextVisible(true)}}>
+                        Показать ещё
+                    </button> :
+                    <button
+                        className={'news-show-more'}
+                        onClick={() => {setText(adaptText(props.children));
+                                        setIsFullTextVisible(false)}}>
+                        Скрыть
+                    </button>
+            )}
         </div>
     );
 };
