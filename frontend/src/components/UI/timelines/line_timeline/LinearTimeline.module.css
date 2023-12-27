@@ -1,0 +1,12 @@
+.timelineBody {
+    width: 100%;
+    height: 25px;
+}
+
+.timelineBogey {
+    height: 100%;
+    position: absolute;
+    background: white;
+    border: #68a3a3 0.2em solid;
+    border-radius: 7px;
+}
