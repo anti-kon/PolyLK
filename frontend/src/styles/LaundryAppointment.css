@@ -1,0 +1,55 @@
+.laundry-list {
+    margin: 15px;
+}
+
+.laundry-list-label {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: #68a3a3;
+    margin-right: auto;
+}
+
+.laundry-message-button {
+    color: #68a3a3;
+    font-size: 25px;
+    height: max-content;
+    width: min-content;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 0;
+    border: none;
+}
+
+.laundry-message-button:hover {
+    color: #3e8d8d;
+}
+
+.laundry-icon {
+    color: #68a3a3;
+    height: 75px;
+    width: max-content;
+    position: relative;
+}
+
+.laundry-num {
+    color: white;
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+}
+
+.laundry-logo {
+    height: 100%;
+    width: auto;
+}
+
+.laundry-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}

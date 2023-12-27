@@ -9,6 +9,7 @@ import AppointmentsList from "./pages/AppointmentsList";
 import MakeAppointment from "./pages/MakeAppointment";
 import FAQ from "./pages/FAQ";
 import UserAppointments from "./pages/UserAppointments";
+import LaundryAppointment from "./pages/LaundryAppointment";
 
 function App() {
     const [person, setPerson] = useState({id: -1, login: '', password: '', dorNum: -1});
@@ -26,9 +27,9 @@ function App() {
             <Route path="/news" element={<News/>}></Route>
             <Route path="/bulletin_board" element={<BulletinBoard/>}></Route>
             <Route path="/appointments" element={<AppointmentsList/>}></Route>
-            <Route path="/appointments/laundry-appointment"></Route>
-            <Route path="/appointments/:appointmentName"></Route>
-            <Route path="/appointments/my-appointments"></Route>
+            <Route path="/appointments/laundry-appointment" element={<LaundryAppointment/>}></Route>
+            <Route path="/appointments/:appointmentName" element={<MakeAppointment/>}></Route>
+            <Route path="/appointments/my-appointments" element={<UserAppointments/>}></Route>
             <Route path="/faq" element={<FAQ/>}></Route>
             <Route path="/" element={<Navigate replace to="/login"/>} />
         </Routes>
