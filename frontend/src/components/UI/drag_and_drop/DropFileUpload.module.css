@@ -15,6 +15,13 @@
     cursor: pointer;
 }
 
+.dropFileBody input {
+    width: 0;
+    height: 0;
+    background: none;
+    border: none;
+}
+
 .dropFileBody:hover {
     border: #3e8d8d dashed 4px;
     color: #3e8d8d;
