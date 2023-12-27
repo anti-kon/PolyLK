@@ -4,20 +4,20 @@ const NewsComponent = (props) => {
 
     const maxTextLength = 256;
 
-    const isNeedAdopt = (inputText) => {
+    const isNeedAdapt = (inputText) => {
         return inputText.length > maxTextLength;
     }
 
-    const adoptText = (inputText) => {
+    const adaptText = (inputText) => {
         let lastWordIndex = inputText.slice(0, (maxTextLength + 1)).lastIndexOf(' ');
         lastWordIndex = lastWordIndex > maxTextLength ? maxTextLength : lastWordIndex;
-        return isNeedAdopt(inputText) ? inputText.slice(0, lastWordIndex) + '...' : inputText;
+        return isNeedAdapt(inputText) ? inputText.slice(0, lastWordIndex) + '...' : inputText;
     }
 
-    const [text, setTest] = useState(adoptText(props.children));
+    const [text, setText] = useState(adaptText(props.children));
     const [isFullTextVisible, setIsFullTextVisible] = useState(false);
 
-    const showButton = isNeedAdopt(props.children);
+    const showButton = isNeedAdapt(props.children);
 
     return (
         <div className={'news-body'}>
@@ -26,13 +26,13 @@ const NewsComponent = (props) => {
                 !isFullTextVisible ?
                     <button
                         className={'news-show-more'}
-                        onClick={() => {setTest(props.children);
+                        onClick={() => {setText(props.children);
                                         setIsFullTextVisible(true)}}>
                         Показать ещё
                     </button> :
                     <button
                         className={'news-show-more'}
-                        onClick={() => {setTest(adoptText(props.children));
+                        onClick={() => {setText(adaptText(props.children));
                                         setIsFullTextVisible(false)}}>
                         Скрыть
                     </button>
