@@ -18,6 +18,13 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
 
     const ref = useRef(null);
 
+    useEffect(() => setDurationInPixels(
+        ref.current.clientWidth * (duration / (endTime - startTime))),
+        [duration]);
+
+
+    const zeroPad = (num, places) => String(num).padStart(places, '0');
+
     const handleMouseMove = event => {
         setLocalCoords({
             x: event.clientX - ref.current.offsetLeft < durationInPixels / 2  ?
@@ -57,20 +64,42 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
 
     return (
         <div className={classes.timelineBody}>
-            <div style={{width: "100%", position: 'relative', height: "100%", display: "flex", alignItems: "center"}}
+            <div style={{
+                width: "100%",
+                position: 'relative',
+                height: "100%",
+                display: "flex",
+                alignItems: "center"}}
                  onMouseMove={handleMouseMove}
                  ref={ref}>
                 <div style={{width: "100%", height: "0.2em", background: "#68a3a3"}}></div>
                 <div style={{width: "0.2em", height: "100%", background: "#68a3a3", position: "absolute", left: 0}}></div>
-                <div style={{width: "0.2em", height: "100%", background: "#68a3a3", position: "absolute", right: "-6px"}}></div>
+                <div style={{width: "0.2em", height: "100%", background: "#68a3a3", position: "absolute", right: 0}}></div>
                 {isMouseHover &&
                     <div
                         className={classes.timelineBogey}
-                        style={{width: (durationInPixels.toString() + "px"),
+                        style={{width: ((durationInPixels - 6.4).toString() + "px"),
                             left: (localCoords.x - durationInPixels / 2)}}>
+                        <label style={{left: "-29px"}} className={classes.timelineClock}>
+                            {zeroPad(
+                                Math.floor(((bogeyCenterHour * 60 + bogeyCenterMinute) - (duration / 2)) / 60),
+                                2)}
+                            :
+                            {zeroPad(
+                                Math.floor(((bogeyCenterHour * 60 + bogeyCenterMinute) - (duration / 2)) % 60),
+                                2)}
+                        </label>
+                        <label style={{right: "-29px"}} className={classes.timelineClock}>
+                            {zeroPad(
+                                Math.floor(((bogeyCenterHour * 60 + bogeyCenterMinute) + (duration / 2)) / 60),
+                                2)}
+                            :
+                            {zeroPad(
+                                Math.floor(((bogeyCenterHour * 60 + bogeyCenterMinute) + (duration / 2)) % 60),
+                                2)}
+                        </label>
                     </div>}
             </div>
-            <label>{bogeyCenterHour} : {bogeyCenterMinute}</label>
         </div>
     );
 };
