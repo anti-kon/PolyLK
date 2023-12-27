@@ -20,5 +20,13 @@
 .select:focus {
     border: 3px solid #68a3a3;
     outline: none;
+}
+
+
+.select:focus option{
     color: #68a3a3;
+}
+
+.select:focus select::placeholder {
+    color: #96bfbf;
 }

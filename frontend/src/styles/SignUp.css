@@ -21,7 +21,53 @@ body {
 }
 
 .signup-panel {
+    position: relative;
     width: 370px;
     height: max-content;
     display: block;
+}
+
+.block {
+    max-height: 0;
+    transition: max-height 0.75s ease-out;
+    overflow: hidden;
+}
+
+.block-show {
+    opacity: 1;
+    max-height: 500px;
+    transition: max-height 0.75s ease-in;
+}
+
+.error-text {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    color: #da7676;
+}
+
+
+.password-tip {
+    margin: 0  7px;
+    max-height: 0;
+    overflow: hidden;
+    width: calc(100% - 14px);
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0, 106, 105, 0.7);
+    transition: max-height 1.0s ease-out;
+}
+
+.password-tip-show {
+    margin: 0 7px;
+    width: calc(100% - 14px);
+    max-height: 500px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0, 106, 105, 0.7);
+    transition: max-height 1.0s ease-in;
 }
