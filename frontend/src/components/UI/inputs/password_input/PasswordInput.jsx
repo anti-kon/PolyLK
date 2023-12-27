@@ -48,7 +48,7 @@ const PasswordInput = ({style = {fontSize: "10px"}, placeholder, onChange, valid
             </input>
             <button
                 onClick={() => {setIsVisible(!isVisible);}}
-                className={classes.changeVisibilityButton}>
+                className={valid ? classes.changeVisibilityButton : classes.changeVisibilityButtonError}>
                 {!isVisible ?
                     <BiShow style={eyeIcon}/> :
                     <BiHide style={eyeIcon}/>}
