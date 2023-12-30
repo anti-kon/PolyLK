@@ -5,6 +5,7 @@ import {BiExit, BiSolidDownArrow, BiUser} from "react-icons/bi";
 import {useNavigate} from "react-router-dom";
 import ContentBox from "../../content_boxes/content_box/ContentBox";
 import ShadowButton from "../../buttons/shadow_button/ShadowButton";
+import CircleLoading from "../../loadings/CircleLoading";
 
 const MajorHeader = () => {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ const MajorHeader = () => {
     return (
         <header className={classes.majorHeader}>
             <div className={classes.headerContent}>
+                <CircleLoading style = { {color: "#fff", height: "80%"} }/>
                 <img className={classes.iconStyle} src={img}/>
                 <div ref={buttonOpenModel}
                      onClick={() => {setIsModalVisible(!isModalVisible);}}
