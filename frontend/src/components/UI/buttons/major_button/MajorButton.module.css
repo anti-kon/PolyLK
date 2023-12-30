@@ -8,6 +8,16 @@
     min-height: min-content;
 }
 
+.majorButtonDisabled {
+    background: #68a3a3;
+    border: none;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    min-width: min-content;
+    width: 100%;
+    min-height: min-content;
+}
+
 @keyframes setActive {
     from {
         background-color: #96bfbf;

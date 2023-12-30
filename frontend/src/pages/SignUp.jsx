@@ -12,19 +12,9 @@ import { encode } from 'js-base64';
 import { InfoContext } from "../App";
 
 const SignUp = () => {
+    const [isProcessed, setIsProcessed] = useState(false);
     const {setInfoMessage} = useContext(InfoContext);
     const navigate = useNavigate();
-
-    const updateInfoMessage = (status, message, link, link_title) => {
-        setInfoMessage( {
-            status: status,
-            message: message,
-            link: link,
-            link_title: link_title
-        });
-
-        return encode(new Date().getMilliseconds() + new Date().getDate() + status.length + 523);
-    }
 
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -72,6 +62,16 @@ const SignUp = () => {
         setIsDormNumErrorShow(false);
     }, [dormNumber]);
 
+    const updateInfoMessage = (status, message, link, link_title) => {
+        setInfoMessage( {
+            status: status,
+            message: message,
+            link: link,
+            link_title: link_title
+        });
+
+        return encode(new Date().getMilliseconds() + new Date().getDate() + status.length + 523);
+    }
 
     const checkSignUp = () => {
         if (login.length === 0)
@@ -82,12 +82,15 @@ const SignUp = () => {
             setIsDormNumErrorShow(true);
 
         if (isValidLogin === true && isValidPassword === true &&
-            isValidPasswordRepeat === true && isDormNumErrorShow !== true){
+            isValidPasswordRepeat === true && isDormNumErrorShow !== true &&
+            login.length !== 0 && password.length !== 0 && dormNumber !== 0){
+            setIsProcessed(true);
             axios.post('http://localhost:8000/registration/', {
                 login_person: login,
                 password_person: password,
                 dorm_num_person: dormNumber
             }).then(response => {
+                setIsProcessed(false);
                 if(response.status === 200) {
                     navigate("../message/" + updateInfoMessage(
                         "Поздравляем!",
@@ -96,7 +99,7 @@ const SignUp = () => {
                         "Перейти на страницу авторизации"));
                 }
             }).catch(error => {
-                console.log(error);
+                setIsProcessed(false);
                 if (error.code === "ERR_NETWORK") {
                     navigate("../message/" + updateInfoMessage(
                         "502",
@@ -193,13 +196,15 @@ const SignUp = () => {
                     <div style={{height: "20px", marginTop: "7px", marginBottom: "7px"}}/>}
                 <div style={{marginTop: "10px", display: "flex", justifyContent: "center"}}>
                     <MajorButton
+                        disabled={isProcessed}
                         onClick={() => {checkSignUp()}}
                         style={{padding: "0 20px",
                                 height: "60px",
                                 width: "180px",
+                                minWidth: "296px",
                                 borderRadius: "7px",
                                 fontSize: "24px"}}>
-                        Зарегестрироваться
+                        {isProcessed ? "Loading..." : "Зарегестрироваться"}
                     </MajorButton>
                 </div>
                 <label onClick={() => {navigate("../login");}} className={"signup-text-link"}>Войти в аккаунт</label>
