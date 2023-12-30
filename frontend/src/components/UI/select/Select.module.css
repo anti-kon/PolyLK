@@ -1,0 +1,172 @@
+.selectBody {
+    position: relative;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 3px solid #96bfbf;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    color: #96bfbf;
+    border-radius: 10px;
+    background: white;
+}
+
+.selectBodyError {
+    position: relative;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border: 3px solid #cc7e7e;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    color: #cc7e7e;
+    border-radius: 10px;
+    background: white;
+}
+
+.selectClick {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: none;
+    outline: none;
+    border: none;
+    top: 0;
+    left: 0;
+}
+
+.selectListModal {
+    background: white;
+    padding: 5px;
+    margin-top: 1px;
+    border: #68a3a3 solid 1px;
+    border-radius: 5px;
+    position: absolute;
+    width: calc(100% - 10px);
+}
+
+.selectListModalError {
+    background: white;
+    padding: 5px;
+    margin-top: 1px;
+    border: #da7676 solid 1px;
+    border-radius: 5px;
+    position: absolute;
+    width: calc(100% - 10px);
+}
+
+.selectBody:focus-within {
+    border: 3px solid #68a3a3;
+    outline: none;
+}
+
+.selectBodyError:focus-within {
+    border: 3px solid #da7676;
+    outline: none;
+}
+
+.selectBody:focus-within .selectArrow {
+    color: #68a3a3;
+}
+
+.selectBodyError:focus-within .selectArrowError {
+    color: #da7676;
+}
+
+.selectBody:focus-within .selectValue {
+    color: #68a3a3;
+}
+
+.selectBodyError:focus-within .selectValueError {
+    color: #da7676;
+}
+
+.selectArrow {
+    position: absolute;
+    height: 18px;
+    width: auto;
+    top: 12px;
+    right: 13px;
+    color: #96bfbf;
+}
+
+.selectArrowError {
+    position: absolute;
+    height: 18px;
+    width: auto;
+    top: 12px;
+    right: 13px;
+    color: #cc7e7e;
+}
+
+.selectList {
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    color: rgba(104, 163, 163, 0.91);
+    outline: none;
+}
+
+.selectListError {
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    color: rgba(218, 118, 118, 0.91);
+    outline: none;
+}
+
+.selectValue {
+    color: #96bfbf;
+}
+
+.selectValueError {
+    color: #cc7e7e;
+}
+
+.selectOption {
+    padding: 2px 0;
+    margin: 2px 5px 2px 0;
+    border-radius: 5px;
+}
+
+.selectOption:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.selectList::-webkit-scrollbar {
+    width: 10px;
+}
+
+.selectListError::-webkit-scrollbar {
+    width: 10px;
+}
+
+.selectList::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+.selectListError::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+.selectList::-webkit-scrollbar-thumb {
+    border-right: 30px transparent;
+    background-color: #68a3a3;
+    border-radius: 4px;
+}
+
+.selectListError::-webkit-scrollbar-thumb {
+    border-right: 30px transparent;
+    background-color: #da7676;
+    border-radius: 4px;
+}
