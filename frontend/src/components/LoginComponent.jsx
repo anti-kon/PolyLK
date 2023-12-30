@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TextInput from "./UI/inputs/text_input/TextInput";
 import PasswordInput from "./UI/inputs/password_input/PasswordInput";
 import MajorButton from "./UI/buttons/major_button/MajorButton";
 import "../styles/Login.css"
 import img from "../img/icon.svg";
 import {useNavigate} from "react-router-dom";
+import { PersonContext } from '../App';
 
 const LoginComponent = (props) => {
+    const { person, setPerson } = useContext(PersonContext);
     const navigate = useNavigate();
 
     const [login, setLogin] = useState("");
@@ -17,7 +19,7 @@ const LoginComponent = (props) => {
 
     const checkLogin = () => {
         if (login === account.login && password === account.password) {
-            props.loginFunc({id: 1, login: login, password: password, dorNum: 0});
+            setPerson({id: 1, login: login, password: password, dorNum: 0});
             navigate('../news');
             setIsValid(true)
         } else

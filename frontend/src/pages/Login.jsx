@@ -6,7 +6,7 @@ import "../styles/Login.css"
 const Login = (props) => {
     return (
         <div className={"login-page"}>
-            <LoginComponent loginFunc={props.loginFunc}></LoginComponent>
+            <LoginComponent/>
         </div>
     );
 };

@@ -1,10 +1,13 @@
 import {React, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import classes from './MajorButton.module.css'
 
-const MajorButton = ({children, ...props}) => {
+const MajorButton = ({children, disabled=false, ...props}) => {
     const ref = useRef(null);
 
+    const [isDisabled, setIsDisabled] = useState(disabled);
     const [height, setHeight] = useState(0);
+
+    useEffect(() => {setIsDisabled(disabled)}, [disabled]);
 
     useLayoutEffect(() => {
         setHeight(ref.current ? ref.current.clientHeight : 0);
@@ -24,7 +27,8 @@ const MajorButton = ({children, ...props}) => {
 
     return (
         <button ref={ref} style={{borderRadius: height / 7}}
-                className={classes.majorButton}
+                className={isDisabled ? classes.majorButtonDisabled : classes.majorButton}
+                disabled={isDisabled}
                 {...props}>
             {children}
         </button>

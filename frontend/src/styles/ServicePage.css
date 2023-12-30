@@ -1,0 +1,49 @@
+.service-page {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.info-block {
+    display: block;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    text-align: center;
+    font-size: 90px;
+    margin-bottom: 20px;
+    color: #68a3a3;
+}
+
+.message {
+    width: 100%;
+    font-family: "Russo One", sans-serif;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 80px;
+    color: #4c4c4c;
+}
+
+.link-button {
+    display: flex;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    color: #96bfbf;
+    margin: 40px auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    width: max-content;
+    text-decoration:underline;
+}
+
+.link-button:hover {
+    color: #68a3a3;
+}
