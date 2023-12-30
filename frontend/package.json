@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "axios": "^1.6.3",
     "js-base64": "^3.7.5"
   }
 }

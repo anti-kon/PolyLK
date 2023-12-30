@@ -20,6 +20,10 @@ body {
     margin-top: 10px;
 }
 
+.signup-text-link:hover {
+    color: #68a3a3;
+}
+
 .signup-panel {
     position: relative;
     width: 370px;
@@ -60,6 +64,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 7px rgba(0, 106, 105, 0.7);
     transition: max-height 1.0s ease-out;
+    font-family: "Oswald", sans-serif;
+    font-size: 15px;
+    letter-spacing: 0;
+    font-weight: 500;
 }
 
 .password-tip-show {
@@ -69,5 +77,15 @@ body {
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 0 7px rgba(0, 106, 105, 0.7);
+    transition: max-height 1.0s ease-in;
+}
+
+.password-tip-show-error {
+    margin: 0 7px;
+    width: calc(100% - 14px);
+    max-height: 500px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgb(218, 118, 118);
     transition: max-height 1.0s ease-in;
 }
