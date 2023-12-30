@@ -52,3 +52,9 @@
 .advertisement-spacer-price {
     margin: 0 5px;
 }
+
+.advertisement-right-button-bar {
+    min-width: 230px;
+    height: min-content;
+}
+
