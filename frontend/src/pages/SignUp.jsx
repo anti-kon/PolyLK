@@ -10,6 +10,7 @@ import ContentBox from "../components/UI/content_boxes/content_box/ContentBox";
 import axios from 'axios';
 import { encode } from 'js-base64';
 import { InfoContext } from "../App";
+import CircleDotsLoading from "../components/UI/loaders/CircleDotsLoading";
 
 const SignUp = () => {
     const [isProcessed, setIsProcessed] = useState(false);
@@ -199,12 +200,15 @@ const SignUp = () => {
                         disabled={isProcessed}
                         onClick={() => {checkSignUp()}}
                         style={{padding: "0 20px",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
                                 height: "60px",
                                 width: "180px",
                                 minWidth: "296px",
                                 borderRadius: "7px",
                                 fontSize: "24px"}}>
-                        {isProcessed ? "Loading..." : "Зарегестрироваться"}
+                        {isProcessed ? <CircleDotsLoading size={"40px"}/> : "Зарегестрироваться"}
                     </MajorButton>
                 </div>
                 <label onClick={() => {navigate("../login");}} className={"signup-text-link"}>Войти в аккаунт</label>
