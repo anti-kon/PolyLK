@@ -32,13 +32,31 @@ class PostsView(APIView):
         return Response({'error': 'Database not responding'}, status=503)
 
 def get(self, request, *args, **kwargs):
+
     dorm_num_ads = self.request.query_params.get('dorm_num_ads')
     try:
         queryset = Ads.objects.all()
-
         if dorm_num_ads:
-            queryset = queryset.filter(list_ads__dorm_num_ads=dorm_num_ads)
-
+         queryset = queryset.filter(dorm_num_ads=dorm_num_ads)
+         response_list = []
+         for ads in queryset:
+            id_person = ads.values_list("id_person_ads", flat=True).first()
+            id_ads = ads.values_list("id_ads", flat=True).first()
+            info_ads = ads.values_list("info_ads", flat=True).first()
+            price_ads = ads.values_list("price_ads", flat=True).first()
+            alternative_payment_ads = ads.values_list("alternative_payment_ads", flat=True).first()
+            id_person_ads = ads.values_list("id_person_ads", flat=True).first()
+            userLogin = Persons.objects.filter(id_person=id_person).values_list("login_person", flat=True).first()
+            data_ads = {
+                "id_ads": id_ads,
+                "info_ads": info_ads,
+                "price_ads": price_ads,
+                "alternative_payment_ads": alternative_payment_ads,
+                # "list_photo_ads": ,
+                "id_persons_ads": id_person_ads,
+                "login_persons_ads": userLogin,
+            }
+            response_list.append(data_ads)
         serializer = PostsSerializer(queryset, many=True)
         return Response(serializer.data, status=200)
     except DatabaseError:
