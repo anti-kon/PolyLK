@@ -6,6 +6,7 @@
 
 .advertisement-body {
     margin: 15px;
+    width: 100%;
     display: block;
 }
 
@@ -14,6 +15,44 @@
     color: #4c4c4c;
     font-family: 'Russo One', sans-serif;
     font-size: 16px;
+}
+
+.advertisement-login {
+    margin-left: 0;
+    margin-right: auto;
+    color: #68A3A3FF;
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+
+}
+
+.advertisement-dots {
+    margin-left: auto;
+    margin-right: 0;
+    color: #68A3A3FF;
+}
+
+.advertisement-frameless-button {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding: 0;
+    border: none;
+    background: none;
+    height: auto;
+    color: #68a3a3;
+}
+
+.advertisement-frameless-button:hover {
+    color: #3e8d8d;
+}
+
+.advertisement-label {
+    position: relative;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    width: 100%;
 }
 
 .advertisement-show-more {
@@ -58,3 +97,43 @@
     height: min-content;
 }
 
+.advertisement-edit-body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 15px;
+}
+
+.advertisement-edit-buttons {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    height: min-content;
+}
+
+.advertisement-edit-button-clip {
+    margin-left: auto;
+    border: none;
+    background: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+    color: #68a3a3;
+}
+
+.advertisement-edit-button-clip:hover {
+    color: #3e8d8d;
+}
+.advertisement-edit-button-clip svg {
+    width: 20px;
+    height: auto;
+}
+
+.advertisement-edit-fields {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
