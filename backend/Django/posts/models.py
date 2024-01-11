@@ -7,14 +7,13 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class Ads(models.Model):
     id_ads = models.AutoField(primary_key=True)
     dorm_num_ads = models.IntegerField(blank=True, null=True)
     info_ads = models.CharField(max_length=1000, blank=True, null=True)
     price_ads = models.IntegerField(blank=True, null=True)
     alternative_payment_ads = models.CharField(max_length=100, blank=True, null=True)
-    list_photo_ads = models.TextField(blank=True, null=True)  # This field type is a guess.
+    list_photo_ads = ArrayField(models.TextField(blank=True, null=True))  # This field type is a guess.
     id_person_ads = models.IntegerField(blank=True, null=True)
 
     class Meta:

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e32789b-d2eb-41b5-b5a5-7735556848b0" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django/PolyLK_backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/PolyLK_backend/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/posts/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/posts/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

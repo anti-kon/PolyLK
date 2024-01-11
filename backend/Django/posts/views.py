@@ -11,6 +11,7 @@ from django.db import *
 
 
 class PostsView(APIView):
+
  def post(self, request):
     try:
         serializer = PostsSerializer(data=request.data)
@@ -18,18 +19,45 @@ class PostsView(APIView):
             dorm_num_ads = serializer.validated_data['dorm_num_ads']
             info_ads = serializer.validated_data['info_ads']
             price_ads = serializer.validated_data['price_ads']
-
             if price_ads < 0:
                 return Response({'error': 'Invalid price'}, status=400)
-
             alternative_payment_ads = serializer.validated_data['alternative_payment_ads']
             id_person_ads = serializer.validated_data['id_person_ads']
 
+            list_photo_news = request.data.get('list_photo_news')
+            path_photo_news = []
+
+            for i, byte_img in enumerate(list_photo_news):
+                im = Image.open(io.BytesIO(byte_img))
+                im.save(f'posts/img_user/{info_ads[:10]}_{i}.png')
+                path_photo_news.append(f'posts/img_user/{text_news[:10]}_{i}.png')
             serializer.save()
 
             return Response(status=200)
     except DatabaseError:
         return Response({'error': 'Database not responding'}, status=503)
+
+    # try:
+    #     dorm_num_ads = request.data.get('dorm_num_ads')
+    #     info_ads = request.data.get('info_ads')
+    #     price_ads = request.data.get('price_ads')
+    #     if price_ads < 0:
+    #         return Response({'error': 'Invalid price'}, status=400)
+    #     alternative_payment_ads = request.data.get('alternative_payment_ads')
+    #     id_person_ads = request.data.get('id_person_ads')
+    #
+    #     list_photo_news = request.data.get('list_photo_news')
+    #     path_photo_news = []
+    #
+    #     for i, byte_img in enumerate(list_photo_news):
+    #         im = Image.open(io.BytesIO(byte_img))
+    #         im.save(f'posts/img_user/{info_ads[:10]}_{i}.png')
+    #         path_photo_news.append(f'posts/img_user/{text_news[:10]}_{i}.png')
+    #     serializer.save()
+    #     return Response(status=200)
+    # except DatabaseError:
+    #     return Response({'error': 'Database not responding'}, status=503)
+
 
 def get(self, request, *args, **kwargs):
 
