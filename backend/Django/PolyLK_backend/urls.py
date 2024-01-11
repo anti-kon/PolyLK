@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from registration.views import *
+from infoPerson.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration/', RegistrationView.as_view(), name='registration'),
+    path('registration', RegistrationView.as_view(), name='registration'),
     path('', include('authorization.urls')),
-    path('infoPerson', include('infoPerson.urls')),
+    path('infoPerson', PersonsDocsView.as_view(), name='info_person'),
     path('news', include('news.urls')),
     path('posts', include('posts.urls')),
     path('queues', include('queues.urls'))
