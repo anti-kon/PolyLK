@@ -38,13 +38,20 @@ class PersonsDocsView(APIView):
 
             path_to_doc = 'infoPerson\\docs'
             full_path = f'{os.getcwd()}\\{path_to_doc}'
+
+            list_directory = os.listdir(full_path)  # need for folder with name_doc
+
+            if name_file not in list_directory:
+                os.mkdir(f'{full_path}\\{name_file}')
+            full_path = f'{full_path}\\{name_file}'
+
             with open(f'{full_path}\\{login_person}_{name_file}.pdf', 'wb') as f:
                 f.write(file_pdf_buffer.getvalue())
 
             data = {
                 "id_person_doc": id_person_doc,
                 "name_doc": name_file,
-                "path_to_doc": path_to_doc
+                "path_to_doc": f'{path_to_doc}\\{login_person}_{name_file}.pdf'
             }
 
             serializer = PersonsDocsSerializer(data=data)
