@@ -3,6 +3,10 @@ import {BiCog, BiDotsHorizontalRounded, BiExit, BiUser} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import classes from "./UI/headers/MajorHeader/MajorHeader.module.css";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
+import ResizeableTextarea from "./UI/textareas/resizeable_textarea/ResizeableTextarea";
+import TextInput from "./UI/inputs/text_input/TextInput";
+import {BsPaperclip} from "react-icons/bs";
+import MajorButton from "./UI/buttons/major_button/MajorButton";
 
 const AdvertisementComponent = (props) => {
     const maxTextLength = 256;
@@ -19,12 +23,25 @@ const AdvertisementComponent = (props) => {
 
     const modal = useRef(null);
     const buttonOpenModel = useRef(null);
+    const inputRef = useRef(null);
 
-    const [text, setTest] = useState(adoptText(props.children));
+    const [text, setText] = useState(adoptText(props.children));
     const [isFullTextVisible, setIsFullTextVisible] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false)
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
+    const [moneyPrice, setMoneyPrice] = useState(props.moneyPrice === null ? "" : props.moneyPrice)
+    const [alternativePrice, setAlternativePrice] = useState(props.alternativePrice === null ? "" : props.alternativePrice)
 
     const showButton = isNeedAdopt(props.children);
+
+    const changeMoneyPrice = (e) => {
+        const regExp = /^\d+$/;
+        e.target.value.match(regExp) !== null && setMoneyPrice(e.target.value) || e.target.value == "" && setMoneyPrice("");
+    }
+
+    const onButtonClick = () => {
+        inputRef.current.click();
+    };
 
     useEffect(() => {
         const onClick = e => {
@@ -41,7 +58,7 @@ const AdvertisementComponent = (props) => {
         <div className={'advertisement-body'}>
             <div className={'advertisement-label'} >
                 <label className={'advertisement-login'}>{props.login}</label>
-                <button style={{marginLeft: "auto"}} className={"advertisement-frameless-button"} ref={buttonOpenModel}>
+                {!isEdit && <button style={{marginLeft: "auto"}} className={"advertisement-frameless-button"} ref={buttonOpenModel}>
                     <BiDotsHorizontalRounded
                         onClick = {() => {setIsModalVisible(!isModalVisible);}}
                         style={{
@@ -49,7 +66,7 @@ const AdvertisementComponent = (props) => {
                             height: "auto",
                             strokeWidth: "0.7px"
                         }}/>
-                </button>
+                </button>}
                 { isModalVisible &&
                     <ContentBox style={{
                         maxWidth: "min-content",
@@ -59,7 +76,7 @@ const AdvertisementComponent = (props) => {
                         right: "-5px",
                         background: "white"}}>
                         <div ref={modal} className={classes.modalContent}>
-                            <ShadowButton onClick={() => {console.log("Edit");}}
+                            <ShadowButton onClick={() => {setIsEdit(true); setIsModalVisible(false);}}
                                           style={{
                                               minWidth: "max-content",
                                               fontSize: "15px",
@@ -76,28 +93,68 @@ const AdvertisementComponent = (props) => {
                         </div>
                     </ContentBox>}
             </div>
-            <p className={'advertisement-text'}>{text}</p>
-            {showButton && (
-                !isFullTextVisible ?
-                    <button
-                        className={'advertisement-show-more'}
-                        onClick={() => {setTest(props.children);
-                            setIsFullTextVisible(true)}}>
-                        Показать ещё
-                    </button> :
-                    <button
-                        className={'advertisement-show-more'}
-                        onClick={() => {setTest(adoptText(props.children));
-                            setIsFullTextVisible(false)}}>
-                        Скрыть
-                    </button>
-            )}
-            <div className={'advertisement-price-block'}>
-                {props.moneyPrice !== null && <label>{props.moneyPrice}</label>}
-                {props.moneyPrice !== null && props.alternativePrice !== null &&
-                    <label className={'advertisement-spacer-price'}>/</label>}
-                {props.alternativePrice !== null && <label>{props.alternativePrice}</label>}
-            </div>
+            { isEdit ?
+                <div>
+                    <ResizeableTextarea
+                        placeholder={"Введите текст"}
+                        style={{margin: "10px 1px ", paddingLeft: "0px",}}
+                        value = {text}
+                        onChange = {e => setText(e.target.value)}>
+                    </ResizeableTextarea>
+                    <div className={'advertisement-edit-fields'}>
+                        <TextInput
+                            valid={'true'}
+                            placeholder={'Цена'}
+                            style={{marginRight: "10px"}}
+                            value = {moneyPrice}
+                            onChange = {e => changeMoneyPrice(e)}>
+                        </TextInput>
+                        <TextInput
+                            valid={'true'}
+                            placeholder={'Бартер'}
+                            style={{marginLeft: "10px"}}
+                            value = {alternativePrice}
+                            onChange = {e => setAlternativePrice(e.target.value)}>
+                        </TextInput>
+                    </div>
+
+                    <div className={'advertisement-edit-buttons'}>
+                        <input ref={inputRef} type="file" multiple={true} />
+                        <button className={'advertisement-edit-button-clip'}
+                                onClick={ () => {onButtonClick()} }>
+                            <BsPaperclip />
+                        </button>
+                        <MajorButton style={{width: 'max-content',
+                            padding: '4px 15px',
+                            borderRadius: '5px',
+                            margin: '0 0 0 10px' }}
+                            onClick = {() => {setIsEdit(false)}}>Сохранить</MajorButton>
+                    </div>
+                </div> :
+                <div>
+                    <p className={'advertisement-text'}>{text}</p>
+                    {showButton && (
+                        !isFullTextVisible ?
+                            <button
+                                className={'advertisement-show-more'}
+                                onClick={() => {setText(props.children);
+                                    setIsFullTextVisible(true)}}>
+                                Показать ещё
+                            </button> :
+                            <button
+                                className={'advertisement-show-more'}
+                                onClick={() => {setText(adoptText(props.children));
+                                    setIsFullTextVisible(false)}}>
+                                Скрыть
+                            </button>
+                    )}
+                    <div className={'advertisement-price-block'}>
+                        {moneyPrice !== "" && <label>{moneyPrice} руб.</label>}
+                        {moneyPrice !== "" && alternativePrice !== "" &&
+                            <label className={'advertisement-spacer-price'}>/</label>}
+                        {alternativePrice !== "" && <label>{alternativePrice}</label>}
+                    </div>
+                </div>}
         </div>
     );
 };
