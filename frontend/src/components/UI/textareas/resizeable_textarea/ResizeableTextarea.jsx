@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import classes from "./ResizeableTextarea.module.css";
 
-const ResizeableTextarea = ({...props}) => {
+const ResizeableTextarea = ({onChange, ...props}) => {
     const [val, setVal] = useState('');
     const textAreaRef = useRef(null);
 
@@ -12,8 +12,9 @@ const ResizeableTextarea = ({...props}) => {
 
     useEffect(resizeTextArea, [val]);
 
-    const onChange = e => {
+    const onTextChange = e => {
         setVal(e.target.value);
+        onChange(e);
     };
 
     return (
@@ -21,9 +22,10 @@ const ResizeableTextarea = ({...props}) => {
             className={classes.resizeableTextarea}
             ref={textAreaRef}
             value={val}
-            onChange={onChange}
+            onChange={onTextChange}
             rows={1}
-            {...props}/>
+            {...props}>
+        </textarea>
     );
 };
 
