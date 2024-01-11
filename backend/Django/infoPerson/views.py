@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from .models import PersonsDocs
 from .models import Persons
 from .serializer import PersonsDocsSerializer
+from .serializer import RegistrationSerializer
 from rest_framework.response import Response
 from django.db import *
 from reportlab.pdfgen import canvas
@@ -14,6 +15,32 @@ import os
 MAX_SIZE_FILE = 4096  # in bytes
 
 class PersonsDocsView(APIView):
+    def put(self, request):
+        try:
+            new_login_person = request.data['login_person']
+            new_password_person = request.data['password_person']
+            new_dorm_num_person = request.data['dorm_num_person']
+
+            id_person = request.data["id_person"]
+
+            another_id_person = Persons.objects.filter(id_person=id_person)
+
+            if not another_id_person:
+                return Response(data='This user not exist', status=404)
+
+            Persons.objects.filter(id_person=id_person).update(login_person=new_login_person,
+                                                               password_person=new_password_person,
+                                                               dorm_num_person=new_dorm_num_person)
+
+            answer_data = {
+                "login_person": new_login_person,
+                "password_person": new_password_person,
+                "dorm_num_person": new_dorm_num_person
+            }
+            return Response(data=answer_data, status=200)
+        except DatabaseError:
+            return Response(data='Database Error', status=503)
+
     def delete(self, request):
         try:
             id_delete_doc = request.data['id_doc']
@@ -23,10 +50,7 @@ class PersonsDocsView(APIView):
             if not another_id_delete_doc:
                 return Response(data='This document not exist', status=404)
 
-
-
             path_to_doc = PersonsDocs.objects.filter(id_doc=id_delete_doc).values_list('path_to_doc', flat=True).first()
-            print(path_to_doc)
             os.remove(path_to_doc)
             PersonsDocs.objects.filter(id_doc=id_delete_doc).delete()
             return Response(data='OK', status=200)
