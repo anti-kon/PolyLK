@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
 import {BiInfoCircle, BiNews} from "react-icons/bi";
@@ -14,7 +14,7 @@ const SwitchBar = (props) => {
                         marginLeft: "-3px"};
 
     return (
-        <div {...props}>
+        <div {...props} style={{minWidth: "188px"}}>
             <ShadowButton onClick={() => {navigate('../news');}}>
                 <BiNews style={iconsStyle}/>
                 Новости

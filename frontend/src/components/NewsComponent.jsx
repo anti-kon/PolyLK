@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import LineImagesGallery from "./UI/images_gallery/LineImagesGallery";
 
 const NewsComponent = (props) => {
 
@@ -37,6 +38,7 @@ const NewsComponent = (props) => {
                         Скрыть
                     </button>
             )}
+            <LineImagesGallery images={props.images} id={props.id}/>
         </div>
     );
 };
