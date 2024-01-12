@@ -21,12 +21,13 @@ from queues.views import *
 from news.views import *
 from authorization.views import *
 from posts.views import *
+from infoPerson.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registration/', RegistrationView.as_view(), name= 'registration'),
     path('authorization', AuthorizationView.as_view(), name='authorization'),
-    path('infoPerson', include('infoPerson.urls')),
+    path('infoPerson/', PersonsDocsView.as_view(), name='info_person'),
     path('news', NewsView.as_view(), name='news'),
     path('posts', PostsView.as_view(), name='posts'),
     path('queues/recordsMachines', RecordsMachinesView.as_view(), name='recordsMachines'),
