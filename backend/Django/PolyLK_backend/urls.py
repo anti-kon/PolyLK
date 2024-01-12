@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from registration.views import *
+from queues.views import *
 from news.views import *
 from authorization.views import *
 from posts.views import *
@@ -28,4 +29,7 @@ urlpatterns = [
     path('infoPerson', include('infoPerson.urls')),
     path('news', NewsView.as_view(), name='news'),
     path('posts', PostsView.as_view(), name='posts'),
-    path('queues', include('queues.urls'))]
+    path('queues/recordsMachines', RecordsMachinesView.as_view(), name='recordsMachines'),
+    path('queues/services', ServicesView.as_view(), name='services'),
+    path('queues/machines', MachinesView.as_view(), name='machines')
+]
