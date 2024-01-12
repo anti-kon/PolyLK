@@ -22,9 +22,32 @@ class PersonsDocsView(APIView):
             id_person = request.GET.get("id_person")
             login_person = Persons.objects.filter(id_person=id_person).values_list('login_person', flat=True).first()
             path_to_docs = f'{os.getcwd()}\\infoPerson\\docs'
-            list_directory_docs =
+            list_directory_docs = os.listdir(path_to_docs)
 
+            docs_list = []
+
+            for directory in list_directory_docs:
+                list_directory_files = os.listdir(f'{path_to_docs}\\{directory}')
+                for file in list_directory_files:
+                    if login_person in file:
+                        id_doc = PersonsDocs.objects.filter(name_doc=file).values_list('id_doc', flat=True).first()
+                        path_to_doc = f'infoPerson\\docs\\{directory}\\{file}'
+
+                        response_dict = {
+                            "id_doc": id_doc,
+                            "id_person_doc": int(id_person),
+                            "name_doc": file,
+                            "path_to_doc": path_to_doc
+                        }
+
+                        docs_list.append(response_dict)
+
+            response_data = {
+                "docs_list": docs_list
+            }
+            return Response(data=response_data, status=200)
         except DatabaseError:
+            return Response(data='Database Error', status=503)
 
     def put(self, request):
         try:
