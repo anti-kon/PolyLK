@@ -19,15 +19,13 @@ from django.urls import path, include
 from registration.views import *
 from news.views import *
 from authorization.views import *
-
+from posts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration/', RegistrationView.as_view(), name='registration'),
+    path('registration/', RegistrationView.as_view(), name= 'registration'),
     path('authorization', AuthorizationView.as_view(), name='authorization'),
     path('infoPerson', include('infoPerson.urls')),
     path('news', NewsView.as_view(), name='news'),
-    path('posts', include('posts.urls')),
-    path('queues', include('queues.urls'))
-
-]
+    path('posts', PostsView.as_view(), name='posts'),
+    path('queues', include('queues.urls'))]
