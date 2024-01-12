@@ -25,7 +25,6 @@ urlpatterns = [
     path('', include('authorization.urls')),
     path('infoPerson', include('infoPerson.urls')),
     path('news', include('news.urls')),
-    path('posts', PostsView.as_view(), name = 'posts'),
+    path('posts', PostsView.as_view(), name='posts'),
     path('queues', include('queues.urls'))
-
 ]
