@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {BiCog, BiDotsHorizontalRounded, BiExit, BiUser} from "react-icons/bi";
+import {BiDotsHorizontalRounded} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import classes from "./UI/headers/MajorHeader/MajorHeader.module.css";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
