@@ -3,3 +3,35 @@
     max-width: 960px;
     margin: auto;
 }
+
+.news-body {
+    margin: 15px;
+}
+
+.news-text {
+    margin: 0;
+    color: #4c4c4c;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+}
+
+.news-show-more {
+    margin-top: 5px;
+    padding: 0;
+    width: max-content;
+    color: #68a3a3;
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    background: none;
+    border: none;
+}
+
+.news-show-more:hover {
+    color: #3e8d8d;
+}
+
+.news-list {
+    margin: 0 10px 0 20px;
+    width: 100%;
+    overflow-x: clip;
+}

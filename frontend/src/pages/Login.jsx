@@ -3,10 +3,10 @@ import LoginComponent from "../components/LoginComponent";
 import "../styles/Login.css"
 
 
-const Login = () => {
+const Login = (props) => {
     return (
         <div className={"login-page"}>
-            <LoginComponent></LoginComponent>
+            <LoginComponent/>
         </div>
     );
 };

@@ -1,0 +1,12 @@
+.resizeableTextarea {
+    width: calc(100% - 45px);
+    height: max-content;
+    outline: none;
+    margin: 0 10px;
+    resize: none;
+    font-family: "Russo One", sans-serif;
+    color: #4c4c4c;
+    font-size: 14px;
+    padding-left: 20px;
+    border: none;
+}
