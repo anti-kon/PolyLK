@@ -71,7 +71,10 @@ def get(self, request, *args, **kwargs):
                 "login_persons_ads": userLogin,
             }
             response_list.append(data_ads)
-        serializer = PostsSerializer(response_list, many=True)
+        response_data = {
+            "list_ads": response_list
+        }
+        serializer = PostsSerializer(response_data, many=True)
         return Response(serializer.data, status=200)
     except DatabaseError:
         return Response(status=503)
