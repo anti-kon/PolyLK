@@ -1,0 +1,54 @@
+.fullscreenImageBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreenImageContent {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clickZone {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 1;
+}
+
+.clickZone button {
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    background: none;
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clickZone:hover button {
+    color: white;
+}
+
+.clickZone svg {
+    width: 100%;
+    height: auto;
+}

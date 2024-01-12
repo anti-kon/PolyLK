@@ -27,7 +27,7 @@ const MajorHeader = () => {
 
 
     return (
-        <header className={classes.majorHeader}>
+        <header id={"major_header"} className={classes.majorHeader}>
             <div className={classes.headerContent}>
                 <img className={classes.iconStyle} src={img}/>
                 <div ref={buttonOpenModel}
