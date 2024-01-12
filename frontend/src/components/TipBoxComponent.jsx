@@ -14,7 +14,7 @@ const TipBoxComponent = (props) => {
                     <BiSolidUpArrow className={"tip-box-toggle-visibility-button"} /> :
                     <BiSolidDownArrow className={"tip-box-toggle-visibility-button"} />}
             </div>
-            {isContentVisible && <p className={"tip-box-body"}>{props.children}</p>}
+            {isContentVisible && <pre className={"tip-box-body"}>{props.children}</pre>}
         </div>
     );
 };

@@ -18,14 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from registration.views import *
 from queues.views import *
+from news.views import *
+from authorization.views import *
+from posts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration/', RegistrationView.as_view(), name='registration'),
-    path('', include('authorization.urls')),
+    path('registration/', RegistrationView.as_view(), name= 'registration'),
+    path('authorization', AuthorizationView.as_view(), name='authorization'),
     path('infoPerson', include('infoPerson.urls')),
-    path('news', include('news.urls')),
-    path('posts', include('posts.urls')),
+    path('news', NewsView.as_view(), name='news'),
+    path('posts', PostsView.as_view(), name='posts'),
     path('queues/recordsMachines', RecordsMachinesView.as_view(), name='recordsMachines'),
     path('queues/services', ServicesView.as_view(), name='services'),
     path('queues/machines', MachinesView.as_view(), name='machines')
