@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useLayoutEffect, useRef, useContext, useEffect, useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import ContentBox from "../components/UI/content_boxes/content_box/ContentBox";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
@@ -72,10 +72,10 @@ const News = () => {
                                 </div>
                             </div> :
                             news.map((oneNews) =>
-                            <ContentBox key={oneNews.id_new} style={{display: "flex", marginBottom: "20px", boxSizing: "border-box"}}>
-                                <NewsComponent>{oneNews.text_new}</NewsComponent>
-                            </ContentBox>)
-                    }
+                            <ContentBox key={oneNews.id_new} style={{display: "flex", maxWidth: "100%", overflow: "clip", marginBottom: "20px", boxSizing: "border-box"}}>
+                                <NewsComponent images={oneNews.list_photo_new} id={oneNews.id_new}>{oneNews.text_new}</NewsComponent>
+                            </ContentBox>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React from 'react';
 import classes from "./CircleLoading.module.css"
 
 const CircleDotsLoading = ({size, color, speed}) => {
