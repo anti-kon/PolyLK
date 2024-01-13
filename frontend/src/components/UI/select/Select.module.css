@@ -47,6 +47,7 @@
     border-radius: 5px;
     position: absolute;
     width: calc(100% - 10px);
+    max-width: 360px;
 }
 
 .selectListModalError {

@@ -21,7 +21,7 @@ const NewsComponent = (props) => {
 
     return (
         <div className={'news-body'}>
-            <p className={'news-text'}>{text}</p>
+            <pre className={'news-text'}>{text}</pre>
             {showButton && (
                 !isFullTextVisible ?
                     <button

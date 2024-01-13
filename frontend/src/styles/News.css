@@ -5,14 +5,20 @@
 }
 
 .news-body {
+    display: block;
     margin: 15px;
+    width: 100%;
+    overflow: clip;
 }
 
 .news-text {
+    width: 100%;
     margin: 0;
     color: #4c4c4c;
     font-family: 'Russo One', sans-serif;
     font-size: 16px;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 .news-show-more {
@@ -33,5 +39,6 @@
 .news-list {
     margin: 0 10px 0 20px;
     width: 100%;
+    height: max-content;
     overflow-x: clip;
 }

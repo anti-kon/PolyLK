@@ -6,9 +6,50 @@ services:
       context: ./microservices/registration/
     command: ["sh", "./start.sh"]
     ports:
-      - "8000:8000"
+      - "8001:8000"
     depends_on:
       - postgres_db
+      - eureka_server
+
+  django_authorization:
+    build:
+      context: ./microservices/authorization/
+    command: [ "sh", "./start.sh" ]
+    ports:
+      - "8002:8000"
+    depends_on:
+      - postgres_db
+      - eureka_server
+
+  django_info_person:
+    build:
+      context: ./microservices/info_person/
+    command: [ "sh", "./start.sh" ]
+    ports:
+      - "8003:8000"
+    depends_on:
+      - postgres_db
+      - eureka_server
+
+  django_news:
+    build:
+      context: ./microservices/news/
+    command: [ "sh", "./start.sh" ]
+    ports:
+      - "8004:8000"
+    depends_on:
+      - postgres_db
+      - eureka_server
+
+  django_queues:
+    build:
+      context: ./microservices/news/
+    command: [ "sh", "./start.sh" ]
+    ports:
+      - "8005:8000"
+    depends_on:
+      - postgres_db
+      - eureka_server
 
   postgres_db:
     image: postgres
@@ -22,6 +63,25 @@ services:
       - POSTGRES_PASSWORD=PMIdatabase
       - POSTGRES_USER=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
+
+  api_gateway:
+    build:
+      context: ./microservices/api_gateway/api-gateway/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka_server
+      - django_registration
+      - django_authorization
+      - django_info_person
+      - django_news
+      - django_queues
+
+  eureka_server:
+    build:
+      context: ./microservices/eureka_server/eureka-server/
+    ports:
+      - "8761:8761"
 
   frontend:
     build:
@@ -38,7 +98,13 @@ services:
       - frontend_build:/var/www/frontend
     depends_on:
       - frontend
+      - api_gateway
       - django_registration
+      - django_authorization
+      - django_info_person
+      - django_news
+      - django_queues
+
 volumes:
   frontend_build:
   postgres_data:

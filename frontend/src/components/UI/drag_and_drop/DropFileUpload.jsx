@@ -5,7 +5,7 @@ const DropFileUpload = (props) => {
     const inputRef = React.useRef(null);
 
     function handleFile(files) {
-        alert("Number of files: " + files.length);
+        props.onLoad(files);
     }
     const handleDrag = function(e) {
         e.preventDefault();
@@ -36,7 +36,11 @@ const DropFileUpload = (props) => {
             onDrop={handleDrop}
             onSubmit={(e) => e.preventDefault()}
             onClick={onButtonClick}>
-            <input ref={inputRef} type="file" multiple={true} onChange={handleChange} />
+            <input ref={inputRef}
+                   type="file"
+                   multiple={false}
+                   onChange={handleChange}
+                   accept="application/pdf"/>
             {props.children}
         </div>
     );
