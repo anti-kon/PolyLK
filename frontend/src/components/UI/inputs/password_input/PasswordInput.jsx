@@ -7,7 +7,7 @@ const PasswordInput = ({style = {fontSize: "10px"}, placeholder, onChange, valid
 
     const [height, setHeight] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(props.value);
 
     useLayoutEffect(() => {
         setHeight(ref.current.clientHeight);

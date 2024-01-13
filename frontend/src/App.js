@@ -16,7 +16,14 @@ export const PersonContext = React.createContext(null);
 export const InfoContext = React.createContext(null);
 
 function App() {
-    const [person, setPerson] = useState({id: -1, login: '', password: '', dorNum: -1});
+    const [person, setPerson] = useState(
+        {
+            id_person: -1,
+            login_person: '',
+            password_person: '',
+            dorm_num_person: -1
+        }
+    );
     const [infoMessage, setInfoMessage] = useState(
         {
             status: "",

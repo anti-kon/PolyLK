@@ -5,34 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/registration.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/serializer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/.idea/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/Django/.idea/Django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/Django/.idea/Django.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../backend/Django/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/Django/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/Django/PolyLK_backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/Django/PolyLK_backend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Seletc.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/NewsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/NewsComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/drag_and_drop/DropFileUpload.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/drag_and_drop/DropFileUpload.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/password_input/PasswordInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/password_input/PasswordInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/News.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/News.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +61,13 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/move__microservices&quot;,
     &quot;last_opened_file_path&quot;: &quot;Z:/Projects/PolyLK/backend/Django&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -119,10 +114,24 @@
       <workItem from="1703815208797" duration="2296000" />
       <workItem from="1703838838358" duration="16365000" />
       <workItem from="1703941963247" duration="3182000" />
+      <workItem from="1704838231836" duration="55000" />
+      <workItem from="1705016754955" duration="12753000" />
+      <workItem from="1705083929015" duration="7062000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
