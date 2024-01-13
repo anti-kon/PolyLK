@@ -25,7 +25,6 @@ const Account = (props) => {
                         </AccountComponent> :
                         <div className={"settings-block"}>
                             <AccountSettingsComponent
-                                person={person}
                                 changePerson={setPerson}
                                 returnFunc={() => {setIsEdited(false);}}>
                             </AccountSettingsComponent>

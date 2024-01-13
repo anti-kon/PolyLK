@@ -1,25 +1,62 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BiCog, BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import FileComponent from "./UI/files/FileComponent";
 import "../styles/Account.css"
 import DropFileUpload from "./UI/drag_and_drop/DropFileUpload";
+import axios from "axios";
+import CircleDotsLoading from "./UI/loaders/CircleDotsLoading";
 
 const AccountComponent = ({person, gearOnClick, ...props}) => {
+    const [isResponseValid, setIsResponseValid] = useState(false);
+    const [isProcessed, setIsProcessed] = useState(true);
+    const [files, setFiles] = useState([]);
     const [isContentVisible, setIsContentVisible] = useState(false);
 
-    const files = [{title: "квитация за оплату ноябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
-                   {title: "квитация за оплату октябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
-                   {title: "квитация за оплату сентябрь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
-                   {title: "квитация за оплату август 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
-                   {title: "квитация за оплату июль 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"},
-                   {title: "квитация за оплату июнь 2021.pdf", url: "https://www.africau.edu/images/default/sample.pdf"}];
+    const loadFiles = () => {
+        setIsProcessed(true);
+        console.log(isProcessed);
+        axios.get('http://localhost:8003/infoPerson/', {
+            params: {
+                id_person: person.id_person
+            }
+        })
+            .then(response => {
+                setIsProcessed(false);
+                setIsResponseValid(true);
+                if(response.status === 200) {
+                    setFiles(response.data.docs_list);
+                }
+            }).catch(error => {
+            setIsProcessed(false);
+            if (error.code === "ERR_NETWORK") {
+                setIsResponseValid(false);
+            } else {
+                setIsResponseValid(false);
+            }
+        });
+    }
+
+    useEffect(() => {loadFiles();}, [])
+
+    const sendFile = (files) => {
+        let formData = new FormData();
+        formData.append('id_person', person.id_person);
+        formData.append('name_file', files[0].name.split('.').slice(0, -1).join('.'));
+        formData.append('file', files[0]);
+        axios.post('http://localhost:8003/infoPerson/', formData)
+            .then(() => loadFiles())
+            .catch(err => console.log(err));
+    }
 
     const filePost = (filesArray, limit) => {
         let content = []
-        for (let index = 0; index < limit; index++){
+        for (let index = 0; index < Math.min(limit, filesArray.length); index++){
             content.push(
-                <FileComponent key={index} url={filesArray[index].url}>{filesArray[index].title}</FileComponent>
+                <FileComponent key={filesArray[index].id_doc}
+                               url={filesArray[index].path_to_doc}>
+                    {filesArray[index].name_doc}
+                </FileComponent>
             );
         }
         return content;
@@ -28,7 +65,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
     return (
         <div {...props} className={"account"}>
             <div className={"label-block"}>
-                <label>{person.login}</label>
+                <label>{person.login_person}</label>
 
                 <button style={{marginLeft: "auto"}} className={"account-frameless-button"}>
                     <BiCog
@@ -40,7 +77,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
                         }}/>
                 </button>
             </div>
-            <ContentBox style={{padding: "15px"}}>
+            <ContentBox style={{padding: "15px", minHeight: "175px"}}>
                 <div style={{fontSize: "18px", marginLeft: "0", marginRight: "0"}} className={"label-block"}>
                     <label>Мои файлы</label>
                     <button
@@ -57,10 +94,41 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
                     </button>
                 </div>
                 <div className={"file-list"}>
-                    {isContentVisible ? filePost(files, files.length) : filePost(files, 4)}
+                    {
+                        isProcessed ? <div style={{
+                                display: "flex",
+                                margin: "20px",
+                                justifyContent: "center"}}>
+                                <CircleDotsLoading size={"80px"} color={"#68a3a3"}/>
+                            </div> :
+                            !isResponseValid ?
+                                <div style={{
+                                    margin: "20px",
+                                    display: "block",
+                                    overflow: "clip"
+                                }}>
+                                    <p style={{textAlign: "center"}} className={"news-text"}>
+                                        Не удалось загрузить данные
+                                    </p>
+                                    <div style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        marginTop: "15px"
+                                    }}>
+                                        <button
+                                            className={"advertisement-show-more"}
+                                            onClick={() => loadFiles()}>
+                                            Попробовать снова
+                                        </button>
+                                    </div>
+                                </div> :
+                                isContentVisible ? filePost(files, files.length) : filePost(files, 4)
+                    }
                 </div>
             </ContentBox>
-            <DropFileUpload>Перетащите ваши файлы в эту область или кликните для добавления</DropFileUpload>
+            <DropFileUpload onLoad={files => sendFile(files)}>
+                Перетащите ваши файлы в эту область или кликните для добавления
+            </DropFileUpload>
         </div>
     );
 };

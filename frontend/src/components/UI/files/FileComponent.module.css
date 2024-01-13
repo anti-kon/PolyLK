@@ -27,5 +27,7 @@
     display: flex;
     color: #4c4c4c;
     font-size: 12px;
-    text-align: center
+    text-align: center;
+    justify-content: center;
+    word-break: break-all;
 }
