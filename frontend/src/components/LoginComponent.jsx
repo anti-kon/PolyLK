@@ -9,6 +9,7 @@ import {InfoContext, PersonContext} from '../App';
 import axios from "axios";
 import CircleDotsLoading from "./UI/loaders/CircleDotsLoading";
 import {encode} from "js-base64";
+import MajorCheckbox from "./UI/checkboxes/MajorCheckbox";
 
 const LoginComponent = (props) => {
     const { person, setPerson } = useContext(PersonContext);
@@ -20,7 +21,7 @@ const LoginComponent = (props) => {
     const [password, setPassword] = useState("");
     const [isValid, setIsValid] = useState(true);
     const [isProcessed, setIsProcessed] = useState(false);
-
+    const [isRememberMe, setIsRememberMe] = useState(false)
     const updateInfoMessage = (status, message, link, link_title) => {
         setInfoMessage( {
             status: status,
@@ -45,7 +46,8 @@ const LoginComponent = (props) => {
         axios.get('http://localhost:8002/authorization', {
             params: {
                 login: login,
-                password: password
+                password: password,
+                isRememberMe: isRememberMe
             }
         }).then(response => {
             setIsProcessed(false);
@@ -97,6 +99,7 @@ const LoginComponent = (props) => {
             {!isValid ?
                 <label className={"error-login-text"}>Неверный логин или пароль</label> :
                 <div style={{height: "20px", marginTop: "10px"}}/>}
+            <MajorCheckbox onChange = {(value) => setIsRememberMe(value)}>Запомнить меня</MajorCheckbox>
             <div style={{marginTop: "10px", display: "flex", justifyContent: "center"}}>
                 <MajorButton
                     onClick={() => {checkLogin()}}
