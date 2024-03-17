@@ -4,6 +4,14 @@ import classes from "./LinearTimeline.module.css";
 const LinearTimeline = ({startHour = 0, startMinute = 0,
                             endHour = 24,endMinute = 0,
                             duration, ...props}) => {
+    const busyTimeSlots = [{startHour: 9, startMinute: 0, endHour: 9, endMinute: 40},
+                           {startHour: 10, startMinute: 0, endHour: 10, endMinute: 40},
+                           {startHour: 11, startMinute: 20, endHour: 12, endMinute: 0},
+                           {startHour: 12, startMinute: 10, endHour: 12, endMinute: 50},
+                           {startHour: 13, startMinute: 10, endHour: 13, endMinute: 50},
+                           {startHour: 14, startMinute: 0, endHour: 15, endMinute: 0},
+                           {startHour: 17, startMinute: 0, endHour: 18, endMinute: 0}];
+
     const [isMouseHover, setIsMouseHover] = useState(false);
     const [localCoords, setLocalCoords] = useState({x: 0, y: 0});
     const [bogeyCenterHour, setBogeyCenterHour] = useState(0);
@@ -12,6 +20,8 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
     const [durationInPixels, setDurationInPixels] = useState(0);
     const [oneHourInPixels, setOneHourInPixels] = useState(0);
     const [oneMinuteInPixels, setOneMinuteInPixels] = useState(0);
+
+    const [invalidZones, setInvalidZones] = useState([]);
 
     const startTime = startHour * 60 + startMinute;
     const endTime = endHour * 60 + endMinute;
@@ -22,6 +32,21 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
         ref.current.clientWidth * (duration / (endTime - startTime))),
         [duration]);
 
+    useLayoutEffect(() => {
+        for (let index = 0; index < (busyTimeSlots.length - 1); index++) {
+            if ((busyTimeSlots[index + 1].startHour - busyTimeSlots[index].endHour) * 60 +
+                 busyTimeSlots[index + 1].startMinute - busyTimeSlots[index].endMinute < duration) {
+                setInvalidZones([invalidZones.push(
+                    {startHour: busyTimeSlots[index].endHour,
+                        startMinute: busyTimeSlots[index].endMinute,
+                        endHour: busyTimeSlots[index + 1].startHour,
+                        endMinute: busyTimeSlots[index + 1].startMinute})]);
+                console.log((busyTimeSlots[index + 1].startHour - busyTimeSlots[index].endHour) * 60 +
+                    busyTimeSlots[index + 1].startMinute - busyTimeSlots[index].endMinute, duration);
+            }
+        }
+        console.log(invalidZones);
+    }, [duration]);
 
     const zeroPad = (num, places) => String(num).padStart(places, '0');
 
@@ -37,7 +62,6 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
         setBogeyCenterHour(Math.floor(localCoords.x / oneHourInPixels) + startHour);
         setBogeyCenterMinute(Math.floor((localCoords.x - (bogeyCenterHour - startHour) * oneHourInPixels) /
             oneMinuteInPixels));
-        console.log(oneHourInPixels, oneMinuteInPixels);
     };
 
     useEffect(() => {
@@ -75,6 +99,33 @@ const LinearTimeline = ({startHour = 0, startMinute = 0,
                 <div style={{width: "100%", height: "0.2em", background: "#68a3a3"}}></div>
                 <div style={{width: "0.2em", height: "100%", background: "#68a3a3", position: "absolute", left: 0}}></div>
                 <div style={{width: "0.2em", height: "100%", background: "#68a3a3", position: "absolute", right: 0}}></div>
+                {
+                    busyTimeSlots.map(timeSlot =>
+                        <div style={{
+                            width: ((((timeSlot.endHour - timeSlot.startHour) * 60) +
+                                timeSlot.endMinute - timeSlot.startMinute)*oneMinuteInPixels).toString() + "px",
+                            height: "100%",
+                            background: "#68a3a3",
+                            borderRadius: "4px",
+                            position: "absolute",
+                            left: ((timeSlot.startHour - startHour) * oneHourInPixels +
+                                   (timeSlot.startMinute - startMinute) * oneMinuteInPixels).toString() + "px"
+                        }}></div>
+                    )
+                }
+                {
+                    invalidZones.map(zone =>
+                        <div key={1} style={{
+                            width: ((((zone.endHour - zone.startHour) * 60) +
+                                zone.endMinute - zone.startMinute)*oneMinuteInPixels).toString() + "px",
+                            height: "100%",
+                            background: "red",
+                            position: "absolute",
+                            left: ((zone.startHour - startHour) * oneHourInPixels +
+                                (zone.startMinute - startMinute) * oneMinuteInPixels).toString() + "px"
+                        }}></div>
+                    )
+                }
                 {isMouseHover &&
                     <div
                         className={classes.timelineBogey}

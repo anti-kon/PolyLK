@@ -1,0 +1,33 @@
+.smallImagesGallery {
+    display: grid;
+    width: auto;
+    margin-top: 10px;
+    max-width: 100%;
+    grid-template-columns: repeat(auto-fill, 40px);
+    grid-gap: 5px;
+}
+
+.imageMiniature {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.deleteButton {
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    border: none;
+    background: white;
+    border-radius: 50%;
+    color: #4c4c4c;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+}

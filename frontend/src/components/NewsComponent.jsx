@@ -1,5 +1,5 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import LineImagesGallery from "./UI/images_gallery/LineImagesGallery";
+import React, {useState} from 'react';
+import LineImagesGallery from "./UI/images_gallery/LineImagesGallery/LineImagesGallery";
 
 const NewsComponent = (props) => {
 
