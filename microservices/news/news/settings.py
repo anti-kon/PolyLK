@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'news.middleware.CustomMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -91,8 +92,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':  'PolyLK',
         'USER': 'postgres',
-        'PASSWORD': 'PMIdatabase',
-        'HOST': 'postgres_db',
+        'PASSWORD': 'admin',#PMIdatabase
+        'HOST': 'localhost',#postgres_db
         'PORT': '5432',
     }
 }
