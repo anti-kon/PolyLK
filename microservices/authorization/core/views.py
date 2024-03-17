@@ -18,7 +18,9 @@ class AuthorizationView(APIView):
                 return Response("Неверный пароль", status=401)
 
             serializer = AuthorizationSerializer(target_user)
-            return Response(serializer.data, status=200)
+            response_data = serializer.data.copy()
+            response_data["token"] = 210
+            return Response(response_data, status=200)
 
         except Persons.DoesNotExist:
             return Response('Пользователь не существует', status=404)
