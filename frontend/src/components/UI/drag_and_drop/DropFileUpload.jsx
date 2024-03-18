@@ -1,13 +1,11 @@
 import React from 'react';
 import classes from './DropFileUpload.module.css'
-import formData from 'form-data'
-import axios from "axios";
 
-const DropFileUpload = (props) => {
+const DropFileUpload = ({children, onLoad, onDrop, ...props}) => {
     const inputRef = React.useRef(null);
 
     function handleFile(files) {
-        props.onLoad(files);
+        onLoad(files);
     }
     const handleDrag = function(e) {
         e.preventDefault();
@@ -18,6 +16,7 @@ const DropFileUpload = (props) => {
         e.stopPropagation();
         if (e.dataTransfer.files && e.dataTransfer.files[0])
             handleFile(e.dataTransfer.files);
+        onDrop(e);
     };
     const handleChange = function(e) {
         e.preventDefault();
@@ -37,13 +36,14 @@ const DropFileUpload = (props) => {
             onDragOver={handleDrag}
             onDrop={handleDrop}
             onSubmit={(e) => e.preventDefault()}
-            onClick={onButtonClick}>
+            onClick={onButtonClick}
+            {...props}>
             <input ref={inputRef}
                    type="file"
                    multiple={false}
                    onChange={handleChange}
                    accept="application/pdf"/>
-            {props.children}
+            {children}
         </div>
     );
 };
