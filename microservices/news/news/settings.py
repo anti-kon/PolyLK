@@ -92,8 +92,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':  'PolyLK',
         'USER': 'postgres',
-        'PASSWORD': 'admin',#PMIdatabase
-        'HOST': 'localhost',#postgres_db
+        'PASSWORD': 'PMIdatabase',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
