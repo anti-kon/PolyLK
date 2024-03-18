@@ -1,10 +1,9 @@
-from django.urls import path
-from . import views
-from .views import PostsView
 
-# urlpatterns = [
-#     path('post', PostsView.post),
-#     path('get', PostsView.get),
-#     path('put', PostsView.put),
-#     path('delete', PostsView.delete),
-# ]
+from django.contrib import admin
+from django.urls import path
+from core.views import *
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('posts', PostsView.as_view(), name='posts')
+]
