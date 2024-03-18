@@ -21,9 +21,15 @@ body {
 .login-text-link {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: auto;
     font-family: "Russo One", sans-serif;
     color: #96bfbf;
     margin-top: 10px;
+    background: none;
+    border: none;
+    width: max-content;
+    height: max-content;
 }
 
 .login-text-link:hover {
