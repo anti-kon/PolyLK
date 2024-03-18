@@ -1,8 +1,8 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import ImageComponent from "../image/ImageComponent/ImageComponent";
+import ImageComponent from "../../image/ImageComponent/ImageComponent";
 import classes from "./LineImagesGallery.module.css";
 import {BiSolidLeftArrow, BiSolidRightArrow} from "react-icons/bi";
-import FullscreenImageBackground from "../image/FullscreenImageComponent/FullscreenImageComponent";
+import FullscreenImageBackground from "../../image/FullscreenImageComponent/FullscreenImageComponent";
 
 const LineImagesGallery = (props) => {
     const [images, setImages] = useState(props.images);
@@ -61,7 +61,7 @@ const LineImagesGallery = (props) => {
                                 onClick={() => setIsShowBigImage(true)}
                                 id={image.id}
                                 key={image.id}
-                                image={image.url}
+                                image={image}
                                 gallery_size={images.length}
                             />
                         )}
@@ -137,7 +137,7 @@ const LineImagesGallery = (props) => {
                     onClose={() => {setIsShowBigImage(false);}}
                     onChange={(newValue) => {setImageIndex(newValue)}}
                     image_index={imageIndex}
-                    image={images[imageIndex].url}
+                    image={images[imageIndex]}
                     gallery_size={images.length}>
                 </FullscreenImageBackground>
             }

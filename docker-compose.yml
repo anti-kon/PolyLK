@@ -86,6 +86,10 @@ services:
   frontend:
     build:
       context: ./frontend/
+    command:
+      -
+    ports:
+      - "3000:3000"
     volumes:
       - frontend_build:/frontend/build
 
