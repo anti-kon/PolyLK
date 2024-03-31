@@ -136,7 +136,6 @@ class ServicesView(APIView):
                                   message_service=message_service)
             new_service.save()
             return Response("OK", status=200)
-
         except DatabaseError as e:
             return Response('База данных не отвечает', status=503)
 

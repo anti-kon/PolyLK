@@ -76,6 +76,5 @@ class NewsView(APIView):
             return Response(serializer.data, status=200)
         except News.DoesNotExist:
             return Response('Новость не была найдена', status=404)
-
         except DatabaseError:
             return Response('База данных не отвечает', status=503)

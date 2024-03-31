@@ -141,7 +141,6 @@ class PostsView(APIView):
                 return Response(serializer.data, status=200)
             except Ads.DoesNotExist:
                 return Response('Объявление не было найдено', status=404)
-
             except DatabaseError:
                 return Response('База данных не отвечает', status=503)
 
