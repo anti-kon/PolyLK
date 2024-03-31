@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import *
+from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authorization', AuthorizationView.as_view(), name='authorization')
+    path('authorization', AuthorizationView.as_view(), name='authorization'),
+    path('verify', CustomMiddleware.as_view(), name='verify'),
 ]
