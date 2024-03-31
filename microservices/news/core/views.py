@@ -24,7 +24,7 @@ class NewsView(APIView):
             return Response(serializer.data, status=200)
 
         except DatabaseError:
-            return Response('Database Error', status=503)
+            return Response('База данных не отвечает', status=503)
 
     def post(self, request):
         try:
@@ -37,7 +37,7 @@ class NewsView(APIView):
             return Response("OK", status=200)
 
         except DatabaseError as e:
-            return Response('Database Error', status=503)
+            return Response('База данных не отвечает', status=503)
 
     def delete(self, request):
         try:
@@ -48,10 +48,10 @@ class NewsView(APIView):
             return Response("OK", status=200)
 
         except News.DoesNotExist:
-            return Response('The news was not found', status=404)
+            return Response('Новость не была найдена', status=404)
 
         except DatabaseError:
-            return Response("Database Error", status=503)
+            return Response("База данных не отвечает", status=503)
 
     def put(self, request):
         try:
@@ -75,7 +75,7 @@ class NewsView(APIView):
 
             return Response(serializer.data, status=200)
         except News.DoesNotExist:
-            return Response('The news was not found', status=404)
+            return Response('Новость не была найдена', status=404)
 
         except DatabaseError:
-            return Response('Database Error', status=503)
+            return Response('База данных не отвечает', status=503)
