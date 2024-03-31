@@ -92,68 +92,68 @@ class PostsView(APIView):
         except DatabaseError:
             return Response(data='База данных не отвечает', status=503)
 
-        def get(self, request, *args, **kwargs):
-            dorm_num_ads = self.request.query_params.get('dorm_num_ads')
-            try:
-                queryset = Ads.objects.all()
-                if dorm_num_ads:
-                    queryset = queryset.filter(dorm_num_ads=dorm_num_ads)
-                    serializer = PostsSerializer(queryset, many=True)
-                    return Response(serializer.data, status=200)
-                else:
-                    return Response('Номер общежития не найден', status=403)
-            except DatabaseError:
-                return Response(data='База данных не отвечает', status=503)
-
-        def put(self, request):
-            try:
-                ads_to_change = Ads.objects.get(id_ads=request.data.get('id_ads'))
-                dorm_num_ads = request.data.get('dorm_num_ads')
-                info_ads = request.data.get('info_ads')
-                price_ads = request.data.get('price_ads')
-                alternative_payment_ads = request.data.get('alternative_payment_ads')
-                id_person_ads = request.data.get('id_person_ads')  # Нужно ли менять!!!
-                list_photo_ads = request.data.get('list_photo_ads')
-
-                if dorm_num_ads != None:
-                    ads_to_change.dorm_num_ads = dorm_num_ads
-
-                if info_ads != None:
-                    ads_to_change.info_ads = info_ads
-
-                if price_ads != None:
-                    ads_to_change.price_ads = price_ads
-
-                if alternative_payment_ads != None:
-                    ads_to_change.alternative_payment_ads = alternative_payment_ads
-
-                if id_person_ads != None:
-                    ads_to_change.id_person_ads = id_person_ads  # Нужно ли менять!!!
-
-                if list_photo_ads != None:
-                    delete_photo(ads_to_change.list_photo_ads)
-                    ads_to_change.list_photo_ads = upload_photo(list_photo_ads, info_ads)
-
-                ads_to_change.save()
-
-                serializer = PostsSerializer(ads_to_change)
-
+    def get(self, request, *args, **kwargs):
+        dorm_num_ads = self.request.query_params.get('dorm_num_ads')
+        try:
+            queryset = Ads.objects.all()
+            if dorm_num_ads:
+                queryset = queryset.filter(dorm_num_ads=dorm_num_ads)
+                serializer = PostsSerializer(queryset, many=True)
                 return Response(serializer.data, status=200)
-            except Ads.DoesNotExist:
-                return Response('Объявление не было найдено', status=404)
-            except DatabaseError:
-                return Response('База данных не отвечает', status=503)
+            else:
+                return Response('Номер общежития не найден', status=403)
+        except DatabaseError:
+            return Response(data='База данных не отвечает', status=503)
 
-        def delete(self, request):
-            try:
-                ads_to_delete = Ads.objects.get(id_ads=request.data.get('id_ads'))
-                delete_photo(ads_to_delete.list_photo_ads)
-                ads_to_delete.delete()
+    def put(self, request):
+        try:
+            ads_to_change = Ads.objects.get(id_ads=request.data.get('id_ads'))
+            dorm_num_ads = request.data.get('dorm_num_ads')
+            info_ads = request.data.get('info_ads')
+            price_ads = request.data.get('price_ads')
+            alternative_payment_ads = request.data.get('alternative_payment_ads')
+            id_person_ads = request.data.get('id_person_ads')  # Нужно ли менять!!!
+            list_photo_ads = request.data.get('list_photo_ads')
 
-                return Response("OK", status=200)
+            if dorm_num_ads != None:
+                ads_to_change.dorm_num_ads = dorm_num_ads
 
-            except Ads.DoesNotExist:
-                return Response('Объявление не было найдено', status=404)
+            if info_ads != None:
+                ads_to_change.info_ads = info_ads
 
-            except DatabaseError:
-                return Response("База данных не отвечает", status=503)
+            if price_ads != None:
+                ads_to_change.price_ads = price_ads
+
+            if alternative_payment_ads != None:
+                ads_to_change.alternative_payment_ads = alternative_payment_ads
+
+            if id_person_ads != None:
+                ads_to_change.id_person_ads = id_person_ads  # Нужно ли менять!!!
+
+            if list_photo_ads != None:
+                delete_photo(ads_to_change.list_photo_ads)
+                ads_to_change.list_photo_ads = upload_photo(list_photo_ads, info_ads)
+
+            ads_to_change.save()
+
+            serializer = PostsSerializer(ads_to_change)
+
+            return Response(serializer.data, status=200)
+        except Ads.DoesNotExist:
+            return Response('Объявление не было найдено', status=404)
+        except DatabaseError:
+            return Response('База данных не отвечает', status=503)
+
+    def delete(self, request):
+        try:
+            ads_to_delete = Ads.objects.get(id_ads=request.data.get('id_ads'))
+            delete_photo(ads_to_delete.list_photo_ads)
+            ads_to_delete.delete()
+
+            return Response("OK", status=200)
+
+        except Ads.DoesNotExist:
+            return Response('Объявление не было найдено', status=404)
+
+        except DatabaseError:
+            return Response("База данных не отвечает", status=503)
