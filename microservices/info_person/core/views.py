@@ -52,7 +52,6 @@ class PersonsDocsView(APIView):
             new_login_person = request.data['login_person']
             new_password_person = request.data['password_person']
             new_dorm_num_person = request.data['dorm_num_person']
-
             id_person = request.data["id_person"]
 
             another_id_person = Persons.objects.filter(id_person=id_person)
