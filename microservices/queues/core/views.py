@@ -30,7 +30,7 @@ class MachinesView(APIView):
             serializer = MachinesSerializer(response_data, many=True)
             return Response(serializer.data, status=200)
         except DatabaseError:
-            return Response(status=503)
+            return Response(data='База данных не отвечает', status=503)
 
 class RecordsMachinesView(APIView):
     def get(self, request, *args, **kwargs):
@@ -62,7 +62,7 @@ class RecordsMachinesView(APIView):
             serializer = RecordsMachinesSerializer(response_data, many=True)
             return Response(serializer.data, status=200)
         except DatabaseError:
-            return Response(status=503)
+            return Response(data='База данных не отвечает', status=503)
 
     def post(self, request):
         try:
@@ -80,7 +80,7 @@ class RecordsMachinesView(APIView):
             return Response("OK", status=200)
 
         except DatabaseError as e:
-            return Response('Database Error', status=503)
+            return Response('База данных не отвечает', status=503)
 
     def delete(self, request):
         try:
@@ -89,10 +89,10 @@ class RecordsMachinesView(APIView):
             return Response("OK", status=200)
 
         except RecordsMachines.DoesNotExist:
-            return Response('The RecordsMachines was not found', status=404)
+            return Response('Машины с записями не были найдены', status=404)
 
         except DatabaseError:
-            return Response("Database Error", status=503)
+            return Response("База данных не отвечает", status=503)
 class ServicesView(APIView):
 
     def get(self, request, *args, **kwargs):
@@ -122,7 +122,7 @@ class ServicesView(APIView):
             serializer = ServicesSerializer(response_data, many=True)
             return Response(serializer.data, status=200)
         except DatabaseError:
-            return Response(status=503)
+            return Response(data='База данных не отвечает', status=503)
 
     def post(self, request):
         try:
@@ -136,9 +136,8 @@ class ServicesView(APIView):
                                   message_service=message_service)
             new_service.save()
             return Response("OK", status=200)
-
         except DatabaseError as e:
-            return Response('Database Error', status=503)
+            return Response('База данных не отвечает', status=503)
 
     def delete(self, request):
         try:
@@ -146,6 +145,6 @@ class ServicesView(APIView):
             Services_to_delete.delete()
             return Response("OK", status=200)
         except Services.DoesNotExist:
-            return Response('The Services was not found', status=404)
+            return Response('Службы не были найдены', status=404)
         except DatabaseError:
-            return Response("Database Error", status=503)
+            return Response("База данных не отвечает", status=503)
