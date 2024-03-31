@@ -90,7 +90,7 @@ class PostsView(APIView):
             #     serializer.save()
             return Response(data='OK', status=200)
         except DatabaseError:
-            return Response({'error': 'Database not responding'}, status=503)
+            return Response(data='База данных не отвечает', status=503)
 
         def get(self, request, *args, **kwargs):
             dorm_num_ads = self.request.query_params.get('dorm_num_ads')
@@ -101,9 +101,9 @@ class PostsView(APIView):
                     serializer = PostsSerializer(queryset, many=True)
                     return Response(serializer.data, status=200)
                 else:
-                    return Response('Dorm number not found', status=403)
+                    return Response('Номер общежития не найден', status=403)
             except DatabaseError:
-                return Response(status=503)
+                return Response(data='База данных не отвечает', status=503)
 
         def put(self, request):
             try:
@@ -140,10 +140,9 @@ class PostsView(APIView):
 
                 return Response(serializer.data, status=200)
             except Ads.DoesNotExist:
-                return Response('The Ads was not found', status=404)
-
+                return Response('Объявление не было найдено', status=404)
             except DatabaseError:
-                return Response('Database Error', status=503)
+                return Response('База данных не отвечает', status=503)
 
         def delete(self, request):
             try:
@@ -154,7 +153,7 @@ class PostsView(APIView):
                 return Response("OK", status=200)
 
             except Ads.DoesNotExist:
-                return Response('The Ads was not found', status=404)
+                return Response('Объявление не было найдено', status=404)
 
             except DatabaseError:
-                return Response("Database Error", status=503)
+                return Response("База данных не отвечает", status=503)

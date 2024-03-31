@@ -45,20 +45,19 @@ class PersonsDocsView(APIView):
             }
             return Response(data=response_data, status=200)
         except DatabaseError:
-            return Response(data='Database Error', status=503)
+            return Response(data='База данных не отвечает', status=503)
 
     def put(self, request):
         try:
             new_login_person = request.data['login_person']
             new_password_person = request.data['password_person']
             new_dorm_num_person = request.data['dorm_num_person']
-
             id_person = request.data["id_person"]
 
             another_id_person = Persons.objects.filter(id_person=id_person)
 
             if not another_id_person:
-                return Response(data='This user not exist', status=404)
+                return Response(data='Этот пользователь не существует', status=404)
 
             Persons.objects.filter(id_person=id_person).update(login_person=new_login_person,
                                                                password_person=new_password_person,
@@ -72,7 +71,7 @@ class PersonsDocsView(APIView):
             }
             return Response(data=answer_data, status=200)
         except DatabaseError:
-            return Response(data='Database Error', status=503)
+            return Response(data='База данных не отвечает', status=503)
 
     def delete(self, request):
         try:
@@ -81,14 +80,14 @@ class PersonsDocsView(APIView):
             another_id_delete_doc = PersonsDocs.objects.filter(id_doc=id_delete_doc)
 
             if not another_id_delete_doc:
-                return Response(data='This document not exist', status=404)
+                return Response(data='Этого документа не существует', status=404)
 
             path_to_doc = PersonsDocs.objects.filter(id_doc=id_delete_doc).values_list('path_to_doc', flat=True).first()
             os.remove(path_to_doc)
             PersonsDocs.objects.filter(id_doc=id_delete_doc).delete()
             return Response(data='OK', status=200)
         except DatabaseError:
-            return Response(data='Database Error', status=503)
+            return Response(data='База данных не отвечает', status=503)
 
     def post(self, request):
         try:
@@ -97,7 +96,7 @@ class PersonsDocsView(APIView):
             print(name_file)
 
             if (request.FILES['file'].size > (MAX_SIZE_FILE)) or (len(name_file) > 50):
-                return Response(data='File or file name is too large', status=413)
+                return Response(data='Файл или его имя слишком большие.', status=413)
 
             pdf_file = request.FILES['file']
             login_person = Persons.objects.filter(id_person=id_person).values_list('login_person', flat=True).first()
@@ -116,4 +115,4 @@ class PersonsDocsView(APIView):
                 return Response(data='OK', status=200)
 
         except DatabaseError:
-            return Response(data='Database Error', status=503)
+            return Response(data='База данных не отвечает', status=503)
