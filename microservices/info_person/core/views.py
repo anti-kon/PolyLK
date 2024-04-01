@@ -1,18 +1,14 @@
-import json
-
-from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import PersonsDocs
 from .models import Persons
 from .serializer import PersonsDocsSerializer
-from .serializer import RegistrationSerializer
 from rest_framework.response import Response
 from django.core.files.storage import FileSystemStorage
-from django.core.files.base import ContentFile
 from django.db import *
 import os
 
 MAX_SIZE_FILE = 4096  # in bytes
+
 
 class PersonsDocsView(APIView):
     def get(self, request):

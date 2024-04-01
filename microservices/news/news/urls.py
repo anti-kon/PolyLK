@@ -20,5 +20,5 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news', NewsView.as_view(), name='news')
+    path('news/', NewsView.as_view(), name='news')
 ]
