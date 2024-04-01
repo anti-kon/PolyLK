@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-from rest_framework import serializers
 
 
 class News(models.Model):
