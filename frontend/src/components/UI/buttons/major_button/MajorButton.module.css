@@ -6,6 +6,7 @@
     min-width: min-content;
     width: 100%;
     min-height: min-content;
+    box-sizing: border-box;
 }
 
 .majorButtonDisabled {
@@ -16,6 +17,7 @@
     min-width: min-content;
     width: 100%;
     min-height: min-content;
+    box-sizing: border-box;
 }
 
 @keyframes setActive {

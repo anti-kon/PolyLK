@@ -15,9 +15,15 @@ body {
 .signup-text-link {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: auto;
     font-family: "Russo One", sans-serif;
     color: #96bfbf;
     margin-top: 10px;
+    background: none;
+    border: none;
+    width: max-content;
+    height: max-content;
 }
 
 .signup-text-link:hover {
@@ -25,10 +31,22 @@ body {
 }
 
 .signup-panel {
-    position: relative;
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
     height: max-content;
     display: block;
+
+}
+.signup-page-icon {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    @media (min-height: 670px) {
+        position: absolute;
+        top: 20px;
+        left: 31px;
+        margin: 0;
+    }
 }
 
 .block {
@@ -47,7 +65,8 @@ body {
     margin-top: 7px;
     margin-bottom: 7px;
     height: 20px;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Russo One", sans-serif;

@@ -1,6 +1,7 @@
 .selectBody {
     position: relative;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: max-content;
     text-align: center;
     box-sizing: border-box;
@@ -15,7 +16,8 @@
 
 .selectBodyError {
     position: relative;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: max-content;
     text-align: center;
     box-sizing: border-box;
@@ -46,8 +48,9 @@
     border: #68a3a3 solid 1px;
     border-radius: 5px;
     position: absolute;
-    width: calc(100% - 10px);
-    max-width: 360px;
+    width: 100%;
+    max-width: 370px;
+    box-sizing: border-box;
 }
 
 .selectListModalError {
