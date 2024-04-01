@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useLayoutEffect, useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
 import "../styles/FAQ.css";
 import TipBoxComponent from "../components/TipBoxComponent";
 import ContentBox from "../components/UI/content_boxes/content_box/ContentBox";
+import MajorFooter from "../components/UI/footers/major_footer/MajorFooter";
 
 const Faq = () => {
+    const [pageWidth, setPageWidth] = useState(0);
+    useLayoutEffect(() => {
+        setPageWidth(window.innerWidth);
+        function handleWindowResize() {
+            setPageWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
+
+
     const tips = [{
         key: 0,
         label: "Режим работы общежития",
@@ -113,7 +130,7 @@ const Faq = () => {
         <div>
             <MajorHeader></MajorHeader>
             <div className={"faq-page"}>
-                <SwitchBar></SwitchBar>
+                {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 <div className={"tips-list"}>
                     {tips.map((tip) =>
                         <ContentBox key={tip.key} style={{display: "flex", marginBottom: "20px", boxSizing: "border-box"}}>
@@ -122,6 +139,7 @@ const Faq = () => {
                     )}
                 </div>
             </div>
+            {pageWidth <= 570 && <MajorFooter /> }
         </div>
     );
 };
