@@ -13,7 +13,8 @@ body {
 }
 
 .login-panel {
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
     height: max-content;
     display: block;
 }
@@ -39,7 +40,8 @@ body {
 .error-login-text {
     margin-top: 10px;
     height: 20px;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Russo One", sans-serif;

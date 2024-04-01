@@ -123,10 +123,10 @@ const SignUp = () => {
 
     return (
         <div className={"signup-page"}>
-            <div style={{display: "flex", justifyContent: "center", position: "absolute", top: 20, left: 31}}>
-                <img style={{width: "80px", height: "auto", margin: "auto"}} src={img}/>
-            </div>
             <div className={"signup-panel"}>
+                <div className={"signup-page-icon"}>
+                    <img style={{width: "80px", height: "auto", margin: "auto"}} src={img}/>
+                </div>
                 <TextInput
                     value={login}
                     onChange={e => {setLogin(e.target.value)}}
@@ -204,14 +204,14 @@ const SignUp = () => {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 height: "60px",
-                                width: "180px",
-                                minWidth: "296px",
+                                width: "100%",
+                                maxWidth: "296px",
                                 borderRadius: "7px",
                                 fontSize: "24px"}}>
                         {isProcessed ? <CircleDotsLoading size={"40px"}/> : "Зарегестрироваться"}
                     </MajorButton>
                 </div>
-                <label onClick={() => {navigate("../login");}} className={"signup-text-link"}>Войти в аккаунт</label>
+                <button onClick={() => {navigate("../login");}} className={"signup-text-link"}>Войти в аккаунт</button>
             </div>
         </div>
     );
