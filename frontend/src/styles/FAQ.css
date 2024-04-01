@@ -23,6 +23,7 @@
     overflow: clip;
     text-overflow: ellipsis;
     word-break: break-word;
+    align-items: center;
 }
 
 .tip-box-label {
@@ -35,9 +36,7 @@
     word-wrap: break-word;
 }
 
-.tip-box-toggle-visibility-button {
-    margin-left: auto;
-    margin-top: -4px;
+.tip-box-toggle-visibility-icon {
     color: #68a3a3;
     width: 20px;
     height: auto;
@@ -57,4 +56,17 @@
 
 .tip-box-header:hover svg {
     color: #3e8d8d;
+}
+
+.tip-box-arrow-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: max-content;
+    height: max-content;
+    margin-left: auto;
+    margin-top: -4px;
+    border: none;
+    background: none;
 }

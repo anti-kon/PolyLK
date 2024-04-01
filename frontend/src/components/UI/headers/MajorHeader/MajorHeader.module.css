@@ -24,6 +24,9 @@
     align-items: center;
     height: max-content;
     width: max-content;
+    border: none;
+    background: none;
+
 }
 
 .accountButton:hover {

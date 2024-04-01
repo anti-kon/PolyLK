@@ -10,9 +10,11 @@ const TipBoxComponent = (props) => {
             <div onClick={() => {setIsContentVisible(!isContentVisible)}}
                  className={"tip-box-header"}>
                 <label className={"tip-box-label"}>{props.label}</label>
-                {isContentVisible ?
-                    <BiSolidUpArrow className={"tip-box-toggle-visibility-button"} /> :
-                    <BiSolidDownArrow className={"tip-box-toggle-visibility-button"} />}
+                <button className={"tip-box-arrow-button"} onClick={() => {setIsContentVisible(!isContentVisible)}}>
+                    {isContentVisible ?
+                        <BiSolidUpArrow className={"tip-box-toggle-visibility-icon"} /> :
+                        <BiSolidDownArrow className={"tip-box-toggle-visibility-icon"} />}
+                </button>
             </div>
             {isContentVisible && <pre className={"tip-box-body"}>{props.children}</pre>}
         </div>

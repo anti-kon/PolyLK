@@ -1,0 +1,14 @@
+.majorFooter {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.iconStyle {
+    width: 24px;
+    height: auto;
+    margin: auto;
+}

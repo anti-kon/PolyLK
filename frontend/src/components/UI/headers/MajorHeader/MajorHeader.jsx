@@ -30,12 +30,12 @@ const MajorHeader = () => {
         <header id={"major_header"} className={classes.majorHeader}>
             <div className={classes.headerContent}>
                 <img className={classes.iconStyle} src={img}/>
-                <div ref={buttonOpenModel}
+                <button ref={buttonOpenModel}
                      onClick={() => {setIsModalVisible(!isModalVisible);}}
                      className={classes.accountButton}>
                     <label className={classes.accountLabel}>Пользователь</label>
                     <BiSolidDownArrow className={classes.arrowStyle} />
-                </div>
+                </button>
                 {isModalVisible &&
                     <ContentBox style={{
                                     maxWidth: "min-content",
