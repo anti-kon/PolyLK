@@ -5,5 +5,5 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts', PostsView.as_view(), name='posts')
+    path('posts/', PostsView.as_view(), name='posts')
 ]

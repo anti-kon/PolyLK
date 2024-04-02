@@ -32,11 +32,12 @@ const LineImagesGallery = (props) => {
 
 
     const getMargin = (index) => {
-        let margin = ((width - 520) / 2);
+        let margin = (width - Math.min(width - 20, 520)) / 2;
         if (index > 0) {
-            margin -= 520 * (index);
+            margin -= (Math.min(width - 20, 520)) * (index);
         }
-        return margin;
+        console.log(margin, width)
+        return width > 0 ? margin : undefined;
     }
 
     const isDotShowing = (curIndex, dotIndex) => {
@@ -48,15 +49,16 @@ const LineImagesGallery = (props) => {
 
     return (
         <div>
-            <div ref={ref} className={classes.lineImagesGallery}>
+            <div style={props.style} ref={ref} className={classes.lineImagesGallery}>
                 <div className={classes.lineImagesGalleryBody}>
                     <div
-                        style={images.length > 1 ?
-                            {marginLeft: width !== 0 && getMargin(imageIndex) + "px"} :
-                            {marginLeft: 0, justifyContent: "center"}}
+                        style={getMargin(imageIndex) !== undefined ? {
+                            marginLeft: getMargin(imageIndex) + "px",
+                            transition: "0.5s ease-in"} : {}}
                         className={classes.lineImagesGalleryBand}>
                         {images.map(image =>
                             <ImageComponent
+                                style={{width: width - 30, height: width - 30}}
                                 blurFill={true}
                                 onClick={() => setIsShowBigImage(true)}
                                 id={image.id}
@@ -70,7 +72,7 @@ const LineImagesGallery = (props) => {
                         <div
                             onMouseOver={() => setIsLeftArrowShow(true)}
                             onMouseOutCapture={() => setIsLeftArrowShow(false)}
-                            style={{width: ((width - 520) / 2) - 5 + "px", left: 0}}
+                            style={{width: Math.max(50, ((width - 520) / 2) - 5) + "px", left: 0}}
                             className={classes.clickZone}
                             onClick={() => {setImageIndex(imageIndex - 1);
                                 setIsLeftArrowShow(false);}}>
@@ -88,7 +90,7 @@ const LineImagesGallery = (props) => {
                         <div
                             onMouseOver={() => setIsRightArrowShow(true)}
                             onMouseOutCapture={() => setIsRightArrowShow(false)}
-                            style={{width: ((width - 520) / 2) - 5 + "px", right: 0}}
+                            style={{width: Math.max(50, ((width - 520) / 2) - 5) + "px", right: 0}}
                             className={classes.clickZone}
                             onClick={() => {setImageIndex(imageIndex + 1);
                                 setIsLeftArrowShow(false);}}>

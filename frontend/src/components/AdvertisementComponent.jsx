@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {BiDotsHorizontalRounded} from "react-icons/bi";
+import {BiChat, BiDotsHorizontalRounded} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import classes from "./UI/headers/MajorHeader/MajorHeader.module.css";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
@@ -7,6 +7,7 @@ import ResizeableTextarea from "./UI/textareas/resizeable_textarea/ResizeableTex
 import TextInput from "./UI/inputs/text_input/TextInput";
 import {BsPaperclip} from "react-icons/bs";
 import MajorButton from "./UI/buttons/major_button/MajorButton";
+import LineImagesGallery from "./UI/images_gallery/LineImagesGallery/LineImagesGallery";
 
 const AdvertisementComponent = (props) => {
     const maxTextLength = 256;
@@ -58,7 +59,16 @@ const AdvertisementComponent = (props) => {
         <div className={'advertisement-body'}>
             <div className={'advertisement-label'} >
                 <label className={'advertisement-login'}>{props.login}</label>
-                {!isEdit && <button style={{marginLeft: "auto"}} className={"advertisement-frameless-button"} ref={buttonOpenModel}>
+                {!isEdit && <button style={{marginLeft: "auto", marginRight: "5px"}}
+                                    className={"advertisement-frameless-button"}>
+                    <BiChat
+                        style={{
+                            width: "22px",
+                            height: "auto"
+                        }}/>
+                </button>}
+                {!isEdit && <button className={"advertisement-frameless-button"}
+                                    ref={buttonOpenModel}>
                     <BiDotsHorizontalRounded
                         onClick = {() => {setIsModalVisible(!isModalVisible);}}
                         style={{
@@ -132,7 +142,7 @@ const AdvertisementComponent = (props) => {
                     </div>
                 </div> :
                 <div>
-                    <p className={'advertisement-text'}>{text}</p>
+                    <pre className={'advertisement-text'}>{text}</pre>
                     {showButton && (
                         !isFullTextVisible ?
                             <button
@@ -148,8 +158,11 @@ const AdvertisementComponent = (props) => {
                                 Скрыть
                             </button>
                     )}
+                    {props.images.length > 0 &&
+                        <LineImagesGallery images={props.images}
+                                           id={props.id}/>}
                     <div className={'advertisement-price-block'}>
-                        {moneyPrice !== "" && <label>{moneyPrice} руб.</label>}
+                        {moneyPrice !== "" && <label>{moneyPrice} <b>₽</b></label>}
                         {moneyPrice !== "" && alternativePrice !== "" &&
                             <label className={'advertisement-spacer-price'}>/</label>}
                         {alternativePrice !== "" && <label>{alternativePrice}</label>}

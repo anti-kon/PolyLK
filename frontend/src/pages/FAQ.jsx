@@ -129,7 +129,9 @@ const Faq = () => {
     return (
         <div>
             <MajorHeader></MajorHeader>
-            <div className={"faq-page"}>
+            <div
+                style={{marginBottom: pageWidth > 570 ? "0" : "46px"}}
+                className={"faq-page"}>
                 {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 <div className={"tips-list"}>
                     {tips.map((tip) =>

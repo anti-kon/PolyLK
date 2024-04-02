@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BiCog, BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import FileComponent from "./UI/files/FileComponent";
@@ -6,6 +6,9 @@ import "../styles/Account.css"
 import DropFileUpload from "./UI/drag_and_drop/DropFileUpload";
 import axios from "axios";
 import CircleDotsLoading from "./UI/loaders/CircleDotsLoading";
+import {useNavigate} from "react-router-dom";
+import {InfoContext} from "../App";
+import {encode} from "js-base64";
 
 const AccountComponent = ({person, gearOnClick, ...props}) => {
     const [isResponseValid, setIsResponseValid] = useState(false);
@@ -13,13 +16,27 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
     const [files, setFiles] = useState([]);
     const [isContentVisible, setIsContentVisible] = useState(false);
 
+    const navigate = useNavigate();
+
+    const {setInfoMessage} = useContext(InfoContext);
+
+    const updateInfoMessage = (status, message, link, link_title) => {
+        setInfoMessage( {
+            status: status,
+            message: message,
+            link: link,
+            link_title: link_title
+        });
+
+        return encode(new Date().getMilliseconds() + new Date().getDate() + status.length + 523);
+    }
+
     const loadFiles = () => {
         setIsProcessed(true);
         console.log(isProcessed);
         axios.get('http://localhost:8003/infoPerson/', {
-            params: {
-                id_person: person.id_person
-            }
+            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`},
+            params: { id_person: person.id_person}
         })
             .then(response => {
                 setIsProcessed(false);
@@ -31,6 +48,12 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
             setIsProcessed(false);
             if (error.code === "ERR_NETWORK") {
                 setIsResponseValid(false);
+            } else if (error.response.status === 401) {
+                navigate("../message/" + updateInfoMessage(
+                    error.response.status.toString(),
+                    error.response.data,
+                    "../login",
+                    "Вернуться на страницу авторизации"));
             } else {
                 setIsResponseValid(false);
             }
@@ -44,7 +67,9 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
         formData.append('id_person', person.id_person);
         formData.append('name_file', files[0].name.split('.').slice(0, -1).join('.'));
         formData.append('file', files[0]);
-        axios.post('http://localhost:8003/infoPerson/', formData)
+        axios.post('http://localhost:8003/infoPerson/', formData, {
+            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
+        })
             .then(() => loadFiles())
             .catch(err => console.log(err));
     }
