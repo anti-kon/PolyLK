@@ -38,3 +38,14 @@
     outline: none;
     color: #da7676;
 }
+
+.textInput:disabled,
+.textInput[disabled]{
+    border: 3px solid #949494;
+    color: #949494;
+}
+
+.textInput:disabled::placeholder,
+.textInput[disabled]::placeholder{
+    color: #949494;
+}

@@ -1,16 +1,15 @@
 .lineImagesGallery {
     display: block;
-    min-width: 550px;
     width: 100%;
     max-width: 698px;
     overflow: clip;
-    margin: 20px auto auto;
+    margin: 10px auto auto;
 }
 
 .lineImagesGalleryBand {
     display: flex;
-    margin-left: calc((100% - 520px) / 2);
-    transition: 0.5s ease-in;
+    width: max-content;
+    margin-left: max(10px, calc((100% - 520px) / 2));
 }
 
 .lineImagesGalleryBody {

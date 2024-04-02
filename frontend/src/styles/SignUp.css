@@ -41,12 +41,6 @@ body {
     display: flex;
     justify-content: center;
     margin: 20px;
-    @media (min-height: 670px) {
-        position: absolute;
-        top: 20px;
-        left: 31px;
-        margin: 0;
-    }
 }
 
 .block {

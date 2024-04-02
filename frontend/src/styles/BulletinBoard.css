@@ -1,7 +1,9 @@
 .bulletin-board-page {
     display: flex;
     max-width: 960px;
-    margin: auto;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .advertisement-body {
@@ -24,6 +26,15 @@
     font-family: 'Russo One', sans-serif;
     font-size: 18px;
 
+}
+
+.advertisement-type-label  {
+    color: #68A3A3FF;
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
 }
 
 .advertisement-dots {
@@ -78,7 +89,7 @@
 }
 
 .advertisement-price-block {
-    margin: 0;
+    margin: 10px 0 0 0;
     justify-content: right;
     width: 100%;
     display: flex;
@@ -138,7 +149,76 @@
 }
 
 .advertisement-edit-fields {
-    display: flex;
+    margin: 0 1px;
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) max-content max-content;
+    grid-gap: 10px;
     width: 100%;
     justify-content: center;
+}
+
+.free-cost-label {
+    color: #68a3a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: span 2;
+    font-family: 'Russo One', sans-serif;
+    font-size: 12px;
+    margin: 20px;
+}
+
+.search-icon {
+    width: auto;
+    height: 20px;
+}
+
+.is-free-button {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: auto 20px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-family: 'Russo One', sans-serif;
+    color: #68a3a3;
+    grid-row: span 2;
+    font-size: 12px;
+}
+
+.is-free-button:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.is-free-button-active {
+    background: #3e8d8d;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: auto 20px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Russo One', sans-serif;
+    color: #ffffff;
+    grid-row: span 2;
+    font-size: 12px;
+}
+
+.is-free-button-active:hover {
+    background: #68a3a3;
+}
+
+.filter-table {
+    display: grid;
+    grid-template-columns: max-content 1fr 1fr max-content;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 15px;
 }
