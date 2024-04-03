@@ -71,10 +71,10 @@ class PostsView(APIView):
             paths =[]
             for image in request.FILES.getlist('list_photo_ads'):
                 paths.append(default_storage.save('tmp/' + image.name, ContentFile(image.read())))
-                new_record = Ads(info_ads=info_ads, dorm_num_ads=dorm_num_ads,
-                                price_ads=price_ads, alternative_payment_ads=alternative_payment_ads,
-                                list_photo_ads=paths, id_person_ads=id_person_ads)
-                new_record.save()
+            new_record = Ads(info_ads=info_ads, dorm_num_ads=dorm_num_ads,
+                            price_ads=price_ads, alternative_payment_ads=alternative_payment_ads,
+                            list_photo_ads=paths, id_person=id_person_ads)
+            new_record.save()
 
             # data = {
             #     'dorm_num_ads': dorm_num_ads,

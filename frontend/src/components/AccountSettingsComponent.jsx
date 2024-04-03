@@ -94,6 +94,8 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                 login_person: login,
                 password_person: password,
                 dorm_num_person: dormNumber
+            }, {
+                headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
             }).then(response => {
                 setIsProcessed(false);
                 if(response.status === 200) {
@@ -105,7 +107,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     navigate("../message/" + updateInfoMessage(
                         "502",
                         "Сервер не отвечает",
-                        "../signup",
+                        "../login",
                         "Вернуться на страницу авторизации"));
                 } else if (error.response.status === 404) {
                     navigate("../message/" + updateInfoMessage(
@@ -117,7 +119,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     navigate("../message/" + updateInfoMessage(
                         error.response.status.toString(),
                         error.response.data,
-                        "../signup",
+                        "../login",
                         "Вернуться на страницу авторизации"));
                 }
             })

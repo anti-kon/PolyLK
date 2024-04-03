@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import classes from './MajorCheckbox.module.css'
-const MajorCheckbox = ({children, ...props}) => {
-    const [isChecked, setIsChecked] = useState(false);
+const MajorCheckbox = ({style, checked = false, children, ...props}) => {
+    const [isChecked, setIsChecked] = useState(checked);
 
     return (
-        <div className={classes.majorCheckbox} onClick={ () => {setIsChecked(!isChecked); props.onChange(!isChecked)} } >
+        <div style = {style} className={classes.majorCheckbox} onClick={ () => {setIsChecked(!isChecked); props.onChange(!isChecked)} } >
             <div  className={isChecked ? classes.checked : classes.unchecked}></div>
             <input
                 type="checkbox"

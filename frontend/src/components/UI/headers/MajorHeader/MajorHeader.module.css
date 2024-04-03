@@ -5,6 +5,11 @@
     justify-content: center;
     margin-bottom: 15px;
     min-width: min-content;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .headerContent {

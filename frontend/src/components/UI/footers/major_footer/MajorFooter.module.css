@@ -1,10 +1,13 @@
 .majorFooter {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
+    background: white;
+    border-top: 2px solid #68a3a3;
     left: 0;
     right: 0;
     bottom: 0;
+    height: 46px;
 }
 
 .iconStyle {
