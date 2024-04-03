@@ -92,7 +92,7 @@ DATABASES = {
         'NAME':  'PolyLK',
         'USER': 'postgres',
         'PASSWORD': 'PMIdatabase',
-        'HOST': 'postgres_db',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

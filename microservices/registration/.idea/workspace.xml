@@ -5,29 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../backend/Django/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/Django/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../posts/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/NewsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/NewsComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/drag_and_drop/DropFileUpload.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/drag_and_drop/DropFileUpload.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/files/FileComponent.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/password_input/PasswordInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/password_input/PasswordInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/Account.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/checkboxes/MajorCheckbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/checkboxes/MajorCheckbox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/footers/major_footer/MajorFooter.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/footers/major_footer/MajorFooter.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/headers/MajorHeader/MajorHeader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/headers/MajorHeader/MajorHeader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/image/ImageComponent/ImageComponent.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/image/ImageComponent/ImageComponent.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/text_input/TextInput.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/text_input/TextInput.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/FAQ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/FAQ.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/AppointmentsList.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/AppointmentsList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/FAQ.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/FAQ.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/News.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/News.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/ServicePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/ServicePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authorization/authorization/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authorization/authorization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authorization/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authorization/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info_person/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/core/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info_person/info_person/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/info_person/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../news/core/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/.idea/posts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/.idea/posts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/posts/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/posts/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/apps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +80,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/move__microservices&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
     &quot;last_opened_file_path&quot;: &quot;Z:/Projects/PolyLK/backend/Django&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -85,13 +104,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="registration.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="Z:\Projects\PolyLK\microservices\registration\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.8 (registration)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
+      <option name="port" value="8001" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
@@ -117,6 +137,8 @@
       <workItem from="1704838231836" duration="55000" />
       <workItem from="1705016754955" duration="12753000" />
       <workItem from="1705083929015" duration="7062000" />
+      <workItem from="1712027521062" duration="840000" />
+      <workItem from="1712055851122" duration="588000" />
     </task>
     <servers />
   </component>

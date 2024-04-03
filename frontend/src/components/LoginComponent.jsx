@@ -43,7 +43,7 @@ const LoginComponent = (props) => {
             return;
         }
         setIsProcessed(true);
-        axios.get('http://localhost:8002/authorization', {
+        axios.get('http://localhost:8080/django-authorization/authorization/', {
             params: {
                 login: login,
                 password: password,
@@ -52,12 +52,20 @@ const LoginComponent = (props) => {
         }).then(response => {
             setIsProcessed(false);
             if(response.status === 200) {
+                localStorage.setItem(
+                    'access-token',
+                    JSON.stringify({
+                        value: response.data.token,
+                        timeStamp: new Date().getTime(),
+                    })
+                );
                 setPerson(response.data);
                 navigate("../news");
             }
         }).catch(error => {
             setIsProcessed(false);
             if (error.code === "ERR_NETWORK") {
+                console.log(error)
                 navigate("../message/" + updateInfoMessage(
                     "502",
                     "Сервер не отвечает",

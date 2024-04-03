@@ -1,57 +1,57 @@
 version: '3'
 
 services:
-  django_registration:
-    build:
-      context: ./microservices/registration/
-    command: ["sh", "./start.sh"]
-    ports:
-      - "8001:8000"
-    depends_on:
-      - postgres_db
-      - eureka_server
+#  django-registration:
+#    build:
+#      context: ./microservices/registration/
+#    command: ["sh", "./start.sh"]
+#    ports:
+#      - "8001:8000"
+#    depends_on:
+#      - postgres-db
+#      - eureka-server
 
-  django_authorization:
+  django-authorization:
     build:
       context: ./microservices/authorization/
-    command: [ "sh", "./start.sh" ]
+    entrypoint: bash -c "./wait-for-it.sh eureka-server:8761 && ./start.sh"
     ports:
       - "8002:8000"
     depends_on:
-      - postgres_db
-      - eureka_server
+      - postgres-db
+      - eureka-server
 
-  django_info_person:
-    build:
-      context: ./microservices/info_person/
-    command: [ "sh", "./start.sh" ]
-    ports:
-      - "8003:8000"
-    depends_on:
-      - postgres_db
-      - eureka_server
+#  django-info-person:
+#    build:
+#      context: ./microservices/info_person/
+#    command: [ "sh", "./start.sh" ]
+#    ports:
+#      - "8003:8000"
+#    depends_on:
+#      - postgres-db
+#      - eureka-server
 
-  django_news:
-    build:
-      context: ./microservices/news/
-    command: [ "sh", "./start.sh" ]
-    ports:
-      - "8004:8000"
-    depends_on:
-      - postgres_db
-      - eureka_server
+#  django-news:
+#    build:
+#      context: ./microservices/news/
+#    command: [ "sh", "./start.sh" ]
+#    ports:
+#      - "8004:8000"
+#    depends_on:
+#      - postgres-db
+#      - eureka-server
 
-  django_queues:
-    build:
-      context: ./microservices/news/
-    command: [ "sh", "./start.sh" ]
-    ports:
-      - "8005:8000"
-    depends_on:
-      - postgres_db
-      - eureka_server
+#  django-queues:
+#    build:
+#      context: ./microservices/news/
+#    command: [ "sh", "./start.sh" ]
+#    ports:
+#      - "8005:8000"
+#    depends_on:
+#      - postgres-db
+#      - eureka-server
 
-  postgres_db:
+  postgres-db:
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -64,49 +64,54 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
 
-  api_gateway:
+  api-gateway:
     build:
       context: ./microservices/api_gateway/api-gateway/
+    entrypoint: bash -c "api_gateway/wait-for-it.sh eureka-server:8761 && api_gateway/wait-for-it.sh django-authorization:8000 && java -jar api_gateway/app.jar --spring.profiles.active=docker"
     ports:
       - "8080:8080"
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
     depends_on:
-      - eureka_server
-      - django_registration
-      - django_authorization
-      - django_info_person
-      - django_news
-      - django_queues
+      - eureka-server
+#      - django-registration
+      - django-authorization
+#      - django-info-person
+#      - django-news
+#      - django-queues
 
-  eureka_server:
+  eureka-server:
     build:
       context: ./microservices/eureka_server/eureka-server/
+    hostname: eureka-server
     ports:
       - "8761:8761"
+    restart: always
 
-  frontend:
-    build:
-      context: ./frontend/
-    ports:
-      - "3000:3000"
-    volumes:
-      - frontend_build:/frontend/build
+#  frontend:
+#    build:
+#      context: ./frontend/
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - frontend_build:/frontend/build
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:8080"
-    volumes:
-      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
-      - frontend_build:/var/www/frontend
-    depends_on:
-      - frontend
-      - api_gateway
-      - django_registration
-      - django_authorization
-      - django_info_person
-      - django_news
-      - django_queues
+#  nginx:
+#    image: nginx:latest
+#    ports:
+#      - "80:8080"
+#    volumes:
+#      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
+#      - frontend_build:/var/www/frontend
+#    depends_on:
+#      - frontend
+#      - api-gateway
+#      - django-registration
+#      - django-authorization
+#      - django-info-person
+#      - django-news
+#      - django-queues
 
 volumes:
-  frontend_build:
+#  frontend_build:
   postgres_data:
