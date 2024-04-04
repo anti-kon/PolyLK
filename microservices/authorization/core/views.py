@@ -1,5 +1,5 @@
 import datetime
-
+import os
 from rest_framework.views import APIView
 from django.db import *
 from .models import Persons
@@ -7,17 +7,16 @@ from .serializer import AuthorizationSerializer
 import jwt
 from rest_framework.response import Response
 
-
-SECRET_KEY = "PolyLK"
+SECRET_KEY = os.environ.get('POLYLK_AUTHORIZATION_SECRET_KEY')
+ENCRYPTION_ALGORITHM = os.environ.get('POLYLK_AUTHORIZATION_ENCRYPTION_ALGORITHM')
 
 
 class AuthorizationView(APIView):
+
     def get(self, request):
-        print("!")
         try:
             login = request.GET.get('login')
             password = request.GET.get('password')
-            print(login, password)
             target_user = Persons.objects.get(login_person=login)
 
             if target_user.password_person != password:
@@ -25,8 +24,11 @@ class AuthorizationView(APIView):
 
             serializer = AuthorizationSerializer(target_user)
             response_data = serializer.data.copy()
-            response_data["token"] = jwt.encode({"id_person": serializer.data.get('id_person'), "login_person": serializer.data.get('login_person'),
-                                                 "exp": datetime.datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(seconds=300)}, "PolyLK", algorithm="HS256")
+            response_data["token"] = jwt.encode({"sub": serializer.data.get('id_person'),
+                                                 "login": serializer.data.get('login_person'),
+                                                 "exp": (datetime.datetime.now(tz=datetime.timezone.utc) +
+                                                         datetime.timedelta(seconds=300))},
+                                                SECRET_KEY, algorithm=ENCRYPTION_ALGORITHM)
             return Response(response_data, status=200)
 
         except Persons.DoesNotExist:
@@ -43,12 +45,13 @@ class TokenView(APIView):
 
         if jwt_token:
             try:
-                payload = jwt.decode(jwt_token.split(' ')[1], SECRET_KEY, algorithms=['HS256'])
-                id_person = payload['id_person']
-                login_person = payload['login_person']
+                payload = jwt.decode(jwt_token.split(' ')[1], SECRET_KEY, algorithms=ENCRYPTION_ALGORITHM)
+                id_person = payload['sub']
+                login_person = payload['login']
+                # TODO fix check id_person and login_person in database
                 return Response('OK', status=200)
             except jwt.ExpiredSignatureError:
-                return Response('Истек срок токена', status=401)  # посмотреть код ошибки
+                return Response('Истек срок токена', status=401)
             except (jwt.DecodeError, jwt.InvalidTokenError):
                 return Response('Неверный токен', status=401)
         else:

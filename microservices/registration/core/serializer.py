@@ -6,4 +6,3 @@ class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Persons
         fields = '__all__'
-

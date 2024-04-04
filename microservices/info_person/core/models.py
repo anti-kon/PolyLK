@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class PersonsDocs(models.Model):
     id_doc = models.AutoField(primary_key=True)
     id_person = models.IntegerField(blank=True, null=True)
@@ -32,4 +33,3 @@ class Persons(models.Model):
     class Meta:
         managed = False
         db_table = 'persons'
-

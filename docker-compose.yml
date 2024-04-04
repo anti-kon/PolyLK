@@ -1,92 +1,129 @@
 version: '3'
 
 services:
-#  django-registration:
-#    build:
-#      context: ./microservices/registration/
-#    command: ["sh", "./start.sh"]
-#    ports:
-#      - "8001:8000"
-#    depends_on:
-#      - postgres-db
-#      - eureka-server
+    django-registration:
+        build:
+            context: ${POLYLK_REGISTRATION_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} && 
+                             ./start.sh"
+        hostname: ${POLYLK_REGISTRATION_HOSTNAME}
+        container_name: ${POLYLK_REGISTRATION_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
+    
+    django-authorization:
+        build:
+            context: ${POLYLK_AUTHORIZATION_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             ./start.sh"
+        hostname: ${POLYLK_AUTHORIZATION_HOSTNAME}
+        container_name: ${POLYLK_AUTHORIZATION_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
+    
+    django-info-person:
+        build:
+            context: ${POLYLK_INFO_PERSON_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             ./start.sh"
+        hostname: ${POLYLK_INFO_PERSON_HOSTNAME}
+        container_name: ${POLYLK_INFO_PERSON_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
+    
+    django-news:
+        build:
+            context: ${POLYLK_NEWS_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             ./start.sh"
+        hostname: ${POLYLK_NEWS_HOSTNAME}
+        container_name: ${POLYLK_NEWS_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
 
-  django-authorization:
-    build:
-      context: ./microservices/authorization/
-    entrypoint: bash -c "./wait-for-it.sh eureka-server:8761 && ./start.sh"
-    ports:
-      - "8002:8000"
-    depends_on:
-      - postgres-db
-      - eureka-server
+    django-posts:
+        build:
+            context: ${POLYLK_POSTS_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             ./start.sh"
+        hostname: ${POLYLK_POSTS_HOSTNAME}
+        container_name: ${POLYLK_POSTS_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
 
-#  django-info-person:
-#    build:
-#      context: ./microservices/info_person/
-#    command: [ "sh", "./start.sh" ]
-#    ports:
-#      - "8003:8000"
-#    depends_on:
-#      - postgres-db
-#      - eureka-server
-
-#  django-news:
-#    build:
-#      context: ./microservices/news/
-#    command: [ "sh", "./start.sh" ]
-#    ports:
-#      - "8004:8000"
-#    depends_on:
-#      - postgres-db
-#      - eureka-server
-
-#  django-queues:
-#    build:
-#      context: ./microservices/news/
-#    command: [ "sh", "./start.sh" ]
-#    ports:
-#      - "8005:8000"
-#    depends_on:
-#      - postgres-db
-#      - eureka-server
-
-  postgres-db:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=PolyLK
-      - POSTGRES_PASSWORD=PMIdatabase
-      - POSTGRES_USER=postgres
-      - POSTGRES_HOST_AUTH_METHOD=trust
-
-  api-gateway:
-    build:
-      context: ./microservices/api_gateway/api-gateway/
-    entrypoint: bash -c "api_gateway/wait-for-it.sh eureka-server:8761 && api_gateway/wait-for-it.sh django-authorization:8000 && java -jar api_gateway/app.jar --spring.profiles.active=docker"
-    ports:
-      - "8080:8080"
-    environment:
-      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
-    depends_on:
-      - eureka-server
-#      - django-registration
-      - django-authorization
-#      - django-info-person
-#      - django-news
-#      - django-queues
-
-  eureka-server:
-    build:
-      context: ./microservices/eureka_server/eureka-server/
-    hostname: eureka-server
-    ports:
-      - "8761:8761"
-    restart: always
+    django-queues:
+        build:
+            context: ${POLYLK_QUEUES_PATH}
+        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             ./start.sh"
+        hostname: ${POLYLK_QUEUES_HOSTNAME}
+        container_name: ${POLYLK_QUEUES_NAME}
+        env_file:
+            - .env
+        depends_on:
+            - postgres-db
+            - eureka-server
+    
+    postgres-db:
+        image: postgres
+        hostname: ${POLYLK_DATABASE_HOSTNAME}
+        container_name: ${POLYLK_DATABASE_SERVER_NAME}
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        environment:
+            - POSTGRES_DB=${POLYLK_DATABASE_NAME}
+            - POSTGRES_PASSWORD=${POLYLK_DATABASE_PASSWORD}
+            - POSTGRES_USER=${POLYLK_DATABASE_USER}
+            - POSTGRES_HOST_AUTH_METHOD=trust
+    
+    api-gateway:
+        build:
+            context: ${POLYLK_API_GATEWAY_PATH}
+        entrypoint: bash -c "api_gateway/wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_REGISTRATION_HOSTNAME}:${POLYLK_REGISTRATION_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_AUTHORIZATION_HOSTNAME}:${POLYLK_AUTHORIZATION_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_INFO_PERSON_HOSTNAME}:${POLYLK_INFO_PERSON_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_NEWS_HOSTNAME}:${POLYLK_NEWS_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_POSTS_HOSTNAME}:${POLYLK_POSTS_PORT} &&
+                             api_gateway/wait-for-it.sh ${POLYLK_QUEUES_HOSTNAME}:${POLYLK_QUEUES_PORT} &&
+                             java -jar api_gateway/app.jar --spring.profiles.active=docker"
+        hostname: ${POLYLK_API_GATEWAY_HOSTNAME}
+        container_name: ${POLYLK_API_GATEWAY_NAME}
+        ports:
+            - "8080:8080"
+        environment:
+            - eureka.client.service-url.defaultZone=http://${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT}/eureka/
+        depends_on:
+            - eureka-server
+            - django-registration
+            - django-authorization
+            - django-info-person
+            - django-news
+            - django-queues
+    
+    eureka-server:
+        build:
+            context: ${POLYLK_EUREKA_SERVER_PATH}
+        hostname: ${POLYLK_EUREKA_SERVER_HOSTNAME}
+        ports:
+            - "8761:8761"
+        restart: always
 
 #  frontend:
 #    build:
@@ -113,5 +150,5 @@ services:
 #      - django-queues
 
 volumes:
-#  frontend_build:
-  postgres_data:
+    #  frontend_build:
+    postgres_data:

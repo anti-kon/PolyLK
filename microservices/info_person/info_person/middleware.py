@@ -9,7 +9,7 @@ class AuthorizationMiddleware:
     def __call__(self, request):
         token = request.META.get('HTTP_AUTHORIZATION', None)
         if token:
-            response = requests.post('http://localhost:8002/verify/', data={'token': token})
+            response = requests.post(f'http://localhost:8002/verify/', data={'token': token})
             if response.status_code == 200:
                 return self.get_response(request)
             else:
