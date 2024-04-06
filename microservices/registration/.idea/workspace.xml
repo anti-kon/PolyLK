@@ -5,57 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../authorization/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../authorization/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wait-for-it.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/java/ru/polylk/apigateway/ApiGatewayApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/java/ru/polylk/apigateway/config/CORSConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/java/ru/polylk/apigateway/config/LoggingFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/java/ru/polylk/apigateway/filter/LoggingFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/test/java/ru/polylk/apigateway/ApiGatewayApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/wait-for-it.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/authorization/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/authorization/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/authorization/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/wait-for-it.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/wait-for-it.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/java/ru/polylk/eurekaserver/EurekaServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka_server/eureka-server/src/test/java/ru/polylk/eurekaserver/EurekaServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../api_gateway/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/src/main/java/ru/polylk/apigateway/config/CORSConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/src/main/java/ru/polylk/apigateway/config/LoggingFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api_gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../api_gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eureka_server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka_server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info_person/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info_person/info_person/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/info_person/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news/news/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../news/news/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news/news/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../news/news/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/posts/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../queues/queues/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../queues/queues/middleware.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +122,8 @@
       <workItem from="1712231740933" duration="2054000" />
       <workItem from="1712233952491" duration="1778000" />
       <workItem from="1712244043409" duration="1832000" />
+      <workItem from="1712393934114" duration="12000" />
+      <workItem from="1712399272609" duration="290000" />
     </task>
     <servers />
   </component>

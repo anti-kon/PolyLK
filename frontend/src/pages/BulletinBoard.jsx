@@ -126,7 +126,7 @@ const BulletinBoard = () => {
     const loadPosts = () => {
         setIsProcessed(true);
         console.log(isProcessed);
-        axios.get('http://localhost:8005/posts/', {
+        axios.get('http://localhost:8080/django-posts/posts/', {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`},
             params: { dorm_num_ads: person.dorm_num_person}
         }).then(response => {
@@ -155,7 +155,7 @@ const BulletinBoard = () => {
     const postNewAdvertisement = () => {
         setIsProcessed(true);
         console.log(isProcessed);
-        axios.post('http://localhost:8005/posts/', newAdvertisement, {
+        axios.post('http://localhost:8080/django-posts/posts/', newAdvertisement, {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
         }).then(response => {
             loadPosts();

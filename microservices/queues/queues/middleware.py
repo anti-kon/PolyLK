@@ -1,3 +1,4 @@
+import os
 import requests
 from django.http import HttpResponse
 
@@ -10,7 +11,11 @@ class AuthorizationMiddleware:
         print(1)
         print(token)
         if token:
-            response = requests.post('http://localhost:8002/verify', data={'token': token})
+            response = requests.post(f"http://"
+                                     f"{os.environ.get('POLYLK_API_GATEWAY_HOSTNAME')}:"
+                                     f"{os.environ.get('POLYLK_API_GATEWAY_PORT')}/"
+                                     f"{os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME')}/"
+                                     f"verify/", data={'token': token})
             print(response)
             print(2)
             if response.status_code == 200:

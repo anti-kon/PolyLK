@@ -1,8 +1,8 @@
 server:
-    port: 8761
+    port: ${POLYLK_EUREKA_SERVER_PORT}
 spring:
     application:
-        name: eureka-server
+        name: ${POLYLK_EUREKA_SERVER_NAME}
 eureka:
     instance:
         prefer-ip-address: true

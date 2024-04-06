@@ -7,7 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db import *
 import os
 
-MAX_SIZE_FILE = os.environ.get('POLYLK_INFO_PERSON_MAX_SIZE_FILE')  # in bytes
+MAX_SIZE_FILE = int(os.environ.get('POLYLK_INFO_PERSON_MAX_SIZE_FILE'))  # in bytes
 
 
 class PersonsDocsView(APIView):

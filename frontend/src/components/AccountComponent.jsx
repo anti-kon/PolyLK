@@ -34,7 +34,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
     const loadFiles = () => {
         setIsProcessed(true);
         console.log(isProcessed);
-        axios.get('http://localhost:8003/infoPerson/', {
+        axios.get('http://localhost:8080/django-info-person/infoPerson/', {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`},
             params: { id_person: person.id_person}
         })
@@ -67,7 +67,7 @@ const AccountComponent = ({person, gearOnClick, ...props}) => {
         formData.append('id_person', person.id_person);
         formData.append('name_file', files[0].name.split('.').slice(0, -1).join('.'));
         formData.append('file', files[0]);
-        axios.post('http://localhost:8003/infoPerson/', formData, {
+        axios.post('http://localhost:8080/django-info-person/infoPerson/', formData, {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
         })
             .then(() => loadFiles())

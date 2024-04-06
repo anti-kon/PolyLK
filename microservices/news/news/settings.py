@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-izt9l#=zyn39+n2+03noxgch_g3@^svs$ekjx&94)*f6^022$*
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://localhost:3000',
     os.environ.get('POLYLK_NEWS_HOSTNAME'),
 ]
 

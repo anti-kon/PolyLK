@@ -89,7 +89,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
             isValidPasswordRepeat === true && isDormNumErrorShow !== true &&
             login.length !== 0 && password.length !== 0 && dormNumber !== 0){
             setIsProcessed(true);
-            axios.put('http://localhost:8003/infoPerson/', {
+            axios.put('http://localhost:8080/django-info-person/infoPerson/', {
                 id_person: person.id_person,
                 login_person: login,
                 password_person: password,
