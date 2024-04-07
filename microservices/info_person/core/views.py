@@ -10,6 +10,7 @@ import os
 MAX_SIZE_FILE = int(os.environ.get('POLYLK_INFO_PERSON_MAX_SIZE_FILE'))  # in bytes
 
 
+
 class PersonsDocsView(APIView):
 
     def get(self, request):

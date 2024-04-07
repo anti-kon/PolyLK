@@ -12,8 +12,8 @@ ENCRYPTION_ALGORITHM = os.environ.get('POLYLK_AUTHORIZATION_ENCRYPTION_ALGORITHM
 
 
 class AuthorizationView(APIView):
-
     def get(self, request):
+        print("!")
         try:
             login = request.GET.get('login')
             password = request.GET.get('password')
