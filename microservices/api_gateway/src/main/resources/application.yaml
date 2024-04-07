@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: ${POLYLK_API_GATEWAY_NAME}
+    cloud:
+        gateway:
+            default-filters:
+                - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+            globalcors:
+                corsConfigurations:
+                    '[/**]':
+                        allowedOrigins: "*"
+                        allowedHeaders: "*"
+                        allowedMethods: "*"
+            discovery:
+                locator:
+                    enabled: true
+                    lower-case-service-id: true
+server:
+    port: ${POLYLK_API_GATEWAY_PORT}
+eureka:
+    client:
+        service-url:
+            defaultZone: http://${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT}/eureka/
+logging:
+    pattern:
+        console: '%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n'

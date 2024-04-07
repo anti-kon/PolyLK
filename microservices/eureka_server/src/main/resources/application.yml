@@ -1,0 +1,19 @@
+server:
+    port: ${POLYLK_EUREKA_SERVER_PORT}
+spring:
+    application:
+        name: ${POLYLK_EUREKA_SERVER_NAME}
+eureka:
+    instance:
+        prefer-ip-address: true
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+logging:
+    level:
+        com:
+            netflix:
+                eureka: OFF
+                discovery: OFF
+    pattern:
+        console: '%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n'

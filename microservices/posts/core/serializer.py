@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Persons, Ads
+from .models import Ads
+
 
 class PostsSerializer(serializers.ModelSerializer):
 

@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,7 +24,9 @@ SECRET_KEY = 'django-insecure-&ou2m-^!v0=rz*l4!@w(2cvcn@rz2wpi$19&hd*1)2w9em94)j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME'),
+]
 
 
 # Application definition
@@ -46,12 +47,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    
 ]
 
 REST_FRAMEWORK = {
@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'authorization.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'PolyLK',
-        'USER': 'postgres',
-        'PASSWORD': 'PMIdatabase',#PMIdatabase
-        'HOST': 'localhost',#postgres_db
-        'PORT': '5432',
+        'NAME':  os.environ.get('POLYLK_DATABASE_NAME'),
+        'USER': os.environ.get('POLYLK_DATABASE_USER'),
+        'PASSWORD': os.environ.get('POLYLK_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('POLYLK_DATABASE_HOSTNAME'),
+        'PORT': os.environ.get('POLYLK_DATABASE_PORT'),
     }
 }
 

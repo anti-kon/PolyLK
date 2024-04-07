@@ -1,3 +1,4 @@
+import os
 from django.apps import AppConfig
 import py_eureka_client.eureka_client as eureka_client
 
@@ -13,9 +14,11 @@ class CoreConfig(AppConfig):
             print(f"{err_type}::{err}")
 
     def ready(self):
-        # The flowing code will register your server to eureka server and also start to send heartbeat every 30 seconds
-        eureka_client.init(eureka_server="http://localhost:8761/eureka",
-                           app_name="django-authorization",
-                           instance_host="localhost",
-                           instance_port=8002,
+        eureka_client.init(eureka_server=f"http://"
+                                         f"{os.environ.get('POLYLK_EUREKA_SERVER_HOSTNAME')}:"
+                                         f"{os.environ.get('POLYLK_EUREKA_SERVER_PORT')}"
+                                         f"/eureka/",
+                           app_name=os.environ.get('POLYLK_AUTHORIZATION_NAME'),
+                           instance_port=int(os.environ.get('POLYLK_AUTHORIZATION_PORT')),
+                           instance_host=os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME'),
                            on_error=self.on_err)

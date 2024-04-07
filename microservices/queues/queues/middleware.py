@@ -1,12 +1,7 @@
-import json
-import jwt
-import logging
-
+import os
 import requests
-from environs import Env
 from django.http import HttpResponse
-from django.utils.deprecation import MiddlewareMixin
-from rest_framework.response import Response
+
 class AuthorizationMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -16,7 +11,11 @@ class AuthorizationMiddleware:
         print(1)
         print(token)
         if token:
-            response = requests.post('http://localhost:8000/verify', data={'token': token})
+            response = requests.post(f"http://"
+                                     f"{os.environ.get('POLYLK_API_GATEWAY_HOSTNAME')}:"
+                                     f"{os.environ.get('POLYLK_API_GATEWAY_PORT')}/"
+                                     f"{os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME')}/"
+                                     f"verify/", data={'token': token})
             print(response)
             print(2)
             if response.status_code == 200:

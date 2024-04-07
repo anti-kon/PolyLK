@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import classes from "./Select.module.css";
 import {BiSolidDownArrow} from "react-icons/bi";
 
-const Select = ({valid = true, ...props}) => {
+const Select = ({valid = true, default_value = "", ...props}) => {
     const [isListVisible,setIsListVisible] = useState(false);
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(default_value);
 
     const handleBlur = (e) => {
         const currentTarget = e.currentTarget;

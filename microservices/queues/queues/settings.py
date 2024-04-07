@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-9%rq7nf*!(^1tt9f&g$tn!a%+&r+xd^0^==9#(xqc^rj!6y8zj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    os.environ.get('POLYLK_QUEUES_HOSTNAME'),
+]
 
 
 # Application definition
@@ -46,11 +48,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'queues.middleware.AuthorizationMiddleware'
 ]
 
@@ -90,11 +92,11 @@ WSGI_APPLICATION = 'queues.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'PolyLK',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME':  os.environ.get('POLYLK_DATABASE_NAME'),
+        'USER': os.environ.get('POLYLK_DATABASE_USER'),
+        'PASSWORD': os.environ.get('POLYLK_DATABASE_PASSWORD'),
+        'HOST': os.environ.get('POLYLK_DATABASE_HOSTNAME'),
+        'PORT': os.environ.get('POLYLK_DATABASE_PORT'),
     }
 }
 

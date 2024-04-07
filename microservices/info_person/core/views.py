@@ -7,10 +7,12 @@ from django.core.files.storage import FileSystemStorage
 from django.db import *
 import os
 
-MAX_SIZE_FILE = 4096  # in bytes
+MAX_SIZE_FILE = int(os.environ.get('POLYLK_INFO_PERSON_MAX_SIZE_FILE'))  # in bytes
+
 
 
 class PersonsDocsView(APIView):
+
     def get(self, request):
         try:
             id_person = request.GET.get("id_person")
@@ -91,7 +93,7 @@ class PersonsDocsView(APIView):
             name_file = request.data['name_file']
             print(name_file)
 
-            if (request.FILES['file'].size > (MAX_SIZE_FILE)) or (len(name_file) > 50):
+            if (request.FILES['file'].size > MAX_SIZE_FILE) or (len(name_file) > 50):
                 return Response(data='Файл или его имя слишком большие.', status=413)
 
             pdf_file = request.FILES['file']

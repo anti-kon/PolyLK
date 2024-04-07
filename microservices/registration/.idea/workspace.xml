@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../posts/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AccountSettingsComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/checkboxes/MajorCheckbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/checkboxes/MajorCheckbox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/footers/major_footer/MajorFooter.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/footers/major_footer/MajorFooter.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/headers/MajorHeader/MajorHeader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/headers/MajorHeader/MajorHeader.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/image/ImageComponent/ImageComponent.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/image/ImageComponent/ImageComponent.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/images_gallery/LineImagesGallery/LineImagesGallery.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/text_input/TextInput.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/inputs/text_input/TextInput.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/FAQ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/FAQ.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/News.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/Account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/AppointmentsList.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/AppointmentsList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/FAQ.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/FAQ.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/News.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/News.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/ServicePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/ServicePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/SignUp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api_gateway/api-gateway/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/authorization/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/authorization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/authorization/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../authorization/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../authorization/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../info_person/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../info_person/info_person/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/info_person/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../news/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../news/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/.idea/posts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/.idea/posts.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/posts/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/posts/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/posts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../posts/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/apps.py" afterDir="false" />
-    </list>
+    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,8 +37,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Projects/PolyLK/backend/Django&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/update__dockerizing&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Projects/PolyLK/microservices/registration&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -95,6 +52,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\Projects\PolyLK\microservices\registration" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="registration" type="Python.DjangoServer" factoryName="Django server">
       <module name="registration" />
@@ -139,6 +101,16 @@
       <workItem from="1705083929015" duration="7062000" />
       <workItem from="1712027521062" duration="840000" />
       <workItem from="1712055851122" duration="588000" />
+      <workItem from="1712231740933" duration="2054000" />
+      <workItem from="1712233952491" duration="1778000" />
+      <workItem from="1712244043409" duration="1832000" />
+      <workItem from="1712393934114" duration="12000" />
+      <workItem from="1712399272609" duration="290000" />
+      <workItem from="1712404351519" duration="249000" />
+      <workItem from="1712425720184" duration="319000" />
+      <workItem from="1712426051043" duration="768000" />
+      <workItem from="1712428433341" duration="1418000" />
+      <workItem from="1712500127852" duration="34000" />
     </task>
     <servers />
   </component>

@@ -20,7 +20,7 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('queues/recordsMachines', RecordsMachinesView.as_view(), name='recordsMachines'),
-    path('queues/services', ServicesView.as_view(), name='services'),
-    path('queues/machines', MachinesView.as_view(), name='machines')
+    path('queues/recordsMachines/', RecordsMachinesView.as_view(), name='recordsMachines'),
+    path('queues/services/', ServicesView.as_view(), name='services'),
+    path('queues/machines/', MachinesView.as_view(), name='machines')
 ]

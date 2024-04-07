@@ -1,5 +1,4 @@
 import os
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db import *
@@ -13,7 +12,9 @@ def delete_photo(paths_photo):
     for path in paths_photo:
         os.remove(path)
 
+
 class NewsView(APIView):
+
     def get(self, request):
         try:
             news = News.objects.all()

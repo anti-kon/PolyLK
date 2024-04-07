@@ -89,7 +89,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
             isValidPasswordRepeat === true && isDormNumErrorShow !== true &&
             login.length !== 0 && password.length !== 0 && dormNumber !== 0){
             setIsProcessed(true);
-            axios.put('http://localhost:8003/infoPerson/', {
+            axios.put('http://localhost:8080/django-info-person/infoPerson/', {
                 id_person: person.id_person,
                 login_person: login,
                 password_person: password,
@@ -99,6 +99,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
             }).then(response => {
                 setIsProcessed(false);
                 if(response.status === 200) {
+                    returnFunc();
                     setPerson(response.data);
                 }
             }).catch(error => {
@@ -135,8 +136,8 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     color: "#68a3a3"
                 }}
                 valid={true}
-                value={person.login_person}
-                onChange={e => console.log(e)}>
+                value={login}
+                onChange={e => {setLogin(e.target.value)}}>
             </TextInput>
             {!isValidLogin ?
                 <label className={"error-text"}>
@@ -196,6 +197,8 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     style={{marginTop: 0, borderRadius: "7px", fontSize: "20px", caretColor: "transparent"}}
                     options={dorms}
                     placeholder={"Общежитие №"}
+                    default_value={person.dorm_num_person === -1 ? undefined :
+                        dorms.find(obj => {return obj.value === person.dorm_num_person}).name}
                 ></Select>
             </div>
             {isDormNumErrorShow ?

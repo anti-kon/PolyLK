@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import Services
 from .models import RecordsMachines
 from .models import Machines
@@ -21,4 +20,3 @@ class MachinesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machines
         fields = '__all__'
-

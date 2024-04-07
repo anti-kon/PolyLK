@@ -5,7 +5,9 @@ from .serializer import MachinesSerializer, RecordsMachinesSerializer, ServicesS
 from django.db import *
 import datetime
 
+
 class MachinesView(APIView):
+
     def get(self, request, *args, **kwargs):
         try:
             queryset = Machines.objects.all()
@@ -14,7 +16,9 @@ class MachinesView(APIView):
         except DatabaseError:
             return Response(status=503)
 
+
 class RecordsMachinesView(APIView):
+
     def get(self, request, *args, **kwargs):
         dorm_num_rm = self.request.query_params.get('dorm_num_rm')
         try:
@@ -33,10 +37,10 @@ class RecordsMachinesView(APIView):
             start_time_rm = request.data.get('start_time_rm')
             end_time_rm = request.data.get('end_time_rm')
             new_recordsMachines = RecordsMachines(id_person_rm=id_person_rm,
-                                         dorm_num_rm=dorm_num_rm,
-                                         id_machine_rm=id_machine_rm,
-                                         start_time_rm=start_time_rm,
-                                         end_time_rm=end_time_rm)
+                                                  dorm_num_rm=dorm_num_rm,
+                                                  id_machine_rm=id_machine_rm,
+                                                  start_time_rm=start_time_rm,
+                                                  end_time_rm=end_time_rm)
 
             records = RecordsMachines.objects.filter(id_machine_rm=id_machine_rm)
             for record in records:
@@ -51,7 +55,8 @@ class RecordsMachinesView(APIView):
 
     def delete(self, request):
         try:
-            RecordsMachines_to_delete = RecordsMachines.objects.get(id_record_machine=request.data.get('id_record_machine'))
+            RecordsMachines_to_delete = RecordsMachines.objects.get(
+                id_record_machine=request.data.get('id_record_machine'))
             RecordsMachines_to_delete.delete()
             return Response("OK", status=200)
 
@@ -60,6 +65,8 @@ class RecordsMachinesView(APIView):
 
         except DatabaseError:
             return Response("Database Error", status=503)
+
+
 class ServicesView(APIView):
 
     def get(self, request, *args, **kwargs):
@@ -79,9 +86,9 @@ class ServicesView(APIView):
             id_person = request.data.get('id_person')
             message_service = request.data.get('message_service')
             new_service = Services(service=service,
-                                  date_time_service=date_time_service,
-                                  id_person=id_person,
-                                  message_service=message_service)
+                                   date_time_service=date_time_service,
+                                   id_person=id_person,
+                                   message_service=message_service)
             new_service.save()
             return Response("OK", status=200)
 
@@ -97,4 +104,3 @@ class ServicesView(APIView):
             return Response('The Services was not found', status=404)
         except DatabaseError:
             return Response("Database Error", status=503)
-
