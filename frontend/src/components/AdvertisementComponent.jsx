@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {BiChat, BiDotsHorizontalRounded} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import classes from "./UI/headers/MajorHeader/MajorHeader.module.css";
@@ -8,8 +8,19 @@ import TextInput from "./UI/inputs/text_input/TextInput";
 import {BsPaperclip} from "react-icons/bs";
 import MajorButton from "./UI/buttons/major_button/MajorButton";
 import LineImagesGallery from "./UI/images_gallery/LineImagesGallery/LineImagesGallery";
+import axios from "axios";
+import {encode} from "js-base64";
+import {InfoContext, PersonContext} from "../App";
+import {useNavigate} from "react-router-dom";
+import CircleDotsLoading from "./UI/loaders/CircleDotsLoading";
 
-const AdvertisementComponent = (props) => {
+const AdvertisementComponent = ({onDelete, ...props}) => {
+    const [isProcessed, setIsProcessed] = useState(false);
+
+    const {setInfoMessage} = useContext(InfoContext);
+
+    const navigate = useNavigate();
+
     const maxTextLength = 256;
 
     const isNeedAdopt = (inputText) => {
@@ -21,6 +32,68 @@ const AdvertisementComponent = (props) => {
         lastWordIndex = lastWordIndex > maxTextLength ? maxTextLength : lastWordIndex;
         return isNeedAdopt(inputText) ? inputText.slice(0, lastWordIndex) + '...' : inputText;
     }
+
+    const updateInfoMessage = (status, message, link, link_title) => {
+        setInfoMessage( {
+            status: status,
+            message: message,
+            link: link,
+            link_title: link_title
+        });
+
+        return encode(new Date().getMilliseconds() + new Date().getDate() + status.length + 523);
+    }
+
+    const deleteAdvertisement = () => {
+        setIsProcessed(true);
+        axios.delete('http://212.109.221.176:8080/django-posts/posts/', {
+            headers: {Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`,
+            data: { id_ads: props.id}},
+        }).then(response => {
+            setIsProcessed(false);
+            if(response.status === 200) {
+                onDelete();
+            }
+        }).catch(error => {
+            setIsProcessed(false);
+            if (error.response.status === 401) {
+                navigate("../message/" + updateInfoMessage(
+                    error.response.status.toString(),
+                    error.response.data,
+                    "../login",
+                    "Вернуться на страницу авторизации"));
+            }
+        });
+    }
+
+    // const changeAdvertisement = () => {
+    //     setIsProcessed(true);
+    //     axios.put('http://212.109.221.176:8080/django-posts/posts/', {
+    //         id_ads: props.id,
+    //         dorm_num_ads:,
+    //         info_ads:,
+    //         price_ads:,
+    //         alternative_payment_ads:,
+    //         list_photo_ads:,
+    //         id_person_ads:,
+    //     }, {
+    //         headers: {Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
+    //     }).then(response => {
+    //         setIsProcessed(false);
+    //         if(response.status === 200) {
+    //             onDelete();
+    //         }
+    //     }).catch(error => {
+    //         setIsProcessed(false);
+    //         if (error.response.status === 401) {
+    //             navigate("../message/" + updateInfoMessage(
+    //                 error.response.status.toString(),
+    //                 error.response.data,
+    //                 "../login",
+    //                 "Вернуться на страницу авторизации"));
+    //         }
+    //     });
+    // }
 
     const modal = useRef(null);
     const buttonOpenModel = useRef(null);
@@ -93,7 +166,7 @@ const AdvertisementComponent = (props) => {
                                               padding: "3px 7px 3px 6px"}}>
                                 Редактировать
                             </ShadowButton>
-                            <ShadowButton onClick={() => {console.log("Delete");}}
+                            <ShadowButton onClick={() => {deleteAdvertisement();}}
                                           style={{
                                               minWidth: "max-content",
                                               fontSize: "15px",
@@ -103,7 +176,14 @@ const AdvertisementComponent = (props) => {
                         </div>
                     </ContentBox>}
             </div>
-            { isEdit ?
+            { isProcessed ?
+                <div style={{
+                    display: "flex",
+                    margin: "20px",
+                    justifyContent: "center"}}>
+                    <CircleDotsLoading size={"80px"} color={"#68a3a3"}/>
+                </div> :
+                isEdit ?
                 <div>
                     <ResizeableTextarea
                         placeholder={"Введите текст"}
@@ -138,7 +218,10 @@ const AdvertisementComponent = (props) => {
                             padding: '4px 15px',
                             borderRadius: '5px',
                             margin: '0 0 0 10px' }}
-                            onClick = {() => {setIsEdit(false)}}>Сохранить</MajorButton>
+                            onClick = {() => {
+                                setIsEdit(false);
+                                // changeAdvertisement();
+                            }}>Сохранить</MajorButton>
                     </div>
                 </div> :
                 <div>
