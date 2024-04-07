@@ -92,7 +92,7 @@ class PersonsDocsView(APIView):
             name_file = request.data['name_file']
             print(name_file)
 
-            if (request.FILES['file'].size > (MAX_SIZE_FILE)) or (len(name_file) > 50):
+            if (request.FILES['file'].size > MAX_SIZE_FILE) or (len(name_file) > 50):
                 return Response(data='Файл или его имя слишком большие.', status=413)
 
             pdf_file = request.FILES['file']

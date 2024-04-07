@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--x&3s5n^z!mk*vnun+^+v-tp_r5#^ymcvqan6&psyqzwsz9)ot
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME'),
+    os.environ.get('POLYLK_REGISTRATION_HOSTNAME'),
 ]
 
 
