@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Start container') {
             steps {
-                sh 'docker-compose --env-file .env up --build -d --no-color --wait'
+                sh 'docker compose --env-file .env up --build -d --no-color --wait'
                 sh 'docker compose ps'
             }
         }
