@@ -1,0 +1,20 @@
+name: trigger jenkins job
+
+on:
+    push:
+        branches:
+            - master
+            - develop
+
+jobs:
+    launch_jenkins_job:
+        name: trigger jenkins job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Trigger Jenkins Job
+              uses: appleboy/jenkins-action@master
+              with:
+                  user: ${{ secrets.JENKINS_USER }}
+                  token: ${{ secrets.JENKINS_TOKEN }}
+                  url: ${{ secrets.JENKINS_HOST }}
+                  job: "docker compose"
