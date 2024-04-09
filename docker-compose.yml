@@ -4,8 +4,8 @@ services:
     django-registration:
         build:
             context: ${POLYLK_REGISTRATION_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_REGISTRATION_HOSTNAME}
         container_name: ${POLYLK_REGISTRATION_NAME}
@@ -14,12 +14,16 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
-    
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
+
     django-authorization:
         build:
             context: ${POLYLK_AUTHORIZATION_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_AUTHORIZATION_HOSTNAME}
         container_name: ${POLYLK_AUTHORIZATION_NAME}
@@ -28,12 +32,16 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
-    
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
+
     django-info-person:
         build:
             context: ${POLYLK_INFO_PERSON_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_INFO_PERSON_HOSTNAME}
         container_name: ${POLYLK_INFO_PERSON_NAME}
@@ -42,12 +50,16 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
-    
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
+
     django-news:
         build:
             context: ${POLYLK_NEWS_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_NEWS_HOSTNAME}
         container_name: ${POLYLK_NEWS_NAME}
@@ -56,12 +68,16 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
 
     django-posts:
         build:
             context: ${POLYLK_POSTS_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_POSTS_HOSTNAME}
         container_name: ${POLYLK_POSTS_NAME}
@@ -70,12 +86,16 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
 
     django-queues:
         build:
             context: ${POLYLK_QUEUES_PATH}
-        entrypoint: bash -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                              ./start.sh"
         hostname: ${POLYLK_QUEUES_HOSTNAME}
         container_name: ${POLYLK_QUEUES_NAME}
@@ -84,6 +104,10 @@ services:
         depends_on:
             - postgres-db
             - eureka-server
+        deploy:
+            resources:
+                limits:
+                    memory: 200M
     
     postgres-db:
         image: postgres
@@ -103,13 +127,13 @@ services:
     api-gateway:
         build:
             context: ${POLYLK_API_GATEWAY_PATH}
-        entrypoint: bash -c "api_gateway/wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_REGISTRATION_HOSTNAME}:${POLYLK_REGISTRATION_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_AUTHORIZATION_HOSTNAME}:${POLYLK_AUTHORIZATION_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_INFO_PERSON_HOSTNAME}:${POLYLK_INFO_PERSON_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_NEWS_HOSTNAME}:${POLYLK_NEWS_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_POSTS_HOSTNAME}:${POLYLK_POSTS_PORT} &&
-                             api_gateway/wait-for-it.sh ${POLYLK_QUEUES_HOSTNAME}:${POLYLK_QUEUES_PORT} &&
+        entrypoint: /bin/sh -c "api_gateway/wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_REGISTRATION_HOSTNAME}:${POLYLK_REGISTRATION_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_AUTHORIZATION_HOSTNAME}:${POLYLK_AUTHORIZATION_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_INFO_PERSON_HOSTNAME}:${POLYLK_INFO_PERSON_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_NEWS_HOSTNAME}:${POLYLK_NEWS_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_POSTS_HOSTNAME}:${POLYLK_POSTS_PORT} -t 0 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_QUEUES_HOSTNAME}:${POLYLK_QUEUES_PORT} -t 0 &&
                              java -jar api_gateway/app.jar --spring.profiles.active=docker"
         hostname: ${POLYLK_API_GATEWAY_HOSTNAME}
         container_name: ${POLYLK_API_GATEWAY_NAME}
@@ -119,6 +143,7 @@ services:
             - .env
         environment:
             - eureka.client.service-url.defaultZone=http://${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT}/eureka/
+            - JAVA_OPTIONS='-Xmx300m'
         depends_on:
             - eureka-server
             - django-registration
@@ -133,34 +158,43 @@ services:
         hostname: ${POLYLK_EUREKA_SERVER_HOSTNAME}
         ports:
             - "8761:8761"
+        environment:
+            - JAVA_OPTIONS='-Xmx300m'
         env_file:
             - .env
         restart: always
 
-#  frontend:
-#    build:
-#      context: ./frontend/
-#    ports:
-#      - "3000:3000"
-#    volumes:
-#      - frontend_build:/frontend/build
+    frontend:
+        build:
+            context: ./frontend/
+        entrypoint: /bin/sh -c "serve -s build"
+        ports:
+            - "80:3000"
+        volumes:
+            - frontend_build:/frontend/build
+        environment:
+            - NODE_OPTIONS=--max_old_space_size=1000
+        deploy:
+            resources:
+                limits:
+                    memory: 1000M
 
-#  nginx:
-#    image: nginx:latest
-#    ports:
-#      - "80:8080"
-#    volumes:
-#      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
-#      - frontend_build:/var/www/frontend
-#    depends_on:
-#      - frontend
-#      - api-gateway
-#      - django-registration
-#      - django-authorization
-#      - django-info-person
-#      - django-news
-#      - django-queues
+#    nginx:
+#        image: nginx:latest
+#        ports:
+#          - "80:8080"
+#        volumes:
+#          - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
+#          - frontend_build:/var/www/frontend
+#        depends_on:
+#          - frontend
+#          - api-gateway
+#          - django-registration
+#          - django-authorization
+#          - django-info-person
+#          - django-news
+#          - django-queues
 
 volumes:
-    #  frontend_build:
+    frontend_build:
     postgres_data:

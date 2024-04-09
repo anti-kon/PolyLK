@@ -32,7 +32,7 @@ const News = () => {
 
     const loadNews = () => {
         setIsProcessed(true);
-        axios.get('http://localhost:8080/django-news/news/', {
+        axios.get('http://212.109.221.176:8080/django-news/news/', {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
         }).then(response => {
                 setIsProcessed(false);

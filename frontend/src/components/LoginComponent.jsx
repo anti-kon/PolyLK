@@ -43,7 +43,7 @@ const LoginComponent = (props) => {
             return;
         }
         setIsProcessed(true);
-        axios.get('http://localhost:8080/django-authorization/authorization/', {
+        axios.get('http://212.109.221.176:8080/django-authorization/authorization/', {
             params: {
                 login: login,
                 password: password,

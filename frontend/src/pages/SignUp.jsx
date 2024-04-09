@@ -86,7 +86,7 @@ const SignUp = () => {
             isValidPasswordRepeat === true && isDormNumErrorShow !== true &&
             login.length !== 0 && password.length !== 0 && dormNumber !== 0){
             setIsProcessed(true);
-            axios.post('http://localhost:8080/django-registration/registration/', {
+            axios.post('http://212.109.221.176:8080/django-registration/registration/', {
                 login_person: login,
                 password_person: password,
                 dorm_num_person: dormNumber

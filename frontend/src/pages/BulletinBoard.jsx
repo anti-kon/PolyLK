@@ -31,9 +31,9 @@ const BulletinBoard = () => {
     const [filter, setFilter] = useState({
         startPrice: undefined,
         endPrice: undefined,
-        allowBarter: true,
-        allowProducts: true,
-        allowServices: true
+        allowBarter: false,
+        allowProducts: false,
+        allowServices: false
     });
     const [isProcessed, setIsProcessed] = useState(true);
     const [isResponseValid, setIsResponseValid] = useState(false);
@@ -123,10 +123,13 @@ const BulletinBoard = () => {
         setNewAdImages(newAdImages.slice(0, key).concat(newAdImages.slice(key + 1)));
     }
 
+    const deleteAd = (id_ad) => {
+        setAdvertisements(advertisements.filter(element => element.id !== id_ad));
+    }
+
     const loadPosts = () => {
         setIsProcessed(true);
-        console.log(isProcessed);
-        axios.get('http://localhost:8080/django-posts/posts/', {
+        axios.get('http://212.109.221.176:8080/django-posts/posts/', {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`},
             params: { dorm_num_ads: person.dorm_num_person}
         }).then(response => {
@@ -155,7 +158,7 @@ const BulletinBoard = () => {
     const postNewAdvertisement = () => {
         setIsProcessed(true);
         console.log(isProcessed);
-        axios.post('http://localhost:8080/django-posts/posts/', newAdvertisement, {
+        axios.post('http://212.109.221.176:8080/django-posts/posts/', newAdvertisement, {
             headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
         }).then(response => {
             loadPosts();
@@ -380,6 +383,7 @@ const BulletinBoard = () => {
                                     <ContentBox key={advertisement.id_ads}
                                                 style={{display: "flex", marginBottom: "20px", boxSizing: "border-box"}}>
                                         <AdvertisementComponent
+                                            onDelete={() => deleteAd()}
                                             login={advertisement.id_person}
                                             moneyPrice={advertisement.price_ads}
                                             alternativePrice={advertisement.alternative_payment_ads}

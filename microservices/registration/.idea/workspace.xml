@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="" />
+    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +42,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/update__dockerizing&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/jenkins__configure&quot;,
     &quot;last_opened_file_path&quot;: &quot;Z:/Projects/PolyLK/microservices/registration&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -111,6 +116,8 @@
       <workItem from="1712426051043" duration="768000" />
       <workItem from="1712428433341" duration="1418000" />
       <workItem from="1712500127852" duration="34000" />
+      <workItem from="1712561793383" duration="1864000" />
+      <workItem from="1712612453148" duration="2287000" />
     </task>
     <servers />
   </component>
