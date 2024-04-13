@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-alpine
-RUN apk update && apk add bash
+RUN apk update && apk upgrade && apk add bash
 
 WORKDIR /api_gateway
 
