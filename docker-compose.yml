@@ -4,8 +4,8 @@ services:
     django-registration:
         build:
             context: ${POLYLK_REGISTRATION_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_REGISTRATION_HOSTNAME}
         container_name: ${POLYLK_REGISTRATION_NAME}
@@ -22,8 +22,8 @@ services:
     django-authorization:
         build:
             context: ${POLYLK_AUTHORIZATION_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_AUTHORIZATION_HOSTNAME}
         container_name: ${POLYLK_AUTHORIZATION_NAME}
@@ -40,8 +40,8 @@ services:
     django-info-person:
         build:
             context: ${POLYLK_INFO_PERSON_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_INFO_PERSON_HOSTNAME}
         container_name: ${POLYLK_INFO_PERSON_NAME}
@@ -58,8 +58,8 @@ services:
     django-news:
         build:
             context: ${POLYLK_NEWS_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_NEWS_HOSTNAME}
         container_name: ${POLYLK_NEWS_NAME}
@@ -76,8 +76,8 @@ services:
     django-posts:
         build:
             context: ${POLYLK_POSTS_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_POSTS_HOSTNAME}
         container_name: ${POLYLK_POSTS_NAME}
@@ -94,8 +94,8 @@ services:
     django-queues:
         build:
             context: ${POLYLK_QUEUES_PATH}
-        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 30 &&
                              ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_QUEUES_HOSTNAME}
         container_name: ${POLYLK_QUEUES_NAME}
@@ -127,13 +127,13 @@ services:
     api-gateway:
         build:
             context: ${POLYLK_API_GATEWAY_PATH}
-        entrypoint: /bin/sh -c "api_gateway/wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_REGISTRATION_HOSTNAME}:${POLYLK_REGISTRATION_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_AUTHORIZATION_HOSTNAME}:${POLYLK_AUTHORIZATION_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_INFO_PERSON_HOSTNAME}:${POLYLK_INFO_PERSON_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_NEWS_HOSTNAME}:${POLYLK_NEWS_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_POSTS_HOSTNAME}:${POLYLK_POSTS_PORT} -t 0 &&
-                             api_gateway/wait-for-it.sh ${POLYLK_QUEUES_HOSTNAME}:${POLYLK_QUEUES_PORT} -t 0 &&
+        entrypoint: /bin/sh -c "api_gateway/wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_REGISTRATION_HOSTNAME}:${POLYLK_REGISTRATION_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_AUTHORIZATION_HOSTNAME}:${POLYLK_AUTHORIZATION_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_INFO_PERSON_HOSTNAME}:${POLYLK_INFO_PERSON_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_NEWS_HOSTNAME}:${POLYLK_NEWS_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_POSTS_HOSTNAME}:${POLYLK_POSTS_PORT} -t 30 &&
+                             api_gateway/wait-for-it.sh ${POLYLK_QUEUES_HOSTNAME}:${POLYLK_QUEUES_PORT} -t 30 &&
                              java -jar api_gateway/app.jar --spring.profiles.active=docker"
         hostname: ${POLYLK_API_GATEWAY_HOSTNAME}
         container_name: ${POLYLK_API_GATEWAY_NAME}
