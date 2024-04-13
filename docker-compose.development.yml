@@ -9,6 +9,8 @@ services:
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_REGISTRATION_HOSTNAME}
         container_name: ${POLYLK_REGISTRATION_NAME}
+        ports:
+            - ${POLYLK_REGISTRATION_PORT}:${POLYLK_REGISTRATION_PORT}
         env_file:
             - .env
         depends_on:
@@ -27,6 +29,8 @@ services:
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_AUTHORIZATION_HOSTNAME}
         container_name: ${POLYLK_AUTHORIZATION_NAME}
+        ports:
+            - ${POLYLK_AUTHORIZATION_PORT}:${POLYLK_AUTHORIZATION_PORT}
         env_file:
             - .env
         depends_on:
@@ -45,6 +49,8 @@ services:
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_INFO_PERSON_HOSTNAME}
         container_name: ${POLYLK_INFO_PERSON_NAME}
+        ports:
+            - ${POLYLK_INFO_PERSON_PORT}:${POLYLK_INFO_PERSON_PORT}
         env_file:
             - .env
         depends_on:
@@ -64,6 +70,8 @@ services:
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_NEWS_HOSTNAME}
         container_name: ${POLYLK_NEWS_NAME}
+        ports:
+            - ${POLYLK_NEWS_PORT}:${POLYLK_NEWS_PORT}
         env_file:
             - .env
         depends_on:
@@ -82,6 +90,8 @@ services:
                                 ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_POSTS_HOSTNAME}
+        ports:
+            - ${POLYLK_POSTS_PORT}:${POLYLK_POSTS_PORT}
         container_name: ${POLYLK_POSTS_NAME}
         env_file:
             - .env
@@ -102,6 +112,8 @@ services:
                                 ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_QUEUES_HOSTNAME}
         container_name: ${POLYLK_QUEUES_NAME}
+        ports:
+            - ${POLYLK_QUEUES_PORT}:${POLYLK_QUEUES_PORT}
         env_file:
             - .env
         depends_on:
