@@ -6,7 +6,7 @@ services:
             context: ${POLYLK_REGISTRATION_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_REGISTRATION_HOSTNAME}
         container_name: ${POLYLK_REGISTRATION_NAME}
         env_file:
@@ -24,7 +24,7 @@ services:
             context: ${POLYLK_AUTHORIZATION_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_AUTHORIZATION_HOSTNAME}
         container_name: ${POLYLK_AUTHORIZATION_NAME}
         env_file:
@@ -42,7 +42,7 @@ services:
             context: ${POLYLK_INFO_PERSON_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_INFO_PERSON_HOSTNAME}
         container_name: ${POLYLK_INFO_PERSON_NAME}
         env_file:
@@ -60,7 +60,7 @@ services:
             context: ${POLYLK_NEWS_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_NEWS_HOSTNAME}
         container_name: ${POLYLK_NEWS_NAME}
         env_file:
@@ -78,7 +78,7 @@ services:
             context: ${POLYLK_POSTS_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_POSTS_HOSTNAME}
         container_name: ${POLYLK_POSTS_NAME}
         env_file:
@@ -96,7 +96,7 @@ services:
             context: ${POLYLK_QUEUES_PATH}
         entrypoint: /bin/sh -c "./wait-for-it.sh ${POLYLK_EUREKA_SERVER_HOSTNAME}:${POLYLK_EUREKA_SERVER_PORT} -t 0 &&
                              ./wait-for-it.sh ${POLYLK_DATABASE_HOSTNAME}:${POLYLK_DATABASE_PORT} -t 0 &&
-                             ./start.sh"
+                             ./start.sh && tail -f /dev/null"
         hostname: ${POLYLK_QUEUES_HOSTNAME}
         container_name: ${POLYLK_QUEUES_NAME}
         env_file:
