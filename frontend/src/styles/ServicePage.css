@@ -9,8 +9,15 @@
     height: 100vh;
 }
 
+.service-page-icon{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
 .info-block {
     display: block;
+    text-align: center;
 }
 
 .status {
@@ -34,8 +41,9 @@
 }
 
 .link-button {
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
+    text-align: center;
     font-family: "Russo One", sans-serif;
     color: #96bfbf;
     margin: 40px auto;
@@ -44,6 +52,8 @@
     font-size: 18px;
     width: max-content;
     text-decoration:underline;
+
+
 }
 
 .link-button:hover {

@@ -17,6 +17,7 @@ const SignUp = () => {
     const {setInfoMessage} = useContext(InfoContext);
     const navigate = useNavigate();
 
+    const [windowWidth, setWindowWidth] = useState(0)
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
@@ -62,6 +63,18 @@ const SignUp = () => {
     useEffect(() => {
         setIsDormNumErrorShow(false);
     }, [dormNumber]);
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowWidth(document.documentElement.clientWidth ? document.documentElement.clientWidth : 0);
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    });
 
     const updateInfoMessage = (status, message, link, link_title) => {
         setInfoMessage( {
@@ -124,7 +137,7 @@ const SignUp = () => {
     return (
         <div className={"signup-page"}>
             <div className={"signup-panel"}>
-                <div className={"signup-page-icon"}>
+                <div className={"signup-page-icon"} style={windowWidth < 670 ? {} : {"position": "absolute", "top": "20px", left: "31px", margin: "0"}}>
                     <img style={{width: "80px", height: "auto", margin: "auto"}} src={img}/>
                 </div>
                 <TextInput
