@@ -106,11 +106,7 @@ const SignUp = () => {
             }).then(response => {
                 setIsProcessed(false);
                 if(response.status === 200) {
-                    navigate("../message/" + updateInfoMessage(
-                        "Поздравляем!",
-                        "Вы успешно зарегистрированы",
-                        "../login",
-                        "Перейти на страницу авторизации"));
+                    navigate("../login/");
                 }
             }).catch(error => {
                 setIsProcessed(false);
