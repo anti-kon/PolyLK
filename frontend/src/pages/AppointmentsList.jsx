@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
 import "../styles/AppointmentsList.css";
 import ContentBox from "../components/UI/content_boxes/content_box/ContentBox";
 import {useNavigate} from "react-router-dom";
+import MajorFooter from "../components/UI/footers/major_footer/MajorFooter";
 
 const AppointmentsList = () => {
     const navigate = useNavigate();
+    const [pageWidth, setPageWidth] = useState(0);
+    useLayoutEffect(() => {
+        setPageWidth(window.innerWidth);
+        function handleWindowResize() {
+            setPageWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
 
     return (
         <div>
             <MajorHeader></MajorHeader>
             <div className={"appointments-page"}>
-                <SwitchBar></SwitchBar>
+                {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 <div className={"appointments-section-list"}>
                     <ContentBox style={{display: "flex", marginBottom: "20px"}}
                                 onClick={() => {navigate("./laundry-appointment");}}>
@@ -34,6 +48,7 @@ const AppointmentsList = () => {
                     </ContentBox>
                 </div>
             </div>
+            {pageWidth <= 570 && <MajorFooter /> }
         </div>
     );
 };
