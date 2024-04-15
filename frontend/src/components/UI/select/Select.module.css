@@ -10,7 +10,7 @@
     font-size: 20px;
     font-family: 'Russo One', sans-serif;
     color: #96bfbf;
-    border-radius: 10px;
+    border-radius: 7px;
     background: white;
 }
 
@@ -115,6 +115,10 @@
     font-family: 'Russo One', sans-serif;
     color: rgba(104, 163, 163, 0.91);
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
 .selectListError {
@@ -125,6 +129,10 @@
     font-family: 'Russo One', sans-serif;
     color: rgba(218, 118, 118, 0.91);
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
 .selectValue {
@@ -175,12 +183,48 @@
     border-radius: 4px;
 }
 
-.invisibleSelect {
+.placeholder {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100px;
+    color: #96bfbf;
+    pointer-events: none;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholderError {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #cc7e7e;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectWrapper{}
+
+.selectWrapper:focus-within .selectValue {
+    color: #68a3a3;
+}
+
+.selectWrapper:focus-within .selectValueError {
+    color: #da7676;
+}
+
+.selectWrapper:focus-within .selectBody {
+    border: 3px solid #68a3a3;
+    outline: none;
+}
+
+.selectWrapper:focus-within .selectBodyError {
+    border: 3px solid #da7676;
+    outline: none;
 }

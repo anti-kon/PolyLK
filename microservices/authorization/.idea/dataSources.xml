@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Django default" uuid="45043604-b409-44cf-8189-1584a4fc4b0e">
+    <data-source source="LOCAL" name="PolyLK" uuid="45043604-b409-44cf-8189-1584a4fc4b0e">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/authorization/settings.py</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://postgres-db:5432/PolyLK</jdbc-url>
+      <jdbc-url>jdbc:postgresql://212.109.221.176:5432/PolyLK</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
