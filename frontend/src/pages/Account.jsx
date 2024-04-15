@@ -1,21 +1,35 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useLayoutEffect, useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
 import "../styles/Account.css";
 import AccountComponent from "../components/AccountComponent";
 import AccountSettingsComponent from "../components/AccountSettingsComponent";
 import { PersonContext } from '../App';
+import MajorFooter from "../components/UI/footers/major_footer/MajorFooter";
 
 
 const Account = (props) => {
     const [isEdited, setIsEdited] = useState(false);
     const { person, setPerson } = useContext(PersonContext);
+    const [pageWidth, setPageWidth] = useState(0);
+    useLayoutEffect(() => {
+        setPageWidth(window.innerWidth);
+        function handleWindowResize() {
+            setPageWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
 
     return (
         <div>
             <MajorHeader></MajorHeader>
             <div className={"account-page"}>
-                <SwitchBar></SwitchBar>
+                {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 {
                     !isEdited ?
                         <AccountComponent
@@ -31,7 +45,9 @@ const Account = (props) => {
                         </div>
                 }
             </div>
+            {pageWidth <= 570 && <MajorFooter /> }
         </div>
+
     );
 };
 
