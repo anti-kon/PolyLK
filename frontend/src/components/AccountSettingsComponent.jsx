@@ -197,6 +197,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                     style={{marginTop: 0, borderRadius: "7px", fontSize: "20px", caretColor: "transparent"}}
                     options={dorms}
                     placeholder={"Общежитие №"}
+                    default_value_number={person.dorm_num_person === -1 ? undefined : person.dorm_num_person}
                     default_value={person.dorm_num_person === -1 ? undefined :
                         dorms.find(obj => {return obj.value === person.dorm_num_person}).name}
                 ></Select>

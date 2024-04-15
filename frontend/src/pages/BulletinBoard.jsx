@@ -403,6 +403,22 @@ const BulletinBoard = () => {
                         <TiDocumentText style = {iconsStyle} /> Мои объявления
                     </ShadowButton>}
                 </div>
+                {/*<div className={"chats-window-modal"}>*/}
+                {/*    <ContentBox style={{display: "flex", width: "max-content", padding: 0, background: "#ffffff"}}>*/}
+                {/*        <div className={"chats-list"}>*/}
+                {/*            <div className={"chats-user"}>*/}
+                {/*                <div className={"chats-user-icon"}></div>*/}
+                {/*            </div>*/}
+                {/*            <div className={"chats-user"}>*/}
+                {/*                <div className={"chats-user-icon"}></div>*/}
+                {/*            </div>*/}
+                {/*            <div className={"chats-user"}>*/}
+                {/*                <div className={"chats-user-icon"}></div>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*        <div className={"chats-window-body"}></div>*/}
+                {/*    </ContentBox>*/}
+                {/*</div>*/}
             </div>
         </div>
     );
