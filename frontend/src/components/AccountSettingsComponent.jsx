@@ -211,7 +211,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        width: "170px",
+                        width: "160px",
                         height: "48px",
                         borderRadius: "7px",
                         fontSize: "20px",
@@ -222,7 +222,7 @@ const AccountSettingsComponent = ({returnFunc, ...props}) => {
                 <ShadowButton
                     onClick={returnFunc}
                     style={{
-                        width: "170px",
+                        width: "160px",
                         height: "48px",
                         borderRadius: "7px",
                         fontSize: "20px",

@@ -19,6 +19,7 @@ const Select = ({valid = true, default_value = "", ...props}) => {
             onFocus={() => setIsListVisible(true)}
             onBlur={handleBlur}>
             <div {...props} className={valid ? classes.selectBody : classes.selectBodyError}>
+                <select className={"invisibleSelect"}></select>
                 {value === "" ? props.placeholder : <label className={classes.selectValue}>{value}</label>}
                 <button className={classes.selectClick}>
                     <BiSolidDownArrow className={valid ? classes.selectArrow : classes.selectArrowError}/>
