@@ -9,6 +9,7 @@ import CircleDotsLoading from "../components/UI/loaders/CircleDotsLoading";
 import {useNavigate} from "react-router-dom";
 import {encode} from "js-base64";
 import {InfoContext} from "../App";
+import MajorFooter from "../components/UI/footers/major_footer/MajorFooter";
 
 const News = () => {
     const [isResponseValid, setIsResponseValid] = useState(false);
@@ -18,7 +19,19 @@ const News = () => {
     const navigate = useNavigate();
 
     const {setInfoMessage} = useContext(InfoContext);
+    const [pageWidth, setPageWidth] = useState(0);
+    useLayoutEffect(() => {
+        setPageWidth(window.innerWidth);
+        function handleWindowResize() {
+            setPageWidth(window.innerWidth);
+        }
 
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
     const updateInfoMessage = (status, message, link, link_title) => {
         setInfoMessage( {
             status: status,
@@ -64,7 +77,7 @@ const News = () => {
         <div>
             <MajorHeader></MajorHeader>
             <div className={"news-page"}>
-                <SwitchBar></SwitchBar>
+                {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 <div className={"news-list"}>
                     {
                         isProcessed ? <div style={{
@@ -101,6 +114,7 @@ const News = () => {
                     )}
                 </div>
             </div>
+            {pageWidth <= 570 && <MajorFooter /> }
         </div>
     );
 };
