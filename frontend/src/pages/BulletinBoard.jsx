@@ -37,6 +37,10 @@ const BulletinBoard = () => {
     });
     const [isProcessed, setIsProcessed] = useState(true);
     const [isResponseValid, setIsResponseValid] = useState(false);
+    const [isPriceChecked, setPriceChecked] = useState(false);
+    const [isContentChecked, setContentChecked] = useState(false);
+    const [isNewAdPriceValid, setNewAdPriceValid] = useState(true);
+    const [isNewAdContentValid, setNewAdContentValid] = useState(true);
     const [advertisements, setAdvertisements] = useState([]);
     const [showMyAds, setShowMyAds] = useState(false);
     const [moneyPrice, setMoneyPrice] = useState("");
@@ -73,6 +77,21 @@ const BulletinBoard = () => {
             id_person_ads: person.id_person
         });
     }, [advertisementText, moneyPrice, alternativePrice, newAdImages, person.dorm_num_person, person.id_person])
+
+    useEffect( () => {
+       if(isContentChecked) {
+           setNewAdContentValid(advertisementText.length > 0 || newAdImages.length !== 0);
+           setContentChecked(false)
+       }
+    }, [advertisementText, newAdImages]);
+
+    useEffect(() => {
+        if(isPriceChecked) {
+            setNewAdPriceValid(moneyPrice !== "" || alternativePrice !== "" || isFree);
+            setPriceChecked(false);
+        }
+    }, [moneyPrice, alternativePrice, isFree]);
+
 
     const updateInfoMessage = (status, message, link, link_title) => {
         setInfoMessage( {
@@ -157,37 +176,51 @@ const BulletinBoard = () => {
 
     const postNewAdvertisement = () => {
         setIsProcessed(true);
-        console.log(isProcessed);
-        axios.post('http://212.109.221.176:8080/django-posts/posts/', newAdvertisement, {
-            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
-        }).then(response => {
-            loadPosts();
-            setAdvertisementText('');
-            setMoneyPrice('');
-            setAlternativePrice('');
-            setNewAdImages([]);
-        }).catch(error => {
-            setIsProcessed(false);
-            if (error.code === "ERR_NETWORK") {
-                navigate("../message/" + updateInfoMessage(
-                    "502",
-                    "Сервер не отвечает",
-                    "../login",
-                    "Вернуться на страницу авторизации"));
-            } else if (error.response.status === 401) {
-                navigate("../message/" + updateInfoMessage(
-                    error.response.status.toString(),
-                    error.response.data,
-                    "../login",
-                    "Вернуться на страницу авторизации"));
-            } else {
-                navigate("../message/" + updateInfoMessage(
-                    error.response.status.toString(),
-                    error.response.data,
-                    "../login",
-                    "Вернуться на страницу авторизации"));
-            }
-        });
+        const contentValid =  advertisementText.length > 0 || newAdImages.length !== 0;
+        const priceValid = moneyPrice !== "" || alternativePrice !== "" || isFree;
+        console.log(contentValid, priceValid);
+        if (!contentValid) {
+            setNewAdContentValid(false);
+            setContentChecked(true);
+        }
+        if (!priceValid) {
+            setNewAdPriceValid(false);
+            setPriceChecked(true);
+        }
+        if(contentValid && priceValid) {
+            axios.post('http://212.109.221.176:8080/django-posts/posts/', newAdvertisement, {
+                headers: {Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
+            }).then(response => {
+                loadPosts();
+                setAdvertisementText('');
+                setMoneyPrice('');
+                setAlternativePrice('');
+                setNewAdImages([]);
+            }).catch(error => {
+                setIsProcessed(false);
+                if (error.code === "ERR_NETWORK") {
+                    navigate("../message/" + updateInfoMessage(
+                        "502",
+                        "Сервер не отвечает",
+                        "../login",
+                        "Вернуться на страницу авторизации"));
+                } else if (error.response.status === 401) {
+                    navigate("../message/" + updateInfoMessage(
+                        error.response.status.toString(),
+                        error.response.data,
+                        "../login",
+                        "Вернуться на страницу авторизации"));
+                } else {
+                    navigate("../message/" + updateInfoMessage(
+                        error.response.status.toString(),
+                        error.response.data,
+                        "../login",
+                        "Вернуться на страницу авторизации"));
+                }
+            });
+
+        }
+        setIsProcessed(false);
     }
 
     useEffect(() => {
@@ -226,6 +259,7 @@ const BulletinBoard = () => {
                                 placeholder={"Введите текст"}
                                 style={{width: "100%", margin: "10px 1px 0 1px", paddingLeft: "0px",}}
                                 value = {advertisementText}
+                                valid={isNewAdContentValid}
                                 onChange = {e => setAdvertisementText(e.target.value)}>
                             </ResizeableTextarea>
                             <div style={{display: "flex", margin: "0 1px 5px 1px"}}>
@@ -250,7 +284,7 @@ const BulletinBoard = () => {
                             <div className={'advertisement-edit-fields'}>
                                 <TextInput
                                     disabled={isFree}
-                                    valid={'true'}
+                                    valid={isNewAdPriceValid}
                                     placeholder={'Цена'}
                                     value = {moneyPrice}
                                     onChange = {e => changeMoneyPrice(e)}>
@@ -273,7 +307,7 @@ const BulletinBoard = () => {
                                 </button>
                                 <TextInput
                                     disabled={isFree}
-                                    valid={'true'}
+                                    valid={isNewAdPriceValid}
                                     style={{gridColumn: "span 2"}}
                                     placeholder={'Бартер'}
                                     value = {alternativePrice}
