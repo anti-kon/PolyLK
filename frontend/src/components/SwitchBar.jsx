@@ -4,6 +4,7 @@ import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
 import {BiInfoCircle, BiNews} from "react-icons/bi";
 import {TbTag} from "react-icons/tb";
 import {HiPlus} from "react-icons/hi";
+import "../styles/SwitchBar.css"
 
 const SwitchBar = (props) => {
     const navigate = useNavigate();
@@ -15,22 +16,22 @@ const SwitchBar = (props) => {
 
     return (
         <div {...props} style={{minWidth: "188px"}}>
-            <ShadowButton onClick={() => {navigate('../news');}}>
+            <a href={"../news"} className={"switch-bar-text-link"}>
                 <BiNews style={iconsStyle}/>
                 Новости
-            </ShadowButton>
-            <ShadowButton onClick={() => {navigate('../bulletin_board');}}>
+            </a>
+            <a href={"../bulletin_board"} className={"switch-bar-text-link"}>
                 <TbTag style={iconsStyle}/>
                 Объявления
-            </ShadowButton>
-            <ShadowButton onClick={() => {navigate('../appointments');}}>
+            </a>
+            <a href={"../appointments"} className={"switch-bar-text-link"}>
                 <HiPlus style={iconsStyle}/>
                 Запись
-            </ShadowButton>
-            <ShadowButton onClick={() => {navigate('../faq');}}>
+            </a>
+            <a href={"../faq"} className={"switch-bar-text-link"}>
                 <BiInfoCircle style={iconsStyle}/>
                 Информация
-            </ShadowButton>
+            </a>
         </div>
     );
 };

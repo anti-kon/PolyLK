@@ -127,7 +127,7 @@ const LoginComponent = (props) => {
                     {isProcessed ? <CircleDotsLoading size={"40px"}/> : "Войти"}
                 </MajorButton>
             </div>
-            <button onClick={() => {navigate("../signup");}} className={"login-text-link"}>Зарегистрироваться</button>
+            <a href={"../signup"} className={"login-text-link"}>Зарегистрироваться</a>
         </div>
     );
 };

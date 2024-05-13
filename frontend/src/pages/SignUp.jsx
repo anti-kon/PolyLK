@@ -220,7 +220,7 @@ const SignUp = () => {
                         {isProcessed ? <CircleDotsLoading size={"40px"}/> : "Зарегестрироваться"}
                     </MajorButton>
                 </div>
-                <button onClick={() => {navigate("../login");}} className={"signup-text-link"}>Войти в аккаунт</button>
+                <a href = {"../login"} className={"signup-text-link"}>Войти в аккаунт</a>
             </div>
         </div>
     );

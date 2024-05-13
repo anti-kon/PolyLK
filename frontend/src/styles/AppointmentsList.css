@@ -19,6 +19,7 @@
     font-family: "Russo One", sans-serif;
     color: #68a3a3;
     font-size: 18px;
+    text-decoration: none;
 }
 
 .appointments-section-label:hover {
