@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import classes from "./ResizeableTextarea.module.css";
 
-const ResizeableTextarea = ({onChange, ...props}) => {
+const ResizeableTextarea = ({onChange, valid = true, ...props}) => {
     const [val, setVal] = useState('');
     const textAreaRef = useRef(null);
 
@@ -19,7 +19,7 @@ const ResizeableTextarea = ({onChange, ...props}) => {
 
     return (
         <textarea
-            className={classes.resizeableTextarea}
+            className={valid ? classes.resizeableTextarea : classes.nonValidResizeableTextarea}
             ref={textAreaRef}
             value={val}
             onChange={onTextChange}
