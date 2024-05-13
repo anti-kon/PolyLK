@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useLayoutEffect, useState} from 'react';
 import SwitchBar from "../components/SwitchBar";
 import MajorHeader from "../components/UI/headers/MajorHeader/MajorHeader";
 import "../styles/BulletinBoard.css";
@@ -23,6 +23,7 @@ import NewsComponent from "../components/NewsComponent";
 import {useNavigate} from "react-router-dom";
 import {InfoContext, PersonContext} from "../App";
 import {encode} from "js-base64";
+import MajorFooter from "../components/UI/footers/major_footer/MajorFooter";
 
 
 const BulletinBoard = () => {
@@ -66,6 +67,21 @@ const BulletinBoard = () => {
 
     const {setInfoMessage} = useContext(InfoContext);
     const { person, setPerson } = useContext(PersonContext);
+
+    const [pageWidth, setPageWidth] = useState(0);
+    useLayoutEffect(() => {
+        setPageWidth(window.innerWidth);
+        function handleWindowResize() {
+            setPageWidth(window.innerWidth);
+            console.log(window.innerWidth)
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
 
     useEffect(() => {
         setNewAdvertisement({
@@ -228,12 +244,21 @@ const BulletinBoard = () => {
     }, []);
 
     return (
-        <div>
+        <div >
             <MajorHeader></MajorHeader>
-            <div className={"bulletin-board-page"}>
-                <SwitchBar></SwitchBar>
-                <div className={"advertisements-list"}>
-                    <ContentBox style={{display: "flex", marginBottom: "20px", boxSizing: "border-box"}}>
+            <div className={"bulletin-board-page"} style={{display: "flex", flexDirection: pageWidth > 570 ? "row" : "column"}}>
+                {pageWidth > 570 && <SwitchBar></SwitchBar> }
+                {pageWidth < 570 && <div className={"advertisement-right-button-bar"}>
+                    { showMyAds ?
+                        <ShadowButton onClick = {() => setShowMyAds(false)}>
+                            <TiDocumentText style = {iconsStyle}/> Все объявления
+                        </ShadowButton> :
+                        <ShadowButton onClick = {() => setShowMyAds(true)}>
+                            <TiDocumentText style = {iconsStyle} /> Мои объявления
+                        </ShadowButton>}
+                </div>}
+                <div className={"advertisements-list"} style = {{margin: pageWidth < 570 ? "0" : "0 10px 0 20px"}}>
+                    <ContentBox style={{display: "flex", marginBottom: "20px", boxSizing: "border-box", overflow: "hidden"}}>
                         <div className={'advertisement-edit-body'}
                              ref={newAdRef}
                              onDragEnter={handleDragEnter}>
@@ -281,7 +306,7 @@ const BulletinBoard = () => {
                                     Услуга
                                 </RadioInput>
                             </div>
-                            <div className={'advertisement-edit-fields'}>
+                            <div className={'advertisement-edit-fields'} style={{gridTemplateColumns: pageWidth >  450 ? "minmax(max-content, 1fr) max-content max-content" : "1fr"}}>
                                 <TextInput
                                     disabled={isFree}
                                     valid={isNewAdPriceValid}
@@ -299,12 +324,6 @@ const BulletinBoard = () => {
                                 }}>
                                     <b>₽</b>
                                 </label>
-                                <button
-                                    className={isFree ? "is-free-button-active" :"is-free-button"}
-                                    onClick={() => {setIsFree(!isFree);
-                                        console.log("click")}}>
-                                    Бесплатно
-                                </button>
                                 <TextInput
                                     disabled={isFree}
                                     valid={isNewAdPriceValid}
@@ -313,6 +332,12 @@ const BulletinBoard = () => {
                                     value = {alternativePrice}
                                     onChange = {e => setAlternativePrice(e.target.value)}>
                                 </TextInput>
+                                <button
+                                    className={isFree ? "is-free-button-active" :"is-free-button"}
+                                    onClick={() => {setIsFree(!isFree);
+                                        console.log("click")}}>
+                                    Бесплатно
+                                </button>
                             </div>
                             {newAdImages.length > 0 && <SmallImagesGallery onDelete={(key) => deleteImage(key)} images={newAdImages}/>}
                             <div className={'advertisement-edit-buttons'}>
@@ -428,15 +453,15 @@ const BulletinBoard = () => {
                                     </ContentBox>
                                 )}
                 </div>
-                <div className={"advertisement-right-button-bar"}>
-                { showMyAds ?
-                    <ShadowButton onClick = {() => setShowMyAds(false)}>
-                        <TiDocumentText style = {iconsStyle}/> Все объявления
-                    </ShadowButton> :
-                    <ShadowButton onClick = {() => setShowMyAds(true)}>
-                        <TiDocumentText style = {iconsStyle} /> Мои объявления
-                    </ShadowButton>}
-                </div>
+                {pageWidth > 570 && <div className={"advertisement-right-button-bar"}>
+                    { showMyAds ?
+                        <ShadowButton onClick = {() => setShowMyAds(false)}>
+                            <TiDocumentText style = {iconsStyle}/> Все объявления
+                        </ShadowButton> :
+                        <ShadowButton onClick = {() => setShowMyAds(true)}>
+                            <TiDocumentText style = {iconsStyle} /> Мои объявления
+                        </ShadowButton>}
+                </div>}
                 {/*<div className={"chats-window-modal"}>*/}
                 {/*    <ContentBox style={{display: "flex", width: "max-content", padding: 0, background: "#ffffff"}}>*/}
                 {/*        <div className={"chats-list"}>*/}
@@ -454,6 +479,7 @@ const BulletinBoard = () => {
                 {/*    </ContentBox>*/}
                 {/*</div>*/}
             </div>
+            {pageWidth <= 570 && <MajorFooter /> }
         </div>
     );
 };
