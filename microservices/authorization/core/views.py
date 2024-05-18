@@ -43,13 +43,14 @@ class AuthorizationView(APIView):
             if remember_me == 'true' or remember_me != '':
                 self.check_token(target_user.id_person)
             if remember_me != 'true' and remember_me != '':
-                if target_user.objects.filter(remember_me_person=remember_me):
+                if remember_me not in target_user.remember_me_person:
                     return Response('Токен не существует', status=403)
             else:
                 if target_user.password_person != password:
                     return Response("Неверный пароль", status=401)
             serializer = AuthorizationSerializer(target_user)
             response_data = serializer.data.copy()
+            del(response_data['remember_me_person'])
             response_data["token"] = jwt.encode({"sub": serializer.data.get('id_person'),
                                                  "login": serializer.data.get('login_person'),
                                                  "exp": (datetime.datetime.now(tz=datetime.timezone.utc) +
@@ -64,7 +65,7 @@ class AuthorizationView(APIView):
             if remember_me == 'true' or remember_me != '':
                 access_response.set_cookie('set_remember_me', remember_me_token)
                 new_remember_me_person = target_user.remember_me_person
-                new_remember_me_person.append(remember_me_token)
+                new_remember_me_person.append(str(remember_me_token))
                 if remember_me != 'true':
                     new_remember_me_person.remove(remember_me)
                 target_user.remember_me_person = new_remember_me_person
