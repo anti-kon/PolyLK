@@ -29,13 +29,10 @@ class AuthorizationView(APIView):
         serializer = AuthorizationSerializer(target_user)
 
     def get(self, request):
-        print("!")
         try:
             login = request.GET.get('login')
             password = request.GET.get('password')
             remember_me = request.COOKIES.get('remember_me')
-
-            print(remember_me)
 
             target_user = []
             if remember_me != 'true' and remember_me != '':
@@ -43,17 +40,14 @@ class AuthorizationView(APIView):
                                                                        algorithms=ENCRYPTION_ALGORITHM)['sub'])
             else:
                 target_user = Persons.objects.get(login_person=login)
-            print("1")
             if remember_me == 'true' or remember_me != '':
                 self.check_token(target_user.id_person)
-            print("2")
             if remember_me != 'true' and remember_me != '':
-                if remember_me not in target_user.remember_me_person:
+                if target_user.objects.filter(remember_me_person=remember_me):
                     return Response('Токен не существует', status=403)
             else:
                 if target_user.password_person != password:
                     return Response("Неверный пароль", status=401)
-            print("3")
             serializer = AuthorizationSerializer(target_user)
             response_data = serializer.data.copy()
             response_data["token"] = jwt.encode({"sub": serializer.data.get('id_person'),
@@ -66,10 +60,17 @@ class AuthorizationView(APIView):
                                             "exp": (datetime.datetime.now(tz=datetime.timezone.utc) +
                                                     datetime.timedelta(days=10))},
                                             SECRET_KEY, algorithm=ENCRYPTION_ALGORITHM)
-            print("4")
             access_response = Response(response_data, status=200)
-            access_response.set_cookie('set_remember_me', remember_me_token)
-            print("5")
+            if remember_me == 'true' or remember_me != '':
+                access_response.set_cookie('set_remember_me', remember_me_token)
+                new_remember_me_person = target_user.remember_me_person
+                new_remember_me_person.append(remember_me_token)
+                if remember_me != 'true':
+                    new_remember_me_person.remove(remember_me)
+                target_user.remember_me_person = new_remember_me_person
+                target_user.save()
+            serializer = AuthorizationSerializer(target_user)
+
             return access_response
 
 
