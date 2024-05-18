@@ -12,24 +12,68 @@ ENCRYPTION_ALGORITHM = os.environ.get('POLYLK_AUTHORIZATION_ENCRYPTION_ALGORITHM
 
 
 class AuthorizationView(APIView):
+    def check_token(self, id_person):
+        target_user = Persons.objects.get(id_person=id_person)
+        token_array = target_user.remember_me_person
+        for token in token_array:
+            try:
+                jwt.decode(token, SECRET_KEY, algorithms=ENCRYPTION_ALGORITHM)
+            except jwt.ExpiredSignatureError:
+                token_array.remove(token)
+                continue
+            except (jwt.DecodeError, jwt.InvalidTokenError):
+                token_array.remove(token)
+                continue
+        target_user.remember_me_person = token_array
+        target_user.save()
+        serializer = AuthorizationSerializer(target_user)
+
     def get(self, request):
-        print("!")
         try:
             login = request.GET.get('login')
             password = request.GET.get('password')
-            target_user = Persons.objects.get(login_person=login)
+            remember_me = request.COOKIES.get('remember_me')
 
-            if target_user.password_person != password:
-                return Response("Неверный пароль", status=401)
-
+            target_user = []
+            if remember_me != 'true' and remember_me != '':
+                target_user = Persons.objects.get(id_person=jwt.decode(remember_me, SECRET_KEY,
+                                                                       algorithms=ENCRYPTION_ALGORITHM)['sub'])
+            else:
+                target_user = Persons.objects.get(login_person=login)
+            if remember_me == 'true' or remember_me != '':
+                self.check_token(target_user.id_person)
+            if remember_me != 'true' and remember_me != '':
+                if remember_me not in target_user.remember_me_person:
+                    return Response('Токен не существует', status=403)
+            else:
+                if target_user.password_person != password:
+                    return Response("Неверный пароль", status=401)
             serializer = AuthorizationSerializer(target_user)
             response_data = serializer.data.copy()
+            del(response_data['remember_me_person'])
             response_data["token"] = jwt.encode({"sub": serializer.data.get('id_person'),
                                                  "login": serializer.data.get('login_person'),
                                                  "exp": (datetime.datetime.now(tz=datetime.timezone.utc) +
                                                          datetime.timedelta(seconds=300))},
                                                 SECRET_KEY, algorithm=ENCRYPTION_ALGORITHM)
-            return Response(response_data, status=200)
+
+            remember_me_token = jwt.encode({"sub": serializer.data.get('id_person'),
+                                            "exp": (datetime.datetime.now(tz=datetime.timezone.utc) +
+                                                    datetime.timedelta(days=10))},
+                                            SECRET_KEY, algorithm=ENCRYPTION_ALGORITHM)
+            access_response = Response(response_data, status=200)
+            if remember_me == 'true' or remember_me != '':
+                access_response.set_cookie('set_remember_me', remember_me_token)
+                new_remember_me_person = target_user.remember_me_person
+                new_remember_me_person.append(str(remember_me_token))
+                if remember_me != 'true':
+                    new_remember_me_person.remove(remember_me)
+                target_user.remember_me_person = new_remember_me_person
+                target_user.save()
+            serializer = AuthorizationSerializer(target_user)
+
+            return access_response
+
 
         except Persons.DoesNotExist:
             return Response('Пользователь не существует', status=404)
@@ -48,7 +92,11 @@ class TokenView(APIView):
                 payload = jwt.decode(jwt_token.split(' ')[1], SECRET_KEY, algorithms=ENCRYPTION_ALGORITHM)
                 id_person = payload['sub']
                 login_person = payload['login']
-                # TODO fix check id_person and login_person in database
+
+                target_user = Persons.objects.get(id_person=id_person)
+
+                if target_user.login_person != login_person:
+                    return Response('Неверный токен', status=401)
                 return Response('OK', status=200)
             except jwt.ExpiredSignatureError:
                 return Response('Истек срок токена', status=401)

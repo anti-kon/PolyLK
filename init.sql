@@ -3,7 +3,7 @@ CREATE TABLE persons (
     login_person VARCHAR ( 50 ) UNIQUE NOT NULL,
     password_person VARCHAR ( 50 ) NOT NULL,
     dorm_num_person INT NOT NULL,
-    remember_me_person VARCHAR ( 32 )
+    remember_me_person CHARACTER VARYING []
 );
 
 CREATE TABLE services (
