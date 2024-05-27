@@ -32,9 +32,12 @@ def upload_photo(list_photo_ads, info_ads):
 class PostsView(APIView):
 
     def get_all_ads(self):
-        queryset = Ads.objects.all()
-        serializer = PostsSerializer(instance=queryset, many=True)
-        return Response(serializer.data, status=200)
+        ads = Ads.objects.all()
+        paginator = PageNumberPagination()
+        paginator.page_size = 10
+        result_page = paginator.paginate_queryset(ads, request)
+        serializer = PostsSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         try:
@@ -62,9 +65,14 @@ class PostsView(APIView):
         try:
             queryset = Ads.objects.all()
             if dorm_num_ads:
-                queryset = queryset.filter(dorm_num_ads=dorm_num_ads)
-                serializer = PostsSerializer(queryset, many=True)
-                return Response(serializer.data, status=200)
+                queryset = queryset.filter(dorm_num_ads=dorm_num_ads)#было
+                paginator = PageNumberPagination()
+                paginator.page_size = 10
+                result_page = paginator.paginate_queryset(queryset, request)
+                serializer = PostsSerializer(result_page, many=True)
+                return paginator.get_paginated_response(serializer.data)
+                # serializer = PostsSerializer(queryset, many=True)
+                # return Response(serializer.data, status=200)
             else:
                 return Response('Номер общежития не найден', status=403)
         except DatabaseError:
