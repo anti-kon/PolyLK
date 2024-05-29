@@ -46,8 +46,10 @@ const LoginComponent = (props) => {
         axios.get('http://212.109.221.176:8080/django-authorization/authorization/', {
             params: {
                 login: login,
-                password: password,
-                isRememberMe: isRememberMe
+                password: password
+            },
+            headers: {
+                Cookie: "remember_me=true"
             }
         }).then(response => {
             setIsProcessed(false);

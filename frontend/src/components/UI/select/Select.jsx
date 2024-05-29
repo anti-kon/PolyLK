@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from "./Select.module.css";
 import {BiSolidDownArrow} from "react-icons/bi";
 
@@ -19,42 +19,35 @@ const Select = ({valid = true, default_value_number='', default_value = "", ...p
     return (
         <div
             className={classes.selectWrapper}
+            onClick={() => ref.current.focus()}
             onFocus={() => {setIsListVisible(true); ref.current.focus()}}>
             {
                 isListVisible &&
                 <div {...props} className={valid ? classes.selectBody : classes.selectBodyError}>
                     {value === "" ? props.placeholder : <label className={classes.selectValue}>{value}</label>}
-                    <button className={classes.selectClick}>
                         <BiSolidDownArrow className={valid ? classes.selectArrow : classes.selectArrowError}/>
-                    </button>
                 </div>
             }
             <div className={isListVisible ? valid ? classes.selectListModal : classes.selectListModalError :
                                             valid ? classes.selectBody : classes.selectBodyError}>
-                {
-                    !isListVisible &&
-                    <span className={valid ? classes.placeholder : classes.placeholderError}>
-                        {value === "" ? props.placeholder : ''}
-                    </span>
-                }
-                {
-                    !isListVisible &&
-                    <button className={classes.selectClick}>
+                {!isListVisible &&
                         <BiSolidDownArrow className={valid ? classes.selectArrow : classes.selectArrowError}/>
-                    </button>
                 }
                 <select
                     ref={ref}
-                    value={default_value_number}
                     onBlur={handleBlur}
+                    onClick={() => console.log(2)}
                     size={isListVisible ? 6 : 1}
                     className={valid ? classes.selectList : classes.selectListError}
+                    style={value === "" ? valid ? {color: "#96bfbf"} :{color: "#cc7e7e"} : {}}
                     onChange={e => {
                         setIsListVisible(false);
+                        ref.current.blur()
                         setValue(e.target.options[e.target.selectedIndex].text);
                         props.onChange !== undefined && props.onChange(e);
                     }}>
-                    <option disabled selected value style={{display: 'none'}}></option>
+                    <option className={valid ? classes.placeholder : classes.placeholderError}
+                            disabled selected value style={{display: 'none'}}>Общежитие №</option>
                     {props.options.map(option =>
                         <option
                             key={option.key}

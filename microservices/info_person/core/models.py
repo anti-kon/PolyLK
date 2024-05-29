@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 
 class PersonsDocs(models.Model):
@@ -28,7 +29,7 @@ class Persons(models.Model):
     login_person = models.CharField(max_length=50, blank=True, null=True)
     password_person = models.CharField(max_length=50, blank=True, null=True)
     dorm_num_person = models.IntegerField(blank=True, null=True)
-    remember_me_person = models.CharField(max_length=32, blank=True, null=True)
+    remember_me_person = ArrayField(models.TextField(blank=True, null=True))
 
     class Meta:
         managed = False
