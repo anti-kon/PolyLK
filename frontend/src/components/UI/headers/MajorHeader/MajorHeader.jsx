@@ -50,13 +50,12 @@ const MajorHeader = () => {
                                     right: "7px",
                                     background: "white"}}>
                         <div ref={modal} className={classes.modalContent}>
-                            <ShadowButton onClick={() => {navigate("../account");}}
+                            <a href={"../account"} className={classes.accountLink}
                                           style={{
                                               minWidth: "max-content",
-                                              fontSize: "15px",
                                               padding: "3px 7px 3px 6px"}}>
                                 <BiUser className={classes.accountButtonIcon}/>Личный кабинет
-                            </ShadowButton>
+                            </a>
                             <ShadowButton onClick={() => {navigate("../login")}}
                                           style={{
                                               minWidth: "max-content",

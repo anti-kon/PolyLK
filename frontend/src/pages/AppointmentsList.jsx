@@ -28,24 +28,26 @@ const AppointmentsList = () => {
             <div className={"appointments-page"}>
                 {pageWidth > 570 && <SwitchBar></SwitchBar> }
                 <div className={"appointments-section-list"}>
-                    <ContentBox style={{display: "flex", marginBottom: "20px"}}
-                                onClick={() => {navigate("./laundry-appointment");}}>
-                        <label className={"appointments-section-label"}>Очередь на стирку</label>
-                    </ContentBox>
-                    <ContentBox style={{display: "flex", marginBottom: "20px"}}
-                                onClick={() => {
-                                    navigate("./0JfQsNC_0LjRgdGMINC90LAg0LTQtdC30LjQvdGB0LXQutGG0LjRjg");
-                                }}>
-                        <label className={"appointments-section-label"}>Запись на дезинсекцию</label>
-                    </ContentBox>
-                    <ContentBox style={{display: "flex", marginBottom: "20px"}}
-                                onClick={() => {navigate("./0JfQsNC_0LjRgdGMINC90LAg0YDQtdC80L7QvdGC");}}>
-                        <label className={"appointments-section-label"}>Запись на ремонт</label>
-                    </ContentBox>
-                    <ContentBox style={{display: "flex", marginBottom: "20px"}}
-                                onClick={() => {navigate("./my-appointments");}}>
-                        <label className={"appointments-section-label"}>Мои записи</label>
-                    </ContentBox>
+                    <a href={"../appointments/laundry-appointment"} style={{textDecoration: "none"}}>
+                        <ContentBox style={{display: "flex", marginBottom: "20px"}}>
+                            <label className={"appointments-section-label"}>Очередь на стирку</label>
+                        </ContentBox>
+                    </a>
+                    <a href={"../appointments/0JfQsNC_0LjRgdGMINC90LAg0LTQtdC30LjQvdGB0LXQutGG0LjRjg"} style={{textDecoration: "none"}}>
+                        <ContentBox style={{display: "flex", marginBottom: "20px"}}>
+                            <label className={"appointments-section-label"}>Запись на дезинсекцию</label>
+                        </ContentBox>
+                    </a>
+                    <a href={"../appointments/0JfQsNC_0LjRgdGMINC90LAg0YDQtdC80L7QvdGC"} style={{textDecoration: "none"}}>
+                        <ContentBox style={{display: "flex", marginBottom: "20px"}}>
+                            <label className={"appointments-section-label"}>Запись на ремонт</label>
+                        </ContentBox>
+                    </a>
+                    <a href={"../appointments/my-appointments"} style={{textDecoration: "none"}}>
+                        <ContentBox style={{display: "flex", marginBottom: "20px"}}>
+                            <label className={"appointments-section-label"}>Мои записи</label>
+                        </ContentBox>
+                    </a>
                 </div>
             </div>
             {pageWidth <= 570 && <MajorFooter /> }

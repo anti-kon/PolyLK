@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('POLYLK_AUTHORIZATION_HOSTNAME'),
+    '127.0.0.1'
 ]
 
 

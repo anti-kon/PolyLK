@@ -10,3 +10,21 @@
     padding-left: 20px;
     border: none;
 }
+
+.nonValidResizeableTextarea {
+    width: calc(100% - 45px);
+    height: max-content;
+    outline: none;
+    margin: 0 10px;
+    resize: none;
+    font-family: "Russo One", sans-serif;
+    color: #cc7e7e;
+    font-size: 14px;
+    padding-left: 20px;
+    border: none;
+    border-bottom: #cc7e7e solid 2px;
+}
+
+.nonValidResizeableTextarea::placeholder {
+    color: #cc7e7e;
+}

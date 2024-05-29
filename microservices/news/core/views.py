@@ -1,4 +1,7 @@
 import os
+
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db import *
@@ -12,14 +15,20 @@ def delete_photo(paths_photo):
     for path in paths_photo:
         os.remove(path)
 
+# class NewsAPIListPagination(PageNumberPagination):
+#     page_size = 3
+#     page_size_query_param = 'page_size'
+#     max_page_size = 10000
 
 class NewsView(APIView):
-
     def get(self, request):
         try:
             news = News.objects.all()
-            serializer = NewsSerializer(instance=news, many=True)
-            return Response(serializer.data, status=200)
+            paginator = PageNumberPagination()
+            paginator.page_size = 10
+            result_page = paginator.paginate_queryset(news, request)
+            serializer = NewsSerializer(result_page, many=True)
+            return paginator.get_paginated_response(serializer.data)
 
         except DatabaseError:
             return Response('База данных не отвечает', status=503)
