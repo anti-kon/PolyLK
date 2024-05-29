@@ -9,7 +9,7 @@ import {TiDocumentText} from "react-icons/ti";
 import ResizeableTextarea from "../components/UI/textareas/resizeable_textarea/ResizeableTextarea";
 import TextInput from "../components/UI/inputs/text_input/TextInput";
 import MajorButton from "../components/UI/buttons/major_button/MajorButton";
-import {BiFilter, BiSearchAlt} from "react-icons/bi";
+import {BiChat, BiFilter, BiSearchAlt} from "react-icons/bi";
 import {BsPaperclip} from "react-icons/bs";
 import DropFileUpload from "../components/UI/drag_and_drop/DropFileUpload";
 import SmallImagesGallery from "../components/UI/images_gallery/SmallImagesGallery/SmallImagesGallery";
@@ -19,11 +19,11 @@ import TipBoxComponent from "../components/TipBoxComponent";
 import MajorCheckbox from "../components/UI/checkboxes/MajorCheckbox";
 import axios from "axios";
 import CircleDotsLoading from "../components/UI/loaders/CircleDotsLoading";
-import NewsComponent from "../components/NewsComponent";
 import {useNavigate} from "react-router-dom";
 import {InfoContext, PersonContext} from "../App";
 import {encode} from "js-base64";
-
+import {IoClose} from "react-icons/io5";
+import {FaPaperPlane} from "react-icons/fa6";
 
 const BulletinBoard = () => {
     const [productType, setProductType] = useState("product");
@@ -51,6 +51,10 @@ const BulletinBoard = () => {
         list_photo_ads: newAdImages,
         id_person_ads: -1
     })
+
+    const [CHATS, setCHATS] = useState([{id: 0, userName: "AUserName", messages: [{type: 'from', text: 'Привет'}]},
+        {id: 1, userName: "BUserName", messages: [{type: 'from', text: 'Тестовое сообщение'}, {type: 'to', text: 'Тестовое сообщение'}, {type: 'from', text: 'Тестовое сообщение'}]},
+        {id: 2, userName: "CUserName", messages: [{type: 'from', text: 'Тестовое сообщение'}, {type: 'from', text: 'Тестовое сообщение'}, {type: 'to', text: 'Тестовое сообщение'}]}]);
     const [fileDrag, setFileDrag] = useState(false);
 
     const inputRef = React.useRef(null);
@@ -62,6 +66,9 @@ const BulletinBoard = () => {
 
     const {setInfoMessage} = useContext(InfoContext);
     const { person, setPerson } = useContext(PersonContext);
+
+    const [chatWindowVisible, setChatWindowVisible] = useState(false);
+    const [currentChat, setCurrentChat] = useState(0);
 
     useEffect(() => {
         setNewAdvertisement({
@@ -127,10 +134,12 @@ const BulletinBoard = () => {
         setAdvertisements(advertisements.filter(element => element.id !== id_ad));
     }
 
+    const [update, setUpdate] = useState(false);
+
     const loadPosts = () => {
         setIsProcessed(true);
         axios.get('http://212.109.221.176:8080/django-posts/posts/', {
-            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`},
+            headers: { Authorization: `Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOjEsImxvZ2luIjoiVGVzdDEyMzQiLCJleHAiOjE3MTY4MjgyMTl9`},
             params: { dorm_num_ads: person.dorm_num_person}
         }).then(response => {
             setIsProcessed(false);
@@ -159,7 +168,7 @@ const BulletinBoard = () => {
         setIsProcessed(true);
         console.log(isProcessed);
         axios.post('http://212.109.221.176:8080/django-posts/posts/', newAdvertisement, {
-            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token')).value}`}
+            headers: { Authorization: `Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOjEsImxvZ2luIjoiVGVzdDEyMzQiLCJleHAiOjE3MTY4MjgyMTl9`}
         }).then(response => {
             loadPosts();
             setAdvertisementText('');
@@ -190,9 +199,11 @@ const BulletinBoard = () => {
         });
     }
 
-    useEffect(() => {
-        loadPosts();
-    }, []);
+    // useEffect(() => {
+    //     loadPosts();
+    // }, []);
+
+    const [selectedChat, setSelectedChat] = useState(0);
 
     return (
         <div>
@@ -402,23 +413,74 @@ const BulletinBoard = () => {
                     <ShadowButton onClick = {() => setShowMyAds(true)}>
                         <TiDocumentText style = {iconsStyle} /> Мои объявления
                     </ShadowButton>}
+                    <ShadowButton onClick = {() => setChatWindowVisible(true)}>
+                        <BiChat style = {iconsStyle} /> Мои чаты
+                    </ShadowButton>
                 </div>
-                {/*<div className={"chats-window-modal"}>*/}
-                {/*    <ContentBox style={{display: "flex", width: "max-content", padding: 0, background: "#ffffff"}}>*/}
-                {/*        <div className={"chats-list"}>*/}
-                {/*            <div className={"chats-user"}>*/}
-                {/*                <div className={"chats-user-icon"}></div>*/}
-                {/*            </div>*/}
-                {/*            <div className={"chats-user"}>*/}
-                {/*                <div className={"chats-user-icon"}></div>*/}
-                {/*            </div>*/}
-                {/*            <div className={"chats-user"}>*/}
-                {/*                <div className={"chats-user-icon"}></div>*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*        <div className={"chats-window-body"}></div>*/}
-                {/*    </ContentBox>*/}
-                {/*</div>*/}
+                {
+                    chatWindowVisible &&
+                    <div className={"chats-window-modal"}>
+                        <ContentBox style={{display: "flex",
+                            maxWidth: "80%",
+                            minWidth: "min-content",
+                            height: "80%",
+                            padding: 0,
+                            background: "#ffffff"}}>
+                            <article className={"chats-list"}>
+                                {
+                                    CHATS.map((element) =>
+                                        <section className={"chats-user"}
+                                                 style={selectedChat === element.id ? {background: "#D1ECEC", border: "solid 3px #68A3A3", borderBottom: "solid 4px #68A3A3"} : {}}
+                                                 onClick={() => setSelectedChat(element.id)}>
+                                            <input type={"radio"} name={"currentChat"} value={element.id} style={{}}/>
+                                            <div className={"chats-user-icon"}>
+                                                <span>{element.userName.charAt(0)}</span>
+                                            </div>
+                                            <h3>{element.userName}</h3>
+                                        </section>
+                                    )
+                                }
+                            </article>
+
+                            <article className={"chats-window-body"}>
+                                <header className={"chats-header"}>
+                                    <h3>{CHATS.filter((value) => value.id === selectedChat)[0].userName}</h3>
+                                    <ShadowButton style={{width: "max-content", height: "max-content"}}
+                                                  onClick={() => setChatWindowVisible(false)}>
+                                        <IoClose/>
+                                    </ShadowButton>
+                                </header>
+                                <div>
+                                {
+                                    update ?
+                                    CHATS.filter((value) => value.id === selectedChat)[0].messages.map((value) => (
+                                        <div className={value.type === 'from' ? 'left-message' : 'right-message'}>
+                                            {
+                                                value.text
+                                            }
+                                        </div>
+                                    )) :
+                                    CHATS.filter((value) => value.id === selectedChat)[0].messages.map((value) => (
+                                        <div className={value.type === 'from' ? 'left-message' : 'right-message'}>
+                                            {
+                                                value.text
+                                            }
+                                        </div>
+                                    ))
+                                }
+                                </div>
+                                <footer className={'chats-footer'}>
+                                    <input type={'text'} id={'chat'}></input>
+                                    <button onClick={() => {
+                                        CHATS.filter((value) => value.id === selectedChat)[0].messages.push({type: 'to', text: document.getElementById('chat').value});
+                                        setUpdate(!update);
+                                        document.getElementById('chat').value = '';
+                                    }}><FaPaperPlane /></button>
+                                </footer>
+                            </article>
+                        </ContentBox>
+                    </div>
+                }
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {BiChat, BiDotsHorizontalRounded} from "react-icons/bi";
+import {BiDotsHorizontalRounded, BiMessageDetail} from "react-icons/bi";
 import ContentBox from "./UI/content_boxes/content_box/ContentBox";
 import classes from "./UI/headers/MajorHeader/MajorHeader.module.css";
 import ShadowButton from "./UI/buttons/shadow_button/ShadowButton";
@@ -134,7 +134,7 @@ const AdvertisementComponent = ({onDelete, ...props}) => {
                 <label className={'advertisement-login'}>{props.login}</label>
                 {!isEdit && <button style={{marginLeft: "auto", marginRight: "5px"}}
                                     className={"advertisement-frameless-button"}>
-                    <BiChat
+                    <BiMessageDetail
                         style={{
                             width: "22px",
                             height: "auto"

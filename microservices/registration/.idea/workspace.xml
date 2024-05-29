@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="" />
+    <list default="true" id="cfda4487-5954-4379-a8da-cc316c5133ba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/../../.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/AdvertisementComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/LoginComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/UI/select/Select.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/pages/BulletinBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/styles/BulletinBoard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../info_person/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../info_person/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../posts/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../posts/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/jenkons__frontend",
+    "git-widget-placeholder": "feature/bullerin__board__chat",
     "last_opened_file_path": "Z:/Projects/PolyLK/microservices/registration",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -114,6 +127,7 @@
       <workItem from="1712561793383" duration="1864000" />
       <workItem from="1712612453148" duration="2287000" />
       <workItem from="1712663766731" duration="8000" />
+      <workItem from="1716736168676" duration="768000" />
     </task>
     <servers />
   </component>
